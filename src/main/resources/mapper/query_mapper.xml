@@ -54,9 +54,9 @@
 
 	<!-- login -->
 	<select id="login" parameterType="account" resultMap="accountMap">
-		SELECT userId, password, tableNumber, authority
+		SELECT user_id, password, table_number, authority
 		FROM account
-		WHERE id = #{id}
+		WHERE user_id = #{userId}
 		<if test = "password != null">
 			AND password = #{password}
 		</if>
