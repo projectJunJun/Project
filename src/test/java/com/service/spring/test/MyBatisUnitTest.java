@@ -31,15 +31,15 @@ public class MyBatisUnitTest {
 		SqlSession session = factory.openSession();
 		
 		// 3. Test
+//		System.out.println(session.selectList("mapper.selectAccount"));
+//		
+//		Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+//		OrderList orderlist = new OrderList("table1", "2", "5", timestamp, 5, new Account("table1"), new Menu("2"));
+		
+		Account table2 = new Account("table2", "table2", 2, 0);
+		session.insert("mapper.registerAccount", table2);
+		session.commit();
 		System.out.println(session.selectList("mapper.selectAccount"));
-		
-		Timestamp timestamp = new Timestamp(System.currentTimeMillis());
-		OrderList orderlist = new OrderList("table1", "2", "5", timestamp, 5, new Account("table1"), new Menu("2"));
-		
-//		Account table2 = new Account("table2", "table2", 2, 0);
-//		session.insert("mapper.registerAccount", table2);
-//		session.commit();
-		
 //		OrderList orderlist2 = new OrderList("table2", "2", "5", timestamp, 10, new Account("table2"), new Menu("2"));
 //		session.update("mapper.updateOrderCount", orderlist2);
 //		session.commit();
