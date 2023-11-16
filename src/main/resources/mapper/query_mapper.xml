@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="mapper">
+	<resultMap type="account" id="accountMap">
+        <result property="userId" column="user_id"/>
+        <result property="password" column="password"/>
+        <result property="tableNumber" column="table_number"/>
+        <result property="authority" column="authority"/>
+    </resultMap>
+    
+    <resultMap type="menu" id="menuMap">
+        <result property="menuId" column="menu_id"/>
+        <result property="name" column="name"/>
+        <result property="category" column="category"/>
+        <result property="price" column="price"/>
+        <result property="url" column="url"/>
+        <result property="description" column="description"/>
+        <result property="totalStar" column="total_star"/>
+        <result property="countStar" column="count_star"/>
+    </resultMap>
+    
+    <resultMap type="orderlist" id="orderListMap">
+        <result property="orderId" column="order_id"/>
+        <result property="userId" column="user_id"/>
+        <result property="menuId" column="menu_id"/>
+        <result property="teamId" column="team_id"/>
+        <result property="orderTime" column="order_time"/>
+        <result property="count" column="count"/>
+        <result property="star" column="star"/>
+        <result property="isPaid" column="is_paid"/>
+    </resultMap>
+    
+    <resultMap type="orderlist" id="orderListWithAccountMap">
+        <result property="orderId" column="order_id"/>
+        <result property="userId" column="user_id"/>
+        <result property="menuId" column="menu_id"/>
+        <result property="teamId" column="team_id"/>
+        <result property="orderTime" column="order_time"/>
+        <result property="count" column="count"/>
+        <result property="star" column="star"/>
+        <result property="isPaid" column="is_paid"/>
+        <association property="account" javaType="account">
+        	<id column="user_id" property="userId"/>
+        	<result column="team_number" property="teamNumber"/>
+        </association>
+        <association property="menu" javaType="menu">
+        	<id column="menu_id" property="menuId" />
+        	<result column="price" property="price" />
+        </association>
+        
+    </resultMap>
+
+	<!-- login -->
+	<select id="login" parameterType="account" resultMap="accountMap">
+		SELECT userId, password, tableNumber, authority
+		FROM account
+		WHERE id = #{id}
+		<if test = "password != null">
+			AND password = #{password}
+		</if>
+	</select>
+	
+	<!-- addMenu -->
+	<insert id="addMenu" parameterType="menu">
+		INSERT
+		INTO menu(menu_id, name, category, price, url, description)
+		VALUES(#{menuId}, #{name}, #{category}, #{price}, #{url}, #{description})
+	</insert>
+	
+	<!-- updateMenu -->
+	<update id="updateMenu" parameterType="menu">
+		UPDATE menu
+		set
+		name = #{name}, category = #{category}, price = #{price}, url = #{url}, description = #{description}
+		WHERE menu_id = #{menuId}
+	</update>
+		
+	<!-- deleteMenu menuid만 받아서 list 만들기! -->
+	<delete id="deleteMenu" parameterType="list">
+		DELETE menu
+		WHERE menu_id in
+		<foreach collection="list" item="menuId" open="(" close=")" separator=", ">
+			#{menuId}
+		</foreach>
+	</delete>
+	<!-- selectMenu & 동적 -->
+<!-- 		<select id="select" parameterType="phone" resultMap="phoneWithCompany">
+		SELECT p.num, p.model, p.price, p.vcode, c.vendor
+		FROM phones p JOIN company c ON(p.vcode=c.vcode)
+		<if test="num != null">
+			WHERE num = #{num}
+		</if> -->
+	<select id="selectMenu" parameterType="menu" resultMap = "menuMap">
+		SELECT menu_id, name, category, price, url, description, total_star, count_star
+		FROM menu
+		<if test="menuId != null">
+			WHERE menu_id = #{menuId}
+		</if>
+	</select>
+	
+	<!-- registerAccount -->
+	<insert id="registerAccount" parameterType="account">
+		INSERT
+		INTO account(user_id, password, table_number, authority)
+		VALUES(#{userId}, #{password}, #{tableNumber}, #{authority})
+	</insert>
+	
+	<!-- updateAccount -->
+	<update id="updateAccount" parameterType="account">
+		UPDATE account
+		set
+		password = #{password}, table_number = #{tableNumber}
+		WHERE user_id = #{userId}
+	</update>
+	
+	<!-- deleteAccount -->
+	<delete id="deleteAccount" parameterType="list">
+		DELETE account
+		WHERE user_id in
+		<foreach collection="list" item="userId" open="(" close=")" separator=", ">
+			#{userId}
+		</foreach>
+	</delete>
+	
+	<!-- selectAccount -->
+	<select id="selectAccount" parameterType="account" resultMap = "accountMap">
+		SELECT user_id, password, table_number, authority
+		FROM account
+		<if test="userId != null">
+			WHERE user_id = #{userId}
+		</if>
+	</select>
+	
+	<!-- addOrder -->
+	<insert id="addOrder" parameterType="orderList">
+		INSERT
+		INTO orderList(order_id, user_id, menu_id, team_id, order_time, count, is_paid)
+		VALUES(ord_seq.nextVal, #{userId}, #{menuId}, #{teamId}, #{orderTime}, #{count}, 0)
+	</insert>
+	
+	<!-- selectOrderByTable -->
+	<!-- 결제 안한 테이블별 조회 -->
+	<select id="selectOrderByTable" parameterType="orderList" resultMap = "orderListWithAccountMap">
+		SELECT o.order_id, o.user_id, o.menu_id, o.team_id, o.order_time, o.count, o.star, o.is_paid, a.table_number, m.price
+		FROM orderlist o JOIN account a ON (o.user_id = a.user_id) JOIN menu m ON (o.menu_id = m.menu_id)
+		WHERE o.user_id = #{userId} AND o.is_paid = 0
+	</select>
+	
+	<!-- selectOrder -->
+	<!-- 전체 조회, menuId로 조회! 동적  -->
+	<select id="selectOrder" parameterType="String" resultMap="orderListMap">
+		SELECT order_id, user_id, menu_id, team_id, order_time, count, star, is_paid
+		FROM orderlist
+		<if test="menuId != null">
+			WHERE menu_id = #{VALUE}
+		</if>
+	</select>
+	
+	<select id="selectOrderByDate">
+	</select>
+	
+	<!-- updateOrder -->
+	<!-- 수량, 결제 여부, 별점 변경 -->
+	<update id="updateOrderCount" parameterType="orderList">
+		UPDATE orderlist
+		set
+		count = count+#{count}
+		WHERE user_id = #{userId} AND team_id = #{teamId} AND menu_id = #{menuId} AND is_paid = 0
+	</update>
+	
+	<update id="updateOrder" parameterType="orderList">
+		UPDATE orderlist
+		set
+		is_paid = 1, star = #{star}
+		WHERE user_id = #{userId} AND menu_id = #{menuId} AND team_id=#{teamId} AND is_paid = 0
+	</update>
+	
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
