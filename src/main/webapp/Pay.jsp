@@ -116,6 +116,7 @@
             나눠지지 않는 금액은 마지막 인원의 결제에 부과됩니다.
         </p>
         <input type="submit" value="결제 금액 확인 " id="pay">
+        <input type="hidden" name="total">
     </form>
     <script>
         // localStorage에 있는 총 금액 보여주기
@@ -142,11 +143,8 @@
 
         // form 이외에 localStorage에 있는 장바구니 금액을 전송하기 위해 함께 바인딩해서 전송하기
         const form = document.querySelector('form')
-        const input = document.createElement('input')
-        input.type = 'hidden'
-        input.name = 'total'
-        input.value = total.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')+"원"
-        form.appendChild(input)
+        const hidden = document.querySelector('input[type="hidden"]')
+        hidden.value = total
     </script>
 </body>
 </html>
