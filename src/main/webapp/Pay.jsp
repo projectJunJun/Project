@@ -102,7 +102,7 @@
     </style>
 </head>
 <body>
-    <form action="payCalc.do" method="post">
+    <form action="/pay.do" method="GET">
         <button id="close">X</button>
         <h1>결제하시겠습니까?</h1>
         <h2>결제 금액</h2>
@@ -142,24 +142,11 @@
 
         // form 이외에 localStorage에 있는 장바구니 금액을 전송하기 위해 함께 바인딩해서 전송하기
         const form = document.querySelector('form')
-        const formData = new FormData(form)
-        formData.append('total', total)
-        for(const [key, value] of formData){
-            console.log(key, value)
-        }
-
-        // 결제금액 확인 누르면 PayResult.jsp로 이동
-        // FIXME: localStorage의 값을 controller로 받을 수 있게 수정 필요
-        const button = document.querySelector("#pay")
-        button.addEventListener("click", () => {
-            // location.href = 'PayResult.jsp'
-            fetch('PayResult.jsp', {
-                method: 'POST',
-                body: JSON.stringify({
-                    data: total
-                })
-            })
-        })
+        const input = document.createElement('input')
+        input.type = 'hidden'
+        input.name = 'total'
+        input.value = total.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')+"원"
+        form.appendChild(input)
     </script>
 </body>
 </html>
