@@ -57,5 +57,6 @@ public class AccountController {
             model.addAttribute("message", "에러 내용 - 회원 로그아웃 진행중 에러발생");
         }
         return path;
+
     }
 }
