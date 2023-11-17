@@ -20,10 +20,8 @@ public class OrderListController {
     @Autowired
     private OrderListService orderListService;
 
-    @PostMapping("/payCalc.do")
+    @GetMapping("/pay.do")
     public String pay(String total, String people, Model model){
-        System.out.println("total"+total);
-        System.out.println("people"+people);
         model.addAttribute("total", total);
         model.addAttribute("people", people);
         return "PayResult";
@@ -33,7 +31,6 @@ public class OrderListController {
     public String pay(OrderList order, HttpSession session, Model model) throws Exception {
         int teamId = (int) session.getAttribute("teamId");
         session.setAttribute("teamId", teamId+1);
-        System.out.println("팀아이디"+teamId);
         List<OrderList> list = orderListService.selectOrderByTable(order);
         model.addAttribute("list", list);
         return "Star";
