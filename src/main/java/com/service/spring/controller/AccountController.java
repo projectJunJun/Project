@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import javax.servlet.http.HttpSession;
 
 @Controller
-public class HomeController {
+public class AccountController {
     @Autowired
     private AccountService accountService;
 
@@ -25,10 +25,10 @@ public class HomeController {
 
             if(loginAccount != null){   // 찾는 회원이 있다면
                 String path = "HomeUser";
-                session.setAttribute("loginAccount", loginAccount);
-                session.setAttribute("teamId", 0);
+                session.setAttribute("account", loginAccount);
                 model.addAttribute("title", "핸드폰 관리 성공");
                 if(loginAccount.getAuthority() == 1) path = "HomeAdmin";
+                else session.setAttribute("teamId", 1);         // teamId
                 return path;
             } else{
                 return "Login";
