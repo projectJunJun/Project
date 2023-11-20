@@ -119,6 +119,11 @@
         <input type="hidden" name="total">
     </form>
     <script>
+        const close = document.querySelector("#close")
+        close.addEventListener("click", e => {
+            e.preventDefault()
+        })
+
         // localStorage에 있는 총 금액 보여주기
         const h2 = document.querySelector("h2")
         let total = 0

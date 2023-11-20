@@ -9,6 +9,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
+import java.text.DecimalFormat;
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -22,8 +24,23 @@ public class OrderListController {
 
     @GetMapping("/pay.do")
     public String pay(String total, String people, Model model){
-        model.addAttribute("total", total);
+        int totals = Integer.parseInt(total);
+        int peoples = Integer.parseInt(people);
+        int rest = totals;
+        DecimalFormat formatter = new DecimalFormat("###,###");
+        ArrayList<String> moneys = new ArrayList<>();
+        for(int i = 0; i < peoples; i++){
+            if(i == peoples-1){
+                moneys.add(formatter.format(rest));
+            }else{
+                int money = totals / peoples;
+                moneys.add(formatter.format(money));
+                rest -= money;
+            }
+        }
+        model.addAttribute("total", formatter.format(totals));
         model.addAttribute("people", people);
+        model.addAttribute("moneys", moneys);
         return "PayResult";
     }
 

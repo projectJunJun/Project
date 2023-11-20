@@ -20,7 +20,7 @@
     <script>
         $(function() {
             setInterval(() => {
-                location.href = 'HomeAdmin.jsp'
+                location.href = 'HomeUser.jsp'
                 $.post('pay.do')
             }, 3000)
         })
