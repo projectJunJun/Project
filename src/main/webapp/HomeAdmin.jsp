@@ -5,16 +5,26 @@
     <title>JJC ADMIN</title>
     <style>
         .grid-container{
+            width: 80%;
             display: grid;
             gap: 30px;
-            padding: 30px;
+            padding-top: 5%;
+            margin: 0 auto;
             align-content: space-evenly;
             grid-template-columns: auto auto auto;
+
         }
-        .grid-container > div{
-            border: 1px solid black;
+        .grid-container-child{
+            margin: 0 auto;
+        }
+        .grid-content{
             text-align: center;
             font-size: 30px;
+        }
+        .grid-container-child > a{
+            align-content: center;
+            color: black;
+            text-decoration: none;
         }
     </style>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
