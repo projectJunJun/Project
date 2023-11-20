@@ -1,10 +1,13 @@
 package com.service.spring.model.impl;
 
 import com.service.spring.domain.Account;
+import com.service.spring.domain.Menu;
 import com.service.spring.domain.OrderList;
 import com.service.spring.model.OrderListDAO;
 import com.service.spring.model.OrderListService;
+import com.sun.org.apache.xpath.internal.operations.Or;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -22,5 +25,10 @@ public class OrderListServiceImpl implements OrderListService {
     @Override
     public int updateOrder(OrderList orderList) {
         return orderListDAO.updateOrder(orderList);
+    }
+
+    @Override
+    public List<OrderList> selectOrder(String menuId) {
+        return orderListDAO.selectOrder(menuId);
     }
 }

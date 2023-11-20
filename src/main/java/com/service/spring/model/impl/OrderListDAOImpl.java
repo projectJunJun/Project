@@ -24,8 +24,8 @@ public class OrderListDAOImpl implements OrderListDAO {
 
     @Override
     public int updateOrder(OrderList orderList) {
-        return sqlSession.update(NS+"updateOrder", orderList);
-        
+        return sqlSession.update(NS + "updateOrder", orderList);
+    }
     @Override
     public List<OrderList> selectOrder(String menuId) {
         return sqlSession.selectList(NS + "selectOrder", menuId);
