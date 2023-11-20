@@ -1,7 +1,9 @@
 package com.service.spring.controller;
 
-import com.service.spring.domain.Account;
-import com.service.spring.model.AccountService;
+import java.util.List;
+
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -9,7 +11,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import javax.servlet.http.HttpSession;
+import com.service.spring.domain.Account;
+import com.service.spring.model.AccountService;
 
 @Controller
 public class AccountController {
@@ -62,4 +65,58 @@ public class AccountController {
         return path;
 
     }
+    
+    @GetMapping("/selectAllAccount.do")
+    public String doSelectAllAccount(Model model) {
+    	try {
+    		List<Account> accountList= accountService.selectAccount();
+    		model.addAttribute("accountList",accountList);
+    		return "AdminAccount";
+    	} catch (Exception e) {
+    		model.addAttribute("title", "계정전체보기 에러");
+            model.addAttribute("message", "에러 내용 - 메뉴전체보기 중 에러발생");
+            return "Error";
+    	}
+    }
+    
+    @GetMapping("/selectAccount.do")
+    public String doSelectAccount (Account account, Model model) {
+    	try {
+    		System.out.println(account.toString());
+    		Account resAccount = accountService.selectAccount(account); // account 정보 받아와서  쿼리 실행 후 유저가 선택한 account 객체 생성
+    		System.out.println(resAccount);
+    		model.addAttribute("account",resAccount);
+    		return "Account"; //계정 상세보기 페이지로 이동
+    	} catch (Exception e) {
+    		model.addAttribute("title", "계정상세보기 에러");
+            model.addAttribute("message", "에러 내용 - 계정상세보기 중 에러발생");
+    		 return "Error"; // 에러
+    	}
+    }
+    
+    @GetMapping("/registerAccount.do")
+    public String getRegisterAccount (Model model) {
+    	try {
+    		return "registerAccount";
+    	} catch (Exception e) {
+    		model.addAttribute("title", "계정등록폼 에러");
+            model.addAttribute("message", "에러 내용 - 계정등록 진입 중 에러발생");
+    		return "Error"; // 에러
+    	}
+    	
+    }
+    
+    @PostMapping("/registerAccount.do")
+    public String postRegisterAccount (Account account, Model model) {
+    	try {
+    		accountService.registerAccount(account);
+    		return "redirect:selectAllAccount.do";
+    	} catch (Exception e) {
+    		model.addAttribute("title", "계정등록 에러");
+            model.addAttribute("message", "에러 내용 - 계정등록 진행 중 에러발생");
+    		return "Error";
+    	}
+    }
+    
+    // just try
 }

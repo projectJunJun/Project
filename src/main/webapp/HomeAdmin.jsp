@@ -32,32 +32,21 @@
 <body>
     <jsp:include page="AdminHeader.jsp"/>
     <div class="grid-container">
-        <div class="grid-container-child">
-            <a href="AdminMenu.jsp">
-                <img src="images/admin.png">
-                <div class="grid-content">
-                    메뉴관리
-                </div>
-            </a>
-        </div>
-
-       <div class="grid-container-child">
-           <a href="AdminAccount.jsp">
-               <img src="images/admin.png">
-               <div class="grid-content">
-                   주문계정 관리
-               </div>
-           </a>
-       </div>
-
-        <div class="grid-container-child">
-            <a href="AdminOrderList.jsp">
-                <img src="images/admin.png">
-                <div class="grid-content">
-                    주문내역 조회
-                </div>
-            </a>
-        </div>
+        <a href="selectAllMenu.do">
+            <div>
+                메뉴관리
+            </div>
+        </a>
+        <a href="selectAllAccount.do">
+            <div>
+                주문계정 관리
+            </div>
+        </a>
+        <a href="selectAllOrder.do">
+            <div>
+                주문내역 조회
+            </div>
+        </a>
     </div>
 </body>
 </html>
