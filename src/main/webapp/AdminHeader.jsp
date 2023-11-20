@@ -16,7 +16,7 @@
     <div>
         <c:if test="${!empty account}">
             <div>
-                    ${account.userId} 님 로그인 되었습니다. <a href="logout.do">로그아웃</a>
+                    ${account.userId} 님 로그인 되었습니다. <a href="logoutAdmin.do">로그아웃</a>
             </div>
         </c:if>
     </div>
