@@ -121,7 +121,6 @@ public class AccountController {
             model.addAttribute("message", "에러 내용 - 계정등록 진입 중 에러발생");
     		return "Error"; // 에러
     	}
-    	
     }
     
     @PostMapping("/registerAccount.do")
@@ -136,7 +135,6 @@ public class AccountController {
     	}
     }
     
- // 비동기 추가...deleteAjax
  	@PostMapping("deleteAjax.do")
  	@ResponseBody
  	public String doDeleteAjax(@RequestParam List<String> list, Model model) {
@@ -146,9 +144,36 @@ public class AccountController {
  			return "";
  			
  		}catch(Exception e) {
- 			model.addAttribute("title", "핸드폰 관리 - 에러");
- 			model.addAttribute("message", "문제 내용 - 폰 삭제 중 에러 발생");
+ 			model.addAttribute("title", "계정 관리 - 에러");
+ 			model.addAttribute("message", "문제 내용 - 계정 삭제 중 에러 발생");
  			return "Error";
  		}
  	}
+ 	
+ 	@GetMapping("/updateAccount.do")
+    public String getUpdateAccount (Model model) {
+    	try {
+    		return "updateAccount";
+    	} catch (Exception e) {
+    		model.addAttribute("title", "계정등록폼 에러");
+            model.addAttribute("message", "에러 내용 - 계정등록 진입 중 에러발생");
+    		return "Error"; // 에러
+    	}
+    }
+ 	
+ 	@PostMapping("/updateAccount.do")
+    public String postUpdateAccount (Model model, Account account, String passwordCheck) {
+    	try {
+    		if (account.getPassword().contentEquals(passwordCheck)){
+    			accountService.updateAccount(account);
+    			return "redirect:selectAccount.do?userId=" + account.getUserId();    			
+    		} else {
+    			return "redirect:updateAccount.do?userId=" + account.getUserId() + "&tableNumber=" +account.getTableNumber();  
+    		}
+    	} catch (Exception e) {
+    		model.addAttribute("title", "계정등록폼 에러");
+            model.addAttribute("message", "에러 내용 - 계정등록 진입 중 에러발생");
+    		return "Error"; // 에러
+    	}
+    }
 }
