@@ -33,7 +33,7 @@ public class AccountDAOImpl implements AccountDAO {
 	}
 
 	@Override
-	public int deleteAccount(List<Account> account) {
+	public int deleteAccount(List<String> account) {
 		return sqlSession.delete(NS+"deleteAccount", account);
 	}
 
