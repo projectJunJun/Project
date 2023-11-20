@@ -32,5 +32,6 @@
 	</table>
 	
 	<a href = "addMenu.do">메뉴 추가하기</a>
+  
 </body>
 </html>
