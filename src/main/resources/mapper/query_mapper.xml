@@ -159,9 +159,15 @@
 	
 	<select id="selectOrderByDate">
 	</select>
-	
+
 	<!-- updateOrder -->
 	<!-- 수량, 결제 여부, 별점 변경 -->
+	<update id = "updateMenuStar" parameterType="orderList">
+		UPDATE menu
+		SET total_star = total_star+#{star}, count_star = count_star+1
+		WHERE menu_id = #{menuId}
+	</update>
+
 	<update id="updateOrderCount" parameterType="orderList">
 		UPDATE orderlist
 		set

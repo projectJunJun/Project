@@ -3,6 +3,7 @@ package com.service.spring.controller;
 import com.service.spring.domain.Account;
 import com.service.spring.domain.Menu;
 import com.service.spring.domain.OrderList;
+import com.service.spring.model.MenuService;
 import com.service.spring.model.OrderListDAO;
 import com.service.spring.model.OrderListService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,6 +30,8 @@ public class OrderListController {
     @Autowired
     private OrderListService orderListService;
 
+    @Autowired
+    private MenuService menuService;
 
     // Pay.jsp -> PayResult.jsp
     @GetMapping("/pay.do")
@@ -84,7 +87,9 @@ public class OrderListController {
                 }
             });
             for(int i = 0; i < ratings.size(); i++){
-                orderListService.updateOrder(new OrderList(account.getUserId(), menuIds.get(i), Integer.toString(teamId), ratings.get(i)));
+                OrderList order = new OrderList(account.getUserId(), menuIds.get(i), Integer.toString(teamId), ratings.get(i));
+                orderListService.updateOrder(order);
+                menuService.updateMenuStar(order);
             }
             path = "HomeUser";
             session.setAttribute("teamId", teamId+1);
