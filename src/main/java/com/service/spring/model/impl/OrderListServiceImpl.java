@@ -13,9 +13,13 @@ public class OrderListServiceImpl implements OrderListService {
     @Autowired
     private OrderListDAO orderListDAO;
 
-
     @Override
     public List<OrderList> selectOrderByTable(OrderList orderList) throws Exception {
         return orderListDAO.selectOrderByTable(orderList);
+    }
+
+    @Override
+    public List<OrderList> selectOrder(String menuId) {
+        return orderListDAO.selectOrder(menuId);
     }
 }

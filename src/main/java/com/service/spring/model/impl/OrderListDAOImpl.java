@@ -20,4 +20,7 @@ public class OrderListDAOImpl implements OrderListDAO {
     public List<OrderList> selectOrderByTable(OrderList orderList) throws Exception {
         return sqlSession.selectList(NS+"selectOrderByTable");
     }
+    public List<OrderList> selectOrder(String menuId) {
+        return sqlSession.selectList(NS + "selectOrder", menuId);
+    }
 }
