@@ -45,7 +45,7 @@
         </div>
         <div class="selectOrderByTable">
             <button id="button-selectOrderByTable">
-                <a href="selectAllOrder.do">
+                <a href="selectOrderByTable.do">
                     테이블별 조회
                 </a>
             </button>

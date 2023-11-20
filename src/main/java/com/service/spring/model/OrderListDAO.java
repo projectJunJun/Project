@@ -8,4 +8,6 @@ import java.util.List;
 public interface OrderListDAO {
     List<OrderList> selectOrderByTable(OrderList orderList) throws Exception;
     List<OrderList> selectOrder(String menuId);
+
+    List<OrderList> selectOrderByTable();
 }

@@ -62,5 +62,18 @@ public class OrderListController {
 //            model.addAttribute("message", "문제 내용 - 테이블별 주문 목록 불러오기 중 에러발생");
 //        }
 //    }
+    @GetMapping("/selectOrderByTable.do")
+    public String selectOrderByTable(Model model){
+        String path = "Error";
+        try{
+            List<OrderList> orderLists = orderListService.selectOrderByTable();
+            model.addAttribute("orderLists", orderLists);
+            path = "AdminOrderList";
+        } catch (Exception e){
+            model.addAttribute("title", "테이블별 주문 내역 조회 - 에러");
+            model.addAttribute("message", "문제 내용 - 테이블별 주문 목록 불러오기 중 에러발생");
+        }
+        return path;
+    }
 
 }
