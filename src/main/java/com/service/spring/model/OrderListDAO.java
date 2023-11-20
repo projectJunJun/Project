@@ -1,5 +1,7 @@
 package com.service.spring.model;
 
+public interface OrderListDAO {
+
 import com.service.spring.domain.OrderList;
 import org.springframework.core.annotation.Order;
 

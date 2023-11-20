@@ -1,5 +1,10 @@
 package com.service.spring.controller;
 
+import org.springframework.stereotype.Controller;
+
+@Controller
+public class OrderListController {
+=======
 import com.service.spring.domain.OrderList;
 import com.service.spring.model.OrderListDAO;
 import com.service.spring.model.OrderListService;
@@ -35,4 +40,5 @@ public class OrderListController {
         model.addAttribute("list", list);
         return "Star";
     }
+
 }
