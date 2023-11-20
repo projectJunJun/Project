@@ -46,5 +46,4 @@ public class MenuDAOImpl implements MenuDAO {
     public List<Menu> selectMenuByCategory(String category) {
       return sqlSession.selectList(NS+"selectMenuByCategory", category);
     }
-
 }

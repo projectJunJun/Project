@@ -1,4 +1,4 @@
-package com.service.spring.model.impl;
+ 	package com.service.spring.model.impl;
 
 import com.service.spring.domain.Menu;
 import com.service.spring.model.MenuDAO;
@@ -43,4 +43,5 @@ public class MenuServiceImpl implements MenuService {
     public List<Menu> selectMenuByCategory(String category) {
       return menuDAO.selectMenuByCategory(category);
     }
+
 }

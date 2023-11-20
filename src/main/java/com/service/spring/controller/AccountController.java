@@ -26,10 +26,14 @@ public class AccountController {
 
             if(loginAccount != null){   // 찾는 회원이 있다면
                 String path = "HomeUser";
+                // "selectMenyByCategory";
+                String path = "redirect:selectMenuByCategory.do";
                 session.setAttribute("account", loginAccount);
-                model.addAttribute("title", "핸드폰 관리 성공");
+                System.out.println("login session"+loginAccount);
                 if(loginAccount.getAuthority() == 1) path = "HomeAdmin";
                 else session.setAttribute("teamId", 1);         // teamId
+        		System.out.println(path+"path 반환 성공");
+
                 return path;
             } else{
                 return "Login";
@@ -42,11 +46,20 @@ public class AccountController {
         } // catch
     } // doLogin
 
-    @GetMapping("/logout.do")
-    public String doLogout(Account account, HttpSession session){
-        if(session.getAttribute("account") != null){
+    @PostMapping("/logout.do")
+    public String doLogout(HttpSession session, String password, Model model){
+        String path = "Error";
+        Account account = (Account) session.getAttribute("account");
+        System.out.println("account"+account);
+        System.out.println("password"+password);
+        if(account.getPassword().equals(password) & (account != null)){
             session.invalidate();
+            path = "redirect:Login.jsp";
+        } else{ // 비밀번호 틀림
+            model.addAttribute("title", "로그아웃 에러");
+            model.addAttribute("message", "에러 내용 - 회원 로그아웃 진행중 에러발생");
         }
-        return "Login";
+        return path;
+
     }
 }
