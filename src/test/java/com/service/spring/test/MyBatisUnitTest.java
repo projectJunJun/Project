@@ -31,15 +31,15 @@ public class MyBatisUnitTest {
 		SqlSession session = factory.openSession();
 		
 		// 3. Test
-//		System.out.println(session.selectList("mapper.selectAccount"));
-//		
-//		Timestamp timestamp = new Timestamp(System.currentTimeMillis());
-//		OrderList orderlist = new OrderList("table1", "2", "5", timestamp, 5, new Account("table1"), new Menu("2"));
+		System.out.println(session.selectList("mapper.selectAccount"));
 		
+		Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+		OrderList orderlist = new OrderList("table01", "1", "1", timestamp, 5, new Account("table1"), new Menu("1"));
+		session.insert("mapper.addOrder", orderlist);
+
 //		Account table2 = new Account("table2", "table2", 2, 0);
-//		session.insert("mapper.registerAccount", table2);
-//		session.commit();
-//		System.out.println(session.selectList("mapper.selectAccount"));
+		session.commit();
+		System.out.println(session.selectList("mapper.selectOrder"));
 //		OrderList orderlist2 = new OrderList("table2", "2", "5", timestamp, 10, new Account("table2"), new Menu("2"));
 //		session.update("mapper.updateOrderCount", orderlist2);
 //		session.commit();
@@ -57,9 +57,9 @@ public class MyBatisUnitTest {
 		 * UserInfo vo = session.selectOne("sql.pms.mapper.selectUser", user);
 		 * System.out.println("LOGIN.." + vo);
 		 */
-		Menu menu = new Menu("menu02", "프라이드치킨(뼈)", "치킨", 14000, "./images/프라이드치킨.png", "준준치킨 셰프님의 연구 끝에 탄생한 비법 기름으로 튀긴 수제 치킨입니다.");
-		session.insert("mapper.addMenu", menu);
-		session.commit();
+//		Menu menu = new Menu("1", "12", "123", 1234, "12345", "12345");
+//		session.insert("mapper.addMenu", menu);
+//		session.commit();
 //		
 //		// update
 ////		session.update("mapper.updateMenu", menu);
