@@ -14,7 +14,6 @@ public class OrderListServiceImpl implements OrderListService {
     @Autowired
     private OrderListDAO orderListDAO;
 
-
     @Override
     public List<OrderList> selectOrderByTable(Account account) {
         return orderListDAO.selectOrderByTable(account);

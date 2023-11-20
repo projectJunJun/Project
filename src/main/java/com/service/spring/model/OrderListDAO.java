@@ -9,4 +9,5 @@ import java.util.List;
 public interface OrderListDAO {
     List<OrderList> selectOrderByTable(Account account);
     int updateOrder(OrderList orderList);
+    List<OrderList> selectOrder(String menuId);
 }

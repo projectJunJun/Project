@@ -15,6 +15,8 @@ import java.lang.reflect.Array;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
+
+import org.springframework.web.bind.annotation.GetMapping;
 import java.util.List;
 import java.util.Map;
 
@@ -92,4 +94,16 @@ public class OrderListController {
         }
         return path;
     }
+
+//    @GetMapping("/selectOrderByTable.do")
+//    public String selectOrderByTable(Model model){
+//        String path = "Error";
+//        try{
+//            List<OrderList> orderLists =
+//        } catch (Exception e){
+//            model.addAttribute("title", "테이블별 주문 내역 조회 - 에러");
+//            model.addAttribute("message", "문제 내용 - 테이블별 주문 목록 불러오기 중 에러발생");
+//        }
+//    }
+
 }
