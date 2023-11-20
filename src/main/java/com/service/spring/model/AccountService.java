@@ -9,7 +9,7 @@ public interface AccountService {
     Account login(Account account);
     int registerAccount(Account account);
     int updateAccount(Account account);
-    int deleteAccount(List<Account> list);
+    int deleteAccount(List<String> list);
     Account selectAccount(Account account);
     List<Account> selectAccount();
     
