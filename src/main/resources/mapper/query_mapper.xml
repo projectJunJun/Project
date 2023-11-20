@@ -100,6 +100,12 @@
 		</if>
 	</select>
 	
+	<select id="selectMenuByCategory" parameterType="String" resultMap = "menuMap">
+		SELECT menu_id, name, category, price, url, description, total_star, count_star
+		FROM menu
+		WHERE category = #{VALUE}
+	</select>
+	
 	<!-- registerAccount -->
 	<insert id="registerAccount" parameterType="account">
 		INSERT
