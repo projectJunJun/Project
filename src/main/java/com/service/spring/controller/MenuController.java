@@ -66,7 +66,7 @@ public class MenuController {
     	//	model.addAttribute("title", "메뉴추가하기 에러");
          //   model.addAttribute("message", "에러 내용 - 메뉴추가하기 중 에러발생");
     	//	return "Error";
-    	//}
+    	}
 
     @GetMapping("selectMenuByCategory.do")
     public String selectMenuByCategory(Model model) {

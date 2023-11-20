@@ -29,7 +29,7 @@ public class AccountController {
             Account loginAccount = accountService.login(account);
 
             if(loginAccount != null){   // 찾는 회원이 있다면
-                String path = "HomeUser";
+                // String path = "HomeUser";
                 // "selectMenyByCategory";
                 String path = "redirect:selectMenuByCategory.do";
                 session.setAttribute("account", loginAccount);
@@ -58,13 +58,28 @@ public class AccountController {
         System.out.println("password"+password);
         if(account.getPassword().equals(password) & (account != null)){
             session.invalidate();
-            path = "redirect:Login.jsp";
+            path = "Login";
         } else{ // 비밀번호 틀림
             model.addAttribute("title", "로그아웃 에러");
             model.addAttribute("message", "에러 내용 - 회원 로그아웃 진행중 에러발생");
         }
         return path;
+    }
 
+    @GetMapping("/logoutAdmin.do")
+    public String doLogoutAdmin(HttpSession session, Model model){
+        String path = "Error";
+        Account account = (Account) session.getAttribute("account");
+        System.out.println("Admin account"+account);
+        if(account!= null){
+            session.invalidate();
+            path = "Login";
+        }
+        else{
+            model.addAttribute("title", "로그아웃 에러");
+            model.addAttribute("message", "에러 내용 - 관리자 로그아웃 진행중 에러발생");
+        }
+        return path;
     }
     
     @GetMapping("/selectAllAccount.do")
@@ -118,6 +133,4 @@ public class AccountController {
     		return "Error";
     	}
     }
-    
-    // just try
 }
