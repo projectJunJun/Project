@@ -1,3 +1,10 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<html>
+<head>
+    <title>JJC ADMIN</title>
+</head>
+<body>
+
 <%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <html>
@@ -32,32 +39,33 @@
 <body>
     <jsp:include page="AdminHeader.jsp"/>
     <div class="grid-container">
-        <div class="grid-container-child">
-            <a href="AdminMenu.jsp">
-                <img src="images/admin.png">
-                <div class="grid-content">
-                    메뉴관리
-                </div>
-            </a>
-        </div>
-
-       <div class="grid-container-child">
-           <a href="AdminAccount.jsp">
-               <img src="images/admin.png">
-               <div class="grid-content">
-                   주문계정 관리
-               </div>
-           </a>
-       </div>
-
-        <div class="grid-container-child">
-            <a href="AdminOrderList.jsp">
-                <img src="images/admin.png">
-                <div class="grid-content">
-                    주문내역 조회
-                </div>
-            </a>
-        </div>
+    <div class="grid-container-child">
+        <a href="AdminMenu.jsp">
+            <img src="images/admin.png">
+            <div class="grid-content">
+                메뉴관리
+            </div>
+        </a>
     </div>
+
+    <div class="grid-container-child">
+        <a href="AdminAccount.jsp">
+            <img src="images/admin.png">
+            <div class="grid-content">
+                주문계정 관리
+            </div>
+        </a>
+    </div>
+
+    <div class="grid-container-child">
+        <a href="AdminOrderList.jsp">
+            <img src="images/admin.png">
+            <div class="grid-content">
+                주문내역 조회
+            </div>
+        </a>
+    </div>
+    </div>
+
 </body>
 </html>

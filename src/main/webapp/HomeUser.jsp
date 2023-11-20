@@ -2,10 +2,9 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
-    <title>JJC MENU</title>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  <script src="https://code.jquery.com/ui/1.13.0/jquery-ui.min.js"></script>
-  <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.0/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/ui/1.13.0/jquery-ui.min.js"></script>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.0/themes/base/jquery-ui.css">
 
   <style>
     /* 수직 탭 스타일 */
@@ -33,39 +32,39 @@
       width: 75%;
       min-height: 150px;
     }
- #basket {
-  border-radius: 50px;
-  background-color : #FF7B31;
-  border : 3px solid #FF7B31;
-  color: white;
-  padding: 12px 16px;
-  font-size: 32px;
-  display: flex;
-  color : #FFFFFF;
-  cursor: pointer;
-  margin-top: 20px;
-}
+     #basket {
+      border-radius: 50px;
+      background-color : #FF7B31;
+      border : 3px solid #FF7B31;
+      color: white;
+      padding: 12px 16px;
+      font-size: 32px;
+      display: flex;
+      color : #FFFFFF;
+      cursor: pointer;
+      margin-top: 20px;
+    }
 
-.menu_name{
-	font-size: 25px;
-	font-weight:bold;
-}
-.price{
-	font-size: 20px;
-	color: gray;
-}
-a{
-	color: white;
-	display:flex;
-	align-items:center;
-	
-text-decoration: none;
-}
-#menulist{
-	width:300px;
-	float: left;
-	padding-right: 20px;
-}
+    .menu_name{
+        font-size: 25px;
+        font-weight:bold;
+    }
+    .price{
+        font-size: 20px;
+        color: gray;
+    }
+    a{
+        color: white;
+        display:flex;
+        align-items:center;
+
+    text-decoration: none;
+    }
+    #menulist{
+        width:300px;
+        float: left;
+        padding-right: 20px;
+    }
   </style>
 </head>
 <body>
