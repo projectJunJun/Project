@@ -35,7 +35,15 @@ public class MyBatisUnitTest {
 		
 		Timestamp timestamp = new Timestamp(System.currentTimeMillis());
 		OrderList orderlist = new OrderList("table1", "2", "5", timestamp, 5, new Account("table1"), new Menu("2"));
-		
+
+//		231117
+//		Menu menu = new Menu("1", "12344", "12344", 1234, "1234", "1234");
+//		session.insert("mapper.addMenu", menu);
+//		session.commit();
+//		OrderList orderList1 = new OrderList("user01", "1", "1", timestamp, 1, new Account("user01"), menu);
+//		session.insert("mapper.addOrder", orderList1);
+//		session.commit();
+
 //		Account table2 = new Account("table2", "table2", 2, 0);
 //		session.insert("mapper.registerAccount", table2);
 //		session.commit();
@@ -57,10 +65,7 @@ public class MyBatisUnitTest {
 		 * UserInfo vo = session.selectOne("sql.pms.mapper.selectUser", user);
 		 * System.out.println("LOGIN.." + vo);
 		 */
-//		Menu menu = new Menu("1", "12344", "12344", 1234, "1234", "1234");
-////		session.insert("mapper.addMenu", menu);
-////		session.commit();
-//		
+
 //		// update
 ////		session.update("mapper.updateMenu", menu);
 ////		session.commit();
