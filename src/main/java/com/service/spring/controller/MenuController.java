@@ -102,4 +102,30 @@ public class MenuController {
     		return "Error";
     	}
     }
+    
+    @GetMapping("updateMenu.do")
+    public String getUpdateMenu(Menu menu, Model model) {
+    	try {
+    		Menu selMenu = menuService.selectMenu(menu);
+    		model.addAttribute("menu",selMenu);
+    		return "updateMenu";
+    	} catch (Exception e) {
+    		model.addAttribute("title","메뉴 수정하기 에러");
+            model.addAttribute("message", "에러 내용 - 메뉴수정하기 중 에러발생");
+    		return "Error";
+    	}
+    }
+    
+    @PostMapping("updateMenu.do")
+    public String postUpdateMenu(Menu menu, Model model) {
+    	try {
+    		menuService.updateMenu(menu);
+    		return "redirect:selectMenu.do?menuId=" + menu.getMenuId();
+    		
+    	} catch (Exception e){
+    		model.addAttribute("title","메뉴 수정하기 에러");
+            model.addAttribute("message", "에러 내용 - 메뉴수정하기 중 에러발생");
+    		return "Error";
+    	}	
+    }
 }
