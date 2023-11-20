@@ -11,9 +11,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import com.service.spring.domain.Menu;
-import com.service.spring.model.MenuService;
-
 @Controller
 public class MenuController {
     @Autowired
@@ -85,5 +82,22 @@ public class MenuController {
 			model.addAttribute("message","문제 내용 - 카테고리 별 메뉴 불러오는 중 에러발생");
 			return "Error";
     	}
+    }
+    @GetMapping("detail.do")
+    public String selectMenu(Model model, Menu menu) {
+    	try {
+    		System.out.println("메뉴 상세페이지 진입 성공");
+    		Menu selected = menuService.selectMenu(menu);
+    		System.out.println(selected.toString());
+    		model.addAttribute("menu", selected);
+    		model.addAttribute("title", "메뉴 상세 정보");
+    		return "MenuView";
+    				
+    	}catch(Exception e) {
+    		model.addAttribute("title", "메뉴  상세정보 불러오기 - 에러");
+			model.addAttribute("message","문제 내용 - 메뉴 상세정보 불러오는 중 에러발생");
+			return "Error";
+    	}
+    
     }
 }

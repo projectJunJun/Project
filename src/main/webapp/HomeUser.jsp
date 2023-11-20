@@ -2,8 +2,9 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
-  <script src="https://code.jquery.com/ui/1.13.0/jquery-ui.min.js"></script>
-  <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.0/themes/base/jquery-ui.css">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://code.jquery.com/ui/1.13.0/jquery-ui.min.js"></script>
+<link rel="stylesheet" href="https://code.jquery.com/ui/1.13.0/themes/base/jquery-ui.css">
 
   <style>
     /* 수직 탭 스타일 */
@@ -40,7 +41,7 @@
   font-size: 32px;
   display: flex;
   color : #FFFFFF;
-  cursor: pointer;
+  cursor: pointer; 	 	
   margin-top: 20px;
 }
 
@@ -77,7 +78,7 @@ text-decoration: none;
     </ul>
     <div id="tab-1-v" class="flex-box">
     <c:forEach items="${top3list}" var="menu">
-    <a href="detail.dow?menu_id=${menu.menuId}">  
+    <a href="detail.do?menuId=${menu.menuId}">  
     	<img src="${menu.url}"> 
         </a>
       	<div class="menu_name">${menu.name}</div>
@@ -88,7 +89,7 @@ text-decoration: none;
     <div id="tab-2-v" class="flex-box">
         <c:forEach items="${chickenlist}" var="menu">
         <div id="menulist">
-       		<a href="detail.do?menu_id=${menu.menuId}">
+       		<a href="detail.do?menuId=${menu.menuId}">
 	    	<img src="${menu.url}" width="300px" height="250px"></a>
  	       	<div align="center">	    	
 	      	<div class="menu_name">${menu.name}</div>
@@ -100,7 +101,7 @@ text-decoration: none;
     
     <div id="tab-3-v">
         <c:forEach items="${sidelist}" var="menu">
-   		<a href="detail.do?menu_id=${menu.menuId}">
+   		<a href="detail.do?menuId=${menu.menuId}">
     	<img src="${menu.url}">
 	      		</a>
 	      	<div class="menu_name">${menu.name}</div>
@@ -109,7 +110,7 @@ text-decoration: none;
     </div>
     <div id="tab-4-v">
         <c:forEach items="${beveragelist}" var="menu">
-   		<a href="detail.do?menu_id=${menu.menuId}">
+   		<a href="detail.do?menuId=${menu.menuId}">
     		<img src="${menu.url}">
 		</a>
 	      	<div class="menu_name">${menu.name}</div>
