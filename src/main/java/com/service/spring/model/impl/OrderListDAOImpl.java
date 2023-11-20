@@ -6,7 +6,6 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-
 import java.util.List;
 
 @Repository
@@ -18,6 +17,8 @@ public class OrderListDAOImpl implements OrderListDAO {
     private SqlSession sqlSession;
 
     @Override
+    public List<OrderList> selectOrder(String menuId) {
+        return sqlSession.selectList(NS+"selectOrder", menuId);
     public List<OrderList> selectOrderByTable(OrderList orderList) throws Exception {
         return sqlSession.selectList(NS+"selectOrderByTable");
     }
