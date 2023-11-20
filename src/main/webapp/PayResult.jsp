@@ -14,7 +14,7 @@
             box-sizing: border-box;
         }
 
-        main {
+        form {
             position: relative;
             display: flex;
             flex-direction: column;
@@ -83,7 +83,7 @@
     </style>
 </head>
 <body>
-    <main>
+    <form action="/star.do" method="post">
         <h1>결제 금액 안내</h1>
         <h2>총 결제 금액</h2>
         <table>
@@ -109,7 +109,7 @@
             </tfoot>
         </table>
         <input type="submit" value="결제하기">
-    </main>
+    </form>
     <script>
         const button = document.querySelector("input")
         button.addEventListener("click", () => {

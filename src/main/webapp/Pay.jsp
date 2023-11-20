@@ -129,7 +129,8 @@
         let total = 0
         for(const key in localStorage){
             if (key === 'length') break
-            total += parseInt(localStorage.getItem(key))
+            const [url, name, price, cnt] = localStorage.getItem(key).split(',')
+            total += price*cnt
         }
         h2.innerText = total.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')+"원"
 
@@ -143,6 +144,7 @@
         })
         plus.addEventListener("click", e => {
             people.value = parseInt(people.value)+1
+            localStorage.setItem('2', 'https://i.namu.wiki/i/dx56rVBJEZlDHe01q3mMDDYEV11XvxpIHuRCQ5eDegM6tdG1jpjxfJ7L23qq9paVqfVw8dI6AtyFYcFfX4RSUYzq50v9TtZFMrMswO2a7br4F7y721zfzPg3VIj_tJcuaxSMdcPkFq8E6eg5WKLS2A.webp,후라이드,25000,3')
             e.preventDefault()
         })
 

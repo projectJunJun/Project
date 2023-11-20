@@ -1,5 +1,6 @@
 package com.service.spring.model.impl;
 
+import com.service.spring.domain.Account;
 import com.service.spring.domain.OrderList;
 import com.service.spring.model.OrderListDAO;
 import com.service.spring.model.OrderListService;
@@ -15,7 +16,12 @@ public class OrderListServiceImpl implements OrderListService {
 
 
     @Override
-    public List<OrderList> selectOrderByTable(OrderList orderList) throws Exception {
-        return orderListDAO.selectOrderByTable(orderList);
+    public List<OrderList> selectOrderByTable(Account account) {
+        return orderListDAO.selectOrderByTable(account);
+    }
+
+    @Override
+    public int updateOrder(OrderList orderList) {
+        return orderListDAO.updateOrder(orderList);
     }
 }

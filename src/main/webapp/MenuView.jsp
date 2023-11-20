@@ -1,12 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+         pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-<style type="text/css">
-#selection {
+    <meta charset="UTF-8">
+    <title>Insert title here</title>
+    <style type="text/css">
+        #selection {
             display: flex;
             justify-content: center;
             width: 300px;
@@ -39,52 +39,56 @@
             font-size: 20px;
             border: 0px;
         }
-</style>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script type="text/javascript">
-$(function(){
-const minus = document.querySelector("#minus")
-const plus = document.querySelector("#plus")
-const count = document.querySelector("#count")
-let price = document.querySelector("#price")
-let totalPrice = 0
-minus.addEventListener("click", e => {
-    if(count.value > 1) count.value -= 1
-    totalPrice = count.value*price
-    documnet.getElementById("doOrder").value = totalPrice+" 원 담기"
-    e.preventDefault()
-})
-plus.addEventListener("click", e => {
-	count.value = parseInt(count.value)+1
-	totalPrice = count.value*price
-    documnet.getElementById("doOrder").value = totalPrice+" 원 담기"
-    e.preventDefault()
-});
-	$('#doOrder').click(function() {
-		localStorage.setItem($(this).attr("id"), $(this).val())
-	});
-});
-</script>
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script type="text/javascript">
+        $(function(){
+            const minus = document.querySelector("#minus")
+            const plus = document.querySelector("#plus")
+            const count = document.querySelector("#count")
+            const price = document.querySelector("#price")
+            minus.addEventListener("click", e => {
+                if(count.value > 1) count.value -= 1
+                let thisPrice = parseInt(price.innerText)
+                let totalPrice = count.value*thisPrice
+                document.querySelector('.doOrder').innerHTML = totalPrice+" 원 담기"
+                documnet.querySelector('.doOrder').value = totalprice
+                e.preventDefault()
+            })
+            plus.addEventListener("click", e => {
+                let thisPrice = parseInt(price.innerText)
+                count.value = parseInt(count.value)+1
+                totalPrice = count.value*thisPrice
+                document.querySelector('.doOrder').innerHTML = totalPrice+" 원 담기"
+                e.preventDefault()
+            });
+            $('.doOrder').click(function() {
+                menu_info = $(this).val()
+                menu_info += ", "+count.value
+                localStorage.setItem($(this).attr("id"), menu_info)
+            });
+        });
+    </script>
 </head>
 <jsp:include page="Header.jsp"/>
 <body>
 <img src="${menu.url}">
 <div id="name">
-	${menu.name}	
+    ${menu.name}
 </div>
 <br>
 <div id="price">
-${menu.price}원
+    ${menu.price}원
 </div>
 <br>
 <hr>
-<div id="discription">
-${menu.discription}
-<div id="selection">
-            <button id="minus">-</button>
-            <input type="number" value="1" id="count" name="count" >
-            <button id="plus">+</button>
-        </div>
-<input type="button" id="${menu.menuId}">
+<div id="description">
+    ${menu.description}
 </div>
+<div id="selection">
+    <button id="minus">-</button>
+    <input type="number" value="1" id="count" name="count" >
+    <button id="plus">+</button>
+</div>
+<button type="button" class="doOrder" id="doOrder" value="${menu.url}, ${menu.name}, ${menu.price}">${menu.price} 원 담기</button>
 </html>
