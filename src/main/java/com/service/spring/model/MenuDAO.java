@@ -11,5 +11,4 @@ public interface MenuDAO {
 	Menu selectMenu (Menu menu);
 	List<Menu> selectMenu ();
 	List<Menu> selectMenuByCategory(String category);
-
 }

@@ -11,5 +11,4 @@ public interface MenuService {
 	Menu selectMenu (Menu menu);
 	List<Menu> selectMenu ();
 	List<Menu> selectMenuByCategory(String category);
-
 }
