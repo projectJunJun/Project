@@ -49,7 +49,7 @@
     </div>
 
     <div class="grid-container-child">
-        <a href="AdminAccount.jsp">
+        <a href="selectAllAccount.do">
             <img src="images/admin.png">
             <div class="grid-content">
                 주문계정 관리
