@@ -10,5 +10,4 @@ public interface MenuDAO {
 	int deleteMenu (List<Menu> list);
 	Menu selectMenu (Menu menu);
 	List<Menu> selectMenu ();
-	List<Menu> selectMenuByCategory(String category);
 }
