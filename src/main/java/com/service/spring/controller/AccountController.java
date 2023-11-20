@@ -11,6 +11,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.service.spring.domain.Account;
 import com.service.spring.model.AccountService;
@@ -133,4 +135,20 @@ public class AccountController {
     		return "Error";
     	}
     }
+    
+ // 비동기 추가...deleteAjax
+ 	@PostMapping("deleteAjax.do")
+ 	@ResponseBody
+ 	public String doDeleteAjax(@RequestParam List<String> list, Model model) {
+ 		try {
+ 			System.out.println(list);
+ 			accountService.deleteAccount(list);
+ 			return "";
+ 			
+ 		}catch(Exception e) {
+ 			model.addAttribute("title", "핸드폰 관리 - 에러");
+ 			model.addAttribute("message", "문제 내용 - 폰 삭제 중 에러 발생");
+ 			return "Error";
+ 		}
+ 	}
 }

@@ -20,13 +20,32 @@
 			<tr>
 				<td><a href = "selectAccount.do?userId=${account.userId}">${account.userId}</a></td>
 				<td>${account.tableNumber}</td>
-				<td><input type="checkbox" data-num="${account.userId}"></td>
+				<td><input type="checkbox" data-userId="${account.userId}"></td>
 			</tr>
 			</c:forEach>
 		</tbody>
 	</table>
 	
 	<a href = "registerAccount.do">계정 등록하기</a>
+	<a href= "#" id="selectedDel">선택항목삭제</a>
 
 </body>
+<script type="text/javascript">
+	$('#selectedDel').click(function() {
+		var param='';
+		$('input[type=checkbox]:checked').each(function(index, item) {
+			param=param + "&list=" + $(item).attr('data-userId');
+		});
+		// 비동기 연결
+		$.ajax({
+			type:'post',
+			url:'deleteAjax.do',
+			data:param,
+			
+			success:function(result){
+				location.reload();
+			}
+		});
+	})
+</script>
 </html>
