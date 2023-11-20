@@ -34,12 +34,12 @@ public class MyBatisUnitTest {
 		System.out.println(session.selectList("mapper.selectAccount"));
 		
 		Timestamp timestamp = new Timestamp(System.currentTimeMillis());
-		OrderList orderlist = new OrderList("table1", "2", "5", timestamp, 5, new Account("table1"), new Menu("2"));
-		
+		OrderList orderlist = new OrderList("table01", "1", "1", timestamp, 5, new Account("table1"), new Menu("1"));
+		session.insert("mapper.addOrder", orderlist);
+
 //		Account table2 = new Account("table2", "table2", 2, 0);
-//		session.insert("mapper.registerAccount", table2);
-//		session.commit();
-		
+		session.commit();
+		System.out.println(session.selectList("mapper.selectOrder"));
 //		OrderList orderlist2 = new OrderList("table2", "2", "5", timestamp, 10, new Account("table2"), new Menu("2"));
 //		session.update("mapper.updateOrderCount", orderlist2);
 //		session.commit();
@@ -49,7 +49,7 @@ public class MyBatisUnitTest {
 //		session.update("mapper.updateOrder", orderlist3);
 //		session.commit();
 		
-		System.out.println(session.selectList("mapper.selectOrder"));
+//		System.out.println(session.selectList("mapper.selectOrder"));
 		
 		
 		/*
@@ -57,9 +57,9 @@ public class MyBatisUnitTest {
 		 * UserInfo vo = session.selectOne("sql.pms.mapper.selectUser", user);
 		 * System.out.println("LOGIN.." + vo);
 		 */
-//		Menu menu = new Menu("1", "12344", "12344", 1234, "1234", "1234");
-////		session.insert("mapper.addMenu", menu);
-////		session.commit();
+//		Menu menu = new Menu("1", "12", "123", 1234, "12345", "12345");
+//		session.insert("mapper.addMenu", menu);
+//		session.commit();
 //		
 //		// update
 ////		session.update("mapper.updateMenu", menu);
