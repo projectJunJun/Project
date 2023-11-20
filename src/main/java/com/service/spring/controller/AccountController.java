@@ -25,11 +25,13 @@ public class AccountController {
             Account loginAccount = accountService.login(account);
 
             if(loginAccount != null){   // 찾는 회원이 있다면
-                String path = "HomeUser";
+                String path = "redirect:selectMenuByCategory.do";
                 session.setAttribute("account", loginAccount);
                 model.addAttribute("title", "핸드폰 관리 성공");
                 if(loginAccount.getAuthority() == 1) path = "HomeAdmin";
                 else session.setAttribute("teamId", 1);         // teamId
+        		System.out.println(path+"path 반환 성공");
+
                 return path;
             } else{
                 return "Login";
