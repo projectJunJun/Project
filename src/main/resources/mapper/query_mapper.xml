@@ -41,15 +41,8 @@
         <result property="count" column="count"/>
         <result property="star" column="star"/>
         <result property="isPaid" column="is_paid"/>
-        <association property="account" javaType="account">
-        	<id column="user_id" property="userId"/>
-        	<result column="team_number" property="teamNumber"/>
-        </association>
-        <association property="menu" javaType="menu">
-        	<id column="menu_id" property="menuId" />
-        	<result column="price" property="price" />
-        </association>
-        
+		<collection property="account" resultMap="accountMap" />
+		<collection property="menu" resultMap="menuMap" />
     </resultMap>
 
 	<!-- login -->
@@ -148,8 +141,8 @@
 	
 	<!-- selectOrderByTable -->
 	<!-- 결제 안한 테이블별 조회 -->
-	<select id="selectOrderByTable" parameterType="orderList" resultMap = "orderListWithAccountMap">
-		SELECT o.order_id, o.user_id, o.menu_id, o.team_id, o.order_time, o.count, o.star, o.is_paid, a.table_number, m.price
+	<select id="selectOrderByTable" parameterType="account" resultMap = "orderListWithAccountMap">
+		SELECT o.order_id, o.user_id, o.menu_id, o.team_id, o.order_time, o.count, o.star, o.is_paid, a.table_number, m.name, m.price
 		FROM orderlist o JOIN account a ON (o.user_id = a.user_id) JOIN menu m ON (o.menu_id = m.menu_id)
 		WHERE o.user_id = #{userId} AND o.is_paid = 0
 	</select>
@@ -166,9 +159,15 @@
 	
 	<select id="selectOrderByDate">
 	</select>
-	
+
 	<!-- updateOrder -->
 	<!-- 수량, 결제 여부, 별점 변경 -->
+	<update id = "updateMenuStar" parameterType="orderList">
+		UPDATE menu
+		SET total_star = total_star+#{star}, count_star = count_star+1
+		WHERE menu_id = #{menuId}
+	</update>
+
 	<update id="updateOrderCount" parameterType="orderList">
 		UPDATE orderlist
 		set
