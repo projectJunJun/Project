@@ -2,80 +2,67 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8"%>
 <html>
 <head>
-    <title>주문 목록 테이블별 보기</title>
+    <title>테이블별 주문내역 보기</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="css/common.css">
     <style>
-        button > a{
-            color: #ff9933;
-            text-decoration: none;
-            font-size: 25px;
+        .content{
+            width: 75%;
         }
-        .button-container{
-            display: flex;
-            margin-left: 20px;
-        }
-        button{
-            height: 75px;
-            width: 240px;
-            margin-left: 10px;
-            margin-right: 10px;
-            border-radius: 25px;
-            border: 3px solid #ff9933;
-            background-color: #F5EFEF;
-        }
-        .empty-container{
-            height: 20px;
-        }
-        .container{
+        .table-flex-container{
+            padding-top: 20px;
+            height: auto;
             display: flex;
             flex-wrap: wrap;
+            align-content: space-around;
+        }
+        .table-flex-child{
+            justify-content: center; /* 가로 정렬을 위한 속성 */
+            width: 25%;
+            height: 100px;
+            padding: 10px;
+            outline: 15px solid #ff9933;
+            border-radius: 10px;
+            align-content: center;
+            margin: 0 auto;
+            text-align: center;
+        }
+        .text-box-tableNumber{
+            font-weight: bold;
+            font-size: 20px;
         }
     </style>
 </head>
 <body>
     <jsp:include page="AdminHeader.jsp"/>
-    <div class="button-container">
-        <div class="selectAllOrder">
-            <button id="button-selectAllOrder">
-                <a href="selectAllOrder.do">
-                    전체 조회
-                </a>
-            </button>
+    <div class="content">
+        <div class="button-container">
+            <div class="selectAllOrder">
+                <a class="btn" href="selectAllOrder.do">전체 조회</a>
+            </div>
+            <div class="selectOrderByTable">
+                <a class="btn" href="selectOrder.do">테이블별 조회</a>
+            </div>
         </div>
-        <div class="selectOrderByTable">
-            <button id="button-selectOrderByTable">
-                <a href="selectOrder.do">
-                    테이블별 조회
-                </a>
-            </button>
-        </div>
-    </div>
-    <div class="empty-container"></div>
     <!-- 테이블별 flex 생성 -->
-    <div class="container">
-    <table>
-    	<tr>
-    		<th>테이블번호</th>
-    		<th>총합가격</th>
-    		<th>주문 메뉴 수</th>
-    	</tr>
-    	
-	   	<c:forEach items="${accountList}" var="account">
-	    	<tr>
-	    		<c:if test="${account.tableNumber ne 0}">    		
-	             	<td><a href = "selectTable.do?tableNumber=${account.tableNumber}">${account.tableNumber}</a></td>
-	            </c:if>			
-			<c:forEach items="${tableList}" var="table">
-				<c:if test="${table.tableNumber eq account.tableNumber}">        	
-			         	<td>${table.totalPrice}</td>
-			         	<td>${table.countMenu}</td>
-		    	</c:if>            
-	    	</c:forEach>
-	    	</tr>	        
-	  	</c:forEach>
-		         
-        
-    </table>
+    <div class="table-flex-container">
+        <c:forEach items="${accountList}" var="account">
+            <c:if test="${account.tableNumber ne 0}">
+                <div class="table-flex-child">
+                    <a class="text-box-tableNumber" href="selectTable.do?tableNumber=${account.tableNumber}">테이블 #${account.tableNumber}</a>
+                    <c:forEach items="${tableList}" var="table">
+                        <c:if test="${table.tableNumber eq account.tableNumber}">
+                            <c:if test="${!empty table}">
+                                <br><br>
+                                ${table.totalPrice}원 /
+                                ${table.countMenu}개 주문
+                            </c:if>
+                        </c:if>
+                    </c:forEach>
+                </div>
+                <br>
+            </c:if>
+        </c:forEach>
     </div>
 </body>
 </html>

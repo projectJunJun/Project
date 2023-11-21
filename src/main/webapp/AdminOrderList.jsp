@@ -20,7 +20,7 @@
         	<a class="btn" href="selectAllOrder.do">전체 조회</a>
         </div>
         <div class="selectOrderByTable">
-            <a class="btn" href="selectAccountForTable.do">테이블별 조회</a>
+            <a class="btn" href="selectOrder.do">테이블별 조회</a>
         </div>
     </div>
     <!-- 목록 조회 table 생성 -->

@@ -62,7 +62,7 @@
                 <c:when test="${!empty account}">
                     <div class="flex-item-login-text2">
                             ${account.userId} 님 로그인 되었습니다.
-                            <button onclick="logout()">로그아웃</a></button>
+                            <button onclick="logout()">로그아웃</button>
                     </div>
                 </c:when>
                 <c:otherwise>

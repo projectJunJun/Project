@@ -145,12 +145,13 @@ public class OrderListController {
     
     // 테이블별 주문 메뉴 상세조회
     @GetMapping("/selectTable.do")
-    public String doSelectTable(String tableNumber, Model model) {
+    public String doSelectTable(String tableNumber, Model model, HttpSession session) {
     	String path = "Error";
     	try {
     		System.out.println(tableNumber);
     		List<OrderList> orderList = orderListService.viewOrderDetail(tableNumber);
     		System.out.println(orderList);
+            System.out.println("[selectTable]: "+session.getAttribute("account"));
         	model.addAttribute("orderList", orderList);
         	path = "TableOrderDetail";
     	} catch (Exception e) {
@@ -159,23 +160,6 @@ public class OrderListController {
     	}
     	return path;
     }
-    // 주문 목록 자세히 보기
-    @GetMapping("/orderListDetail.do")
-    public String doDetail(OrderList orderList, Model model){
-        try{
-            System.out.println("MOVE TO ORDER LIST DETAIL");
-            System.out.println("before:"+orderListService.selectOrderDetail(orderList));
-            OrderList orderInfo = orderListService.selectOrderDetail(orderList);
-            System.out.println("orderInfo"+orderInfo);
-            model.addAttribute("orderList", orderInfo);
-            return "AdminOrderDetail";
-        } catch (Exception e) {
-            model.addAttribute("title", "주문 내역 상세 조회 - 에러");
-            model.addAttribute("message", "문제 내용 - 주문 내역 상세 조회 중 에러발생");
-            return "Error";
-        }
-    }
-   
     
     @GetMapping("updateOrderList.do")
     public String updateOrderList(Model model, HttpSession session, String idList, String countList) {
