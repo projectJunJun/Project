@@ -5,6 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <link rel="stylesheet" type="text/css" href="css/basic.css"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <style>
 	main {
 		display: flex;
@@ -13,26 +14,62 @@
 	}
 	table {
 		width: 80%;
+		font-size: 18px;
+		border-collapse: collapse;
+	}
+	.caption {
+		background-color: #eee;
+		color: #ff9933;
+	}
+	thead {
+		background-color: #ff9933;
+		color: #FFFFFF;
 	}
 	th, td {
-		min-width: 100px;
+		min-width: 80px;
+		text-align: center;
 	}
 	.name {
 		width: 400px;
+		text-align: center;
 	}
 	.price, .cnt {
-		text-align: right;
+		text-align: center;
 	}
 	.close {
 		text-align: center;
 	}
+	.close button {
+		background-color: #FFFFFF;
+		color: #ff9933;
+		font-size: 24px;
+		border: None;
+	}
 	.menu_image{
-		width:180px; height:200px;
+		width:150px; height:150px;
+		object-fit: scale-down;
 	}
 	a {
 		text-decoration-line: none ;
 	}
-	table
+	h1 {
+
+	}
+	input {
+		width: 500px;
+		height: 50px;
+		margin-top: 10px;
+		border: 0;
+		border-radius: 5px;
+		background-color: #ff9933;
+		color: #FFFFFF;
+		font-size: 18px;
+		font-weight: bold;
+	}
+	input:hover {
+		background-color: #ff8833;
+		cursor: pointer;
+	}
 </style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script type="text/javascript">
@@ -49,13 +86,13 @@
 			if (key === "length")break;
 
 			let data = localStorage.getItem(key).split(",");
-			html +='<tr><td><img class=menu_image src='+data[0]+'></td><td class="name">'+data[1]+'</td>'+
-			'<td class="price">'+data[2]+'</td><td class="cnt">'+data[3]+'</td><td class="close"><button id=deleteBasket value='+key+
-			'>X</button></td></tr>';
+			html += '<tr><td><img class=menu_image src='+data[0]+'></td><td class="name">'+data[1]+'</td>'+
+			'<td class="price">'+data[2].toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')+'</td><td class="cnt">'+data[3]+'</td><td class="close"><button class="btn" id=deleteBasket value='+key+
+			'><i class="fa fa-trash"></i></button></td></tr>';
 			totalPrice += parseInt(data[2])*parseInt(data[3]);
 		}//for
 		$('#content').html(html);
-		$('#price').html("총 주문 가격 "+totalPrice);
+		$('#price').html("<h1>총 주문 가격 "+totalPrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')+"원"+"</h1>");
 	}
 
 	function deleteStorage(){
@@ -68,17 +105,21 @@
 
 	$(function() {
 		$('#doOrder').click(function(){
-			let url = "updateOrderList.do?idList="
-			let idList = []
-			let countList =[]
-			for(let key in localStorage){
-				if (key === "length")break;
-				let data=localStorage.getItem(key).split(',')
-				idList.push(key)
-				countList.push(data[3])
+			if(localStorage.length === 0){
+				alert("장바구니에 메뉴를 담아주세요")
+			}else{
+				let url = "updateOrderList.do?idList="
+				let idList = []
+				let countList =[]
+				for(let key in localStorage){
+					if (key === "length")break;
+					let data=localStorage.getItem(key).split(',')
+					idList.push(key)
+					countList.push(data[3])
+				}
+				url+=idList+"&countList="+countList
+				location.href = url
 			}
-			url+=idList+"&countList="+countList
-			location.href = url
 		});
 	});
 </script>
@@ -87,26 +128,18 @@
 
 <body>
 	<main>
-		<section>
-			<table>
-				<caption class="caption">장바구니 | 테이블 ${account.tableNumber}</caption>
-				<thead>
-					<tr><th></th><th>이름</th><th>가격</th><th>수량</th><th>삭제</th></tr>
-				</thead>
-				<tbody id="content">
-				</tbody>
-			</table>
-		</section>
+		<table>
+			<caption class="caption">장바구니 | 테이블 ${account.tableNumber}</caption>
+			<thead>
+				<tr><th></th><th>이름</th><th>가격</th><th>수량</th><th>삭제</th></tr>
+			</thead>
+			<tbody id="content">
+			</tbody>
+		</table>
 		<section  class="totalprice" id="price" >
 			
 		</section>
-		<section class="link">
-			<table align="center">
-			<tr><td align="center">
-			</td></tr>
-			</table>
-		</section>
-		<button id="doOrder">주문 하기</button>
+		<input type="button" id="doOrder" value="주문하기"/>
 	</main>
 </body>
 </html>

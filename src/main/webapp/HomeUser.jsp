@@ -69,18 +69,42 @@
             text-align: center;
             margin-bottom: 20px;
         }
-        a{
+        a {
             color: white;
             display:flex;
             align-items:center;
-
             text-decoration: none;
         }
         .menulist{
             display: flex;
             flex-direction: column;
-            width:300px;
+            width: 280px;
             float: left;
+        }
+        .menulist2 {
+            display: flex;
+            flex-direction: column;
+            width: 220px;
+            margin-top: 50px;
+            float: left;
+        }
+        .image2 {
+            width: 220px;
+            height: 200px;
+            margin: 10px 0;
+        }
+        .menu_name2{
+            width: 220px;
+            font-size: 24px;
+            font-weight:bold;
+            text-align: center;
+        }
+        .price2{
+            width: 220px;
+            font-size: 18px;
+            color: #888;
+            text-align: center;
+            margin-bottom: 20px;
         }
         .icon {
             width: 40px;
@@ -108,19 +132,19 @@
     <jsp:include page="Header.jsp"/>
     <div id="tabs-vertical" class="ui-tabs-vertical ui-helper-clearfix">
         <ul>
-            <li onclick="changeTab(0)"><a href="#tab-1-v">우리가게 별점 TOP3</a></li>
+            <li onclick="changeTab(0)"><a href="#tab-1-v">우리가게 별점 TOP5</a></li>
             <li onclick="changeTab(1)"><a href="#tab-2-v">치킨</a></li>
             <li onclick="changeTab(2)"><a href="#tab-3-v">사이드</a></li>
             <li onclick="changeTab(3)"><a href="#tab-4-v">음료</a></li>
         </ul>
         <div id="tab-1-v" class="flex-box">
             <c:forEach items="${top3list}" var="menu">
-                <div class="menulist">
+                <div class="menulist2">
                     <a href="detail.do?menuId=${menu.menuId}">
-                        <img src="${menu.url}" class="image"></a>
+                        <img src="${menu.url}" class="image2"></a>
                     <div>
-                        <div class="menu_name">${menu.name}</div>
-                        <div class="price">${menu.price}원</div>
+                        <div class="menu_name2">${menu.name}</div>
+                        <div class="price2">${menu.price}원</div>
                     </div>
                 </div>
             </c:forEach>
