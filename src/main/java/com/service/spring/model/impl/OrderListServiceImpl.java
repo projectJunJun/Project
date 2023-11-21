@@ -3,6 +3,7 @@ package com.service.spring.model.impl;
 import com.service.spring.domain.Account;
 import com.service.spring.domain.Menu;
 import com.service.spring.domain.OrderList;
+import com.service.spring.domain.Table;
 import com.service.spring.model.OrderListDAO;
 import com.service.spring.model.OrderListService;
 import com.sun.org.apache.xpath.internal.operations.Or;
@@ -57,5 +58,15 @@ public class OrderListServiceImpl implements OrderListService {
       System.out.println("SERVICE"+orderList);
       return orderListDAO.addOrder(orderList);
     }
+
+	@Override
+	public List<Table> viewTotalOrder() {
+		return orderListDAO.viewTotalOrder();
+	}
+
+	@Override
+	public List<OrderList> viewOrderDetail(String tableNumber) {
+		return orderListDAO.viewOrderDetail(tableNumber);
+	}
 
 }

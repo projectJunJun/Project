@@ -13,4 +13,5 @@ public interface MenuDAO {
 	List<Menu> selectMenu ();
 	List<Menu> selectMenuByCategory(String category);
 	int updateMenuStar(OrderList orderList);
+	List<Menu> selectMenuByRank();
 }

@@ -52,5 +52,10 @@ public class MenuDAOImpl implements MenuDAO {
 	public int updateMenuStar(OrderList orderList) {
 		return sqlSession.update(NS+"updateMenuStar", orderList);
 	}
+	
+	@Override
+	public List<Menu> selectMenuByRank() {
+		return sqlSession.selectList(NS+"selectMenuByRank");
+	}
 
 }
