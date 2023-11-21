@@ -1,6 +1,8 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8"%>
+
 <html>
 <head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <title>JJC login</title>
     <script>
         function Login(){
@@ -17,7 +19,18 @@
             }
         }
     </script>
-
+	
+	<script>
+		$(document).ready(function() {			
+	        let message = "${message}";
+	        if (message != ""){
+	        	alert(message);
+	        } else {
+	        	
+	        }	        
+	    });
+	</script>
+    
     <style>
         html {
             height: 100%;
@@ -106,8 +119,8 @@
         </div>
 
         <form id="login-form" name="loginField" method="post" action="login.do">
-            <input type="text" name="userId" id="userId" class="login-form-field" placeholder="Username">
-            <input type="password" name="password" id="password" class="login-form-field" placeholder="Password">
+            <input type="text" name="userId" id="userId" class="login-form-field" placeholder="Username" required>
+            <input type="password" name="password" id="password" class="login-form-field" placeholder="Password" required>
             <input type="submit" value="Login" id="login-form-submit">
         </form>
     </main>

@@ -61,8 +61,10 @@
     	</tr>
     	
 	   	<c:forEach items="${accountList}" var="account">
-	    	<tr>    		
-	                <td><a href = "selectTable.do?tableNumber=${account.tableNumber}">${account.tableNumber}</a></td>			
+	    	<tr>
+	    		<c:if test="${account.tableNumber ne 0}">    		
+	             	<td><a href = "selectTable.do?tableNumber=${account.tableNumber}">${account.tableNumber}</a></td>
+	            </c:if>			
 			<c:forEach items="${tableList}" var="table">
 				<c:if test="${table.tableNumber eq account.tableNumber}">        	
 			         	<td>${table.totalPrice}</td>
