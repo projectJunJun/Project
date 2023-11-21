@@ -1,4 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <html>
 <head>
     <title>후기를 남겨주세요</title>
@@ -20,9 +21,9 @@
     <script>
         $(function() {
             setInterval(() => {
-                location.href = 'HomeAdmin.jsp'
+                location.href = 'HomeUser.jsp'
                 $.post('pay.do')
-            }, 3000)
+            }, 9999999999)
         })
     </script>
 </head>
@@ -31,23 +32,38 @@
     <h1>오늘 식사는 괜찮으셨나요?</h1>
     <h2>더 나은 서비스를 위해 메뉴 평점을 작성해주세요 :D</h2>
     <h3>오늘 주문한 메뉴 목록</h3>
-    <main>
-        <%-- TODO: 메뉴별 별점 받기 --%>
-        <div>
-            <span>후라이드/양념 반반</span>
-            <fieldset class="rate">
-                <input type="radio" id="rating10" name="rating" value="10"><label for="rating10" title="5"></label>
-                <input type="radio" id="rating9" name="rating" value="9"><label class="half" for="rating9" title="4.5"></label>
-                <input type="radio" id="rating8" name="rating" value="8"><label for="rating8" title="4"></label>
-                <input type="radio" id="rating7" name="rating" value="7"><label class="half" for="rating7" title="3.5"></label>
-                <input type="radio" id="rating6" name="rating" value="6"><label for="rating6" title="3"></label>
-                <input type="radio" id="rating5" name="rating" value="5"><label class="half" for="rating5" title="2.5"></label>
-                <input type="radio" id="rating4" name="rating" value="4"><label for="rating4" title="2"></label>
-                <input type="radio" id="rating3" name="rating" value="3"><label class="half" for="rating3" title="1.5"></label>
-                <input type="radio" id="rating2" name="rating" value="2"><label for="rating2" title="1"></label>
-                <input type="radio" id="rating1" name="rating" value="1"><label class="half" for="rating1" title="0.5"></label>
-            </fieldset>
-        </div>
-    </main>
+    <form action="/pay.do" method="post">
+        <table>
+            <thead>
+                <tr>
+                    <td>메뉴</td>
+                    <td>별점</td>
+                </tr>
+            </thead>
+            <tbody>
+            <c:forEach items="${list}" var="order">
+                <tr>
+                    <td>${order.menu.name}</td>
+                    <td>
+                        <fieldset class="rate">
+                            <input type="hidden" name="menuId_${order.menuId}" value="${order.menuId}">
+                            <input type="radio" id="rating10_${order.menuId}" name="rating_${order.menuId}" value="5"><label for="rating10_${order.menuId}" title="5"></label>
+                            <input type="radio" id="rating9_${order.menuId}" name="rating_${order.menuId}" value="4.5"><label class="half" for="rating9_${order.menuId}" title="4.5"></label>
+                            <input type="radio" id="rating8_${order.menuId}" name="rating_${order.menuId}" value="4"><label for="rating8_${order.menuId}" title="4"></label>
+                            <input type="radio" id="rating7_${order.menuId}" name="rating_${order.menuId}" value="3.5"><label class="half" for="rating7_${order.menuId}" title="3.5"></label>
+                            <input type="radio" id="rating6_${order.menuId}" name="rating_${order.menuId}" value="3"><label for="rating6_${order.menuId}" title="3"></label>
+                            <input type="radio" id="rating5_${order.menuId}" name="rating_${order.menuId}" value="2.5"><label class="half" for="rating5_${order.menuId}" title="2.5"></label>
+                            <input type="radio" id="rating4_${order.menuId}" name="rating_${order.menuId}" value="2"><label for="rating4_${order.menuId}" title="2"></label>
+                            <input type="radio" id="rating3_${order.menuId}" name="rating_${order.menuId}" value="1.5"><label class="half" for="rating3_${order.menuId}" title="1.5"></label>
+                            <input type="radio" id="rating2_${order.menuId}" name="rating_${order.menuId}" value="1"><label for="rating2_${order.menuId}" title="1"></label>
+                            <input type="radio" id="rating1_${order.menuId}" name="rating_${order.menuId}" value="0.5"><label class="half" for="rating1_${order.menuId}" title="0.5"></label>
+                        </fieldset>
+                    </td>
+                </tr>
+            </c:forEach>
+            </tbody>
+        </table>
+        <input type="submit" value="별점 작성 완료">
+    </form>
 </body>
 </html>

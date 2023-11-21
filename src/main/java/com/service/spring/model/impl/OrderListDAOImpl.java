@@ -1,5 +1,6 @@
 package com.service.spring.model.impl;
 
+import com.service.spring.domain.Account;
 import com.service.spring.domain.OrderList;
 import com.service.spring.model.OrderListDAO;
 import org.apache.ibatis.session.SqlSession;
@@ -17,9 +18,15 @@ public class OrderListDAOImpl implements OrderListDAO {
     private SqlSession sqlSession;
 
     @Override
-    public List<OrderList> selectOrderByTable(OrderList orderList) throws Exception {
-        return sqlSession.selectList(NS+"selectOrderByTable");
+    public List<OrderList> selectOrderByTable(Account account) {
+        return sqlSession.selectList(NS+"selectOrderByTable", account);
     }
+
+    @Override
+    public int updateOrder(OrderList orderList) {
+        return sqlSession.update(NS + "updateOrder", orderList);
+    }
+    @Override
     public List<OrderList> selectOrder(String menuId) {
         return sqlSession.selectList(NS + "selectOrder", menuId);
     }

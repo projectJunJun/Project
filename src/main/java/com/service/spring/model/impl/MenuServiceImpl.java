@@ -1,6 +1,7 @@
 package com.service.spring.model.impl;
 
 import com.service.spring.domain.Menu;
+import com.service.spring.domain.OrderList;
 import com.service.spring.model.MenuDAO;
 import com.service.spring.model.MenuService;
 
@@ -42,6 +43,11 @@ public class MenuServiceImpl implements MenuService {
 	@Override
 	public List<Menu> selectMenuByCategory(String category) {
 		return menuDAO.selectMenuByCategory(category);
+	}
+
+	@Override
+	public int updateMenuStar(OrderList orderList) {
+		return menuDAO.updateMenuStar(orderList);
 	}
 
 

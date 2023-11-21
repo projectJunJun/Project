@@ -1,4 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <html>
 <head>
     <title>결제 금액 안내</title>
@@ -10,9 +11,10 @@
             justify-content: center;
             align-items: center;
             background-color: #ccc;
+            box-sizing: border-box;
         }
 
-        main {
+        form {
             position: relative;
             display: flex;
             flex-direction: column;
@@ -24,6 +26,45 @@
             box-shadow: 0px 0px 50px #aaa;
         }
 
+        table {
+            text-align: center;
+            font-size: 20px;
+            border-collapse: collapse;
+        }
+        thead {
+            background: #ff9933;
+            color: #ffffff;
+            border-collapse: separate;
+        }
+        tfoot {
+            color: #ff9933;
+            font-weight: bold;
+        }
+        tbody {
+            border-top: 1px solid #ff9933;
+            border-bottom: 1px solid #ff9933;
+        }
+        tr {
+            height: 40px;
+        }
+        .money {
+            text-align: right;
+            font-weight: bold;
+        }
+        .left {
+            width: 150px;
+            border-right: 1px solid #ff9933;
+        }
+        .right {
+            width: 150px;
+            text-align: right;
+            padding-right: 50px;
+        }
+        th .left {
+            border-right: 1px solid #ffffff;
+            border-left: 1px solid #ffffff;
+            border-collapse: separate;
+        }
         input {
             width: 400px;
             color: #fff;
@@ -33,6 +74,7 @@
             border: 0;
             border-radius: 5px;
             padding: 10px;
+            margin: 10px;
         }
         input:hover {
             background-color: #ee8822;
@@ -41,14 +83,33 @@
     </style>
 </head>
 <body>
-    <main>
+    <form action="/star.do" method="post">
         <h1>결제 금액 안내</h1>
-        총 금액 ${total}원
-        ${people}명
-        <%-- TODO: JAVA에서 계산된 리스트로 표로 보여주기 --%>
         <h2>총 결제 금액</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th class="left">인원별</th>
+                    <th class="right">금액</th>
+                </tr>
+            </thead>
+            <tbody>
+                <c:forEach items="${moneys}" var="money" varStatus="status">
+                <tr>
+                    <td class="left">${status.count}/${people}</td>
+                    <td class="right money">${money}원</td>
+                </tr>
+                </c:forEach>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td class="left">${people}명</td>
+                    <td class="right">${total}원</td>
+                </tr>
+            </tfoot>
+        </table>
         <input type="submit" value="결제하기">
-    </main>
+    </form>
     <script>
         const button = document.querySelector("input")
         button.addEventListener("click", () => {
