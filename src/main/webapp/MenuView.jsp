@@ -39,6 +39,38 @@
             font-size: 20px;
             border: 0px;
         }
+        a{
+              text-decoration-line: none 
+          }
+</style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script type="text/javascript">
+$(function(){
+const minus = document.querySelector("#minus")
+const plus = document.querySelector("#plus")
+const count = document.querySelector("#count")
+const price = document.querySelector("#price")
+minus.addEventListener("click", e => {
+    if(count.value > 1) count.value -= 1
+	let thisPrice = parseInt(price.innerText)
+    let totalPrice = count.value*thisPrice
+    document.querySelector('.doOrder').innerHTML = totalPrice+" 원 담기"
+    e.preventDefault()
+})
+plus.addEventListener("click", e => {
+	let thisPrice = parseInt(price.innerText)
+	count.value = parseInt(count.value)+1
+	totalPrice = count.value*thisPrice
+	document.querySelector('.doOrder').innerHTML = totalPrice+" 원 담기"
+    e.preventDefault()
+});
+	$('.doOrder').click(function() {
+		menu_info = $(this).val()
+		menu_info += ", "+count.value
+		localStorage.setItem($(this).attr("id"), menu_info)
+	});
+});
+</script>
     </style>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script type="text/javascript">
@@ -74,16 +106,17 @@
 <body>
 <img src="${menu.url}">
 <div id="name">
-    ${menu.name}
+	${menu.name}
 </div>
 <br>
 <div id="price">
-    ${menu.price}원
+${menu.price}원 
+    ${menu.name}
 </div>
 <br>
 <hr>
 <div id="description">
-    ${menu.description}
+${menu.description}
 </div>
 <div id="selection">
     <button id="minus">-</button>

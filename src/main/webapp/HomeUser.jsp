@@ -2,6 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
+
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://code.jquery.com/ui/1.13.0/jquery-ui.min.js"></script>
     <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.0/themes/base/jquery-ui.css">
@@ -78,7 +79,7 @@
     </ul>
     <div id="tab-1-v" class="flex-box">
     <c:forEach items="${top3list}" var="menu">
-    <a href="detail.dow?menu_id=${menu.menuId}">  
+    <a href="detail.do?menuId=${menu.menuId}">  
     	<img src="${menu.url}"> 
         </a>
       	<div class="menu_name">${menu.name}</div>
@@ -89,7 +90,7 @@
     <div id="tab-2-v" class="flex-box">
         <c:forEach items="${chickenlist}" var="menu">
         <div id="menulist">
-       		<a href="detail.do?menu_id=${menu.menuId}">
+       		<a href="detail.do?menuId=${menu.menuId}">
 	    	<img src="${menu.url}" width="300px" height="250px"></a>
  	       	<div align="center">	    	
 	      	<div class="menu_name">${menu.name}</div>
@@ -101,7 +102,7 @@
     
     <div id="tab-3-v">
         <c:forEach items="${sidelist}" var="menu">
-   		<a href="detail.do?menu_id=${menu.menuId}">
+   		<a href="detail.do?menuId=${menu.menuId}">
     	<img src="${menu.url}">
 	      		</a>
 	      	<div class="menu_name">${menu.name}</div>
@@ -110,7 +111,7 @@
     </div>
     <div id="tab-4-v">
         <c:forEach items="${beveragelist}" var="menu">
-   		<a href="detail.do?menu_id=${menu.menuId}">
+   		<a href="detail.do?menuId=${menu.menuId}">
     		<img src="${menu.url}">
 		</a>
 	      	<div class="menu_name">${menu.name}</div>
@@ -118,7 +119,7 @@
    	    </c:forEach>
     </div>
   </div>
-  <button id ="basket"class="btn"><a href="BasketList.jsp"><img src="./images/basket.png" width="50" height="50">  장바구니</a></button>
+  <button id ="basket"class="btn"><a href="BasketList.do"><img src="./images/basket.png" width="50" height="50">  장바구니</a></button>
   <script>
     // 세로(수직) 탭 초기화
     $(function() {

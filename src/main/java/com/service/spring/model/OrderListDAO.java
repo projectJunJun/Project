@@ -10,4 +10,6 @@ public interface OrderListDAO {
     List<OrderList> selectOrderByTable(Account account);
     int updateOrder(OrderList orderList);
     List<OrderList> selectOrder(String menuId);
+    int updateOrderCount(OrderList orderList);
+    int addOrder(OrderList orderList);
 }
