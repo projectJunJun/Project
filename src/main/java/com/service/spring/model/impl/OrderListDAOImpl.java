@@ -17,12 +17,12 @@ public class OrderListDAOImpl implements OrderListDAO {
     private SqlSession sqlSession;
 
     @Override
+    public List<OrderList> selectOrderByTable(OrderList orderList) throws Exception {
+        return sqlSession.selectList(NS+"selectOrderByTable");
+    }
     public List<OrderList> selectOrder(String menuId) {
         return sqlSession.selectList(NS + "selectOrder", menuId);
     }
-//    public List<OrderList> selectOrderByTable(OrderList orderList) throws Exception {
-//        return sqlSession.selectList(NS+"selectOrderByTable");
-//    }
 
 	@Override
 	public int updateOrderCount(OrderList orderList) {
@@ -34,4 +34,5 @@ public class OrderListDAOImpl implements OrderListDAO {
 		System.out.println("DAO"+orderList);
 		return sqlSession.insert(NS+"addOrder", orderList);
 	}
+
 }

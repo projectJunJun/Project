@@ -7,7 +7,7 @@ import com.service.spring.domain.Menu;
 public interface MenuDAO {
 	int addMenu (Menu menu);
 	int updateMenu (Menu menu);
-	int deleteMenu (List<Menu> list);
+	int deleteMenu (List<String> list);
 	Menu selectMenu (Menu menu);
 	List<Menu> selectMenu ();
 	List<Menu> selectMenuByCategory(String category);

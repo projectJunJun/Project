@@ -14,6 +14,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 public class MenuController {
@@ -87,6 +89,7 @@ public class MenuController {
 			return "Error";
     	}
     }
+
     @GetMapping("detail.do")
     public String selectMenu(Model model, Menu menu) {
     	try {
@@ -118,4 +121,18 @@ public class MenuController {
     	}
     }
     
+    @PostMapping("deleteMenuAjax.do")
+    @ResponseBody
+    public String doDeleteMenu(@RequestParam List<String> menuId, Model model) {
+    	try {
+    		System.out.println(menuId);
+    		menuService.deleteMenu(menuId);
+			return "";
+    	} catch (Exception e) {
+    		model.addAttribute("title","핸드폰 삭제하기 에러");
+            model.addAttribute("message", "에러 내용 - 메뉴삭제하기 중 에러발생");
+    		return "Error";
+    	}
+    }
+
 }

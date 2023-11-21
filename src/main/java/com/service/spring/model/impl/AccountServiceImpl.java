@@ -30,7 +30,7 @@ public class AccountServiceImpl implements AccountService {
 	}
 
 	@Override
-	public int deleteAccount(List<Account> list) {
+	public int deleteAccount(List<String> list) {
 		return accountDAO.deleteAccount(list);
 	}
 
