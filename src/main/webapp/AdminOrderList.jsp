@@ -43,13 +43,14 @@
                 <th>개수</th>
                 <th>별점</th>
                 <th>결제 여부</th>
+                <th>상세보기</th>
             </tr>
         </thead>
         <tbody>
             <!-- forEach 사용 -->
             <c:forEach items="#{orderLists}" var="orderList">
                 <tr>
-                    <td><a href="orderListDetail.do?orderId=${orderList.orderId}">${orderList.orderId}</a></td>
+                    <td>${orderList.orderId}</td>
                     <td>${orderList.userId}</td>
                     <td>${orderList.menuId}</td>
                     <td>${orderList.teamId}</td>
@@ -57,6 +58,7 @@
                     <td>${orderList.count}</td>
                     <td>${orderList.star}</td>
                     <td>${orderList.isPaid}</td>
+                    <td><a href="orderListDetail.do?orderId=${orderList.orderId}" style="color:blue;">✓</a></td>
                 </tr>
             </c:forEach>
         </tbody>
