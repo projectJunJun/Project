@@ -5,39 +5,47 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+	<link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/table_v.css">
+    <style>
+	    .content {
+			width: 40%;
+		}
+    </style>
 </head>
 <body>
 	<jsp:include page="AdminHeader.jsp"/>
-	
+	<div class="content">
 	<form method="post" action="updateAccount.do">
-		<table border="0" cellpadding="0" cellspacing="1" width="590" bgcolor="BBBBBB">
+		<table>
 			<tr>
-				<td width=120 align=center bgcolor="E6ECDE" height="22">계정 ID</td>
-				<td width=490 bgcolor="ffffff" style="padding-left:10">
-					<input type="text" style="width:150" name="userId" value="${param.userId}" readonly/>  
+				<td>계정 ID</td>
+				<td>
+					<input class="content_input" type="text" name="userId" value="${param.userId}" readonly/>  
 				</td>
 			</tr>
 			<tr>
-				<td width=120 align=center bgcolor="E6ECDE" height="22">테이블 번호</td>
-				<td width=490 bgcolor="ffffff" style="padding-left:10">
-					<input type="text" style="width:150" name="tableNumber" value="${param.tableNumber}"/>
+				<td>테이블 번호</td>
+				<td>
+					<input class="content_input" type="text" name="tableNumber" required value="${param.tableNumber}"/>
 				</td>
 			</tr>
 			<tr>
-				<td width=120 align=center bgcolor="E6ECDE" height="22">비밀번호</td>
-				<td width=490 bgcolor="ffffff" style="padding-left:10">
-					<input type="text" style="width:240" name="password"/>
+				<td>비밀번호</td>
+				<td>
+					<input class="content_input" type="text" name="password" required/>
 				</td>
 			</tr>
 			<tr>
-				<td width=120 align=center bgcolor="E6ECDE" height="22">비밀번호 확인</td>
-				<td width=490 bgcolor="ffffff" style="padding-left:10">
-					<input type="text" style="width:240" name="passwordCheck"/>
+				<td>비밀번호 확인</td>
+				<td>
+					<input class="content_input" type="text" name="passwordCheck" required/>
 				</td>
 			</tr>
 		</table>
-	<input type="submit" value="계정 수정" />
-	<input type="reset" value="취소" />
+	<input class="btn" type="submit" value="계정 수정" />
+	<input class="btn" type="reset" value="취소" />
 	</form>
+	</div>
 </body>
 </html>

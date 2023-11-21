@@ -5,10 +5,20 @@
 <head>
     <title>Title</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/table_h.css">
+    <style type="text/css">
+    
+    	.content {
+    		width: 75%;
+    		margin: 50 auto;
+    	}
+    </style>
 </head>
 <body>
     <jsp:include page="AdminHeader.jsp"/>
     
+    <div class="content">
     <table>
 		<thead>
 			<tr>
@@ -32,8 +42,9 @@
 		</tbody>
 	</table>
 	
-	<a href = "addMenu.do">메뉴 추가하기</a>
-	<a href="#" id="selectedDel">선택항목삭제</a>
+	<a class="btn" href="#" id="selectedDel">선택항목삭제</a>
+	<a class="btn" href = "addMenu.do">메뉴 추가하기</a>
+	</div>
 </body>
 
 <script>

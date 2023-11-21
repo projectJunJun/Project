@@ -10,7 +10,8 @@
     </style>
 </head>
 <body>
-    <jsp:include page="AdminHeader.jsp"/>
+<jsp:include page="AdminHeader.jsp"/>
+<div class="content">
     <table>
 		<thead>
 			<tr>
@@ -32,6 +33,7 @@
 	
 	<a class="btn" href= "#" id="selectedDel">선택항목삭제</a>
 	<a class="btn" href = "registerAccount.do">계정 등록하기</a>
+</div>
 </body>
 <script type="text/javascript">
 	$('#selectedDel').click(function() {

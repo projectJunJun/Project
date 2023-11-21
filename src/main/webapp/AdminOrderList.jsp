@@ -7,30 +7,22 @@
     <link rel="stylesheet" href="css/common.css">
     <link rel="stylesheet" href="css/table_h.css">
     <style>
-    	body{
+    	.content{
     		width: 75%;
     	}
     </style>
 </head>
 <body>
     <jsp:include page="AdminHeader.jsp"/>
+    <div class="content">
     <div class="button-container">
         <div class="selectAllOrder">
-            <button id="button-selectAllOrder">
-                <a href="selectAllOrder.do">
-                    전체 조회
-                </a>
-            </button>
+        	<a class="btn" href="selectAllOrder.do">전체 조회</a>
         </div>
         <div class="selectOrderByTable">
-            <button id="button-selectOrderByTable">
-                <a href="selectAccountForTable.do">
-                    테이블별 조회
-                </a>
-            </button>
+            <a class="btn" href="selectAccountForTable.do">테이블별 조회</a>
         </div>
     </div>
-    <div class="empty-container"></div>
     <!-- 목록 조회 table 생성 -->
     <table>
         <thead>
@@ -43,7 +35,6 @@
                 <th>개수</th>
                 <th>별점</th>
                 <th>결제 여부</th>
-                <th>상세보기</th>
             </tr>
         </thead>
         <tbody>
@@ -58,12 +49,12 @@
                     <td>${orderList.count}</td>
                     <td>${orderList.star}</td>
                     <td>${orderList.isPaid}</td>
-                    <td><a href="orderListDetail.do?orderId=${orderList.orderId}" style="color:blue;">✓</a></td>
                 </tr>
             </c:forEach>
         </tbody>
 
     </table>
+    </div>
     <script>
         const buttonAll = document.querySelector("#button-selectAllOrder")
         buttonAll.addEventListener("click", () => {

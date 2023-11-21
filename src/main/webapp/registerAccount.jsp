@@ -5,30 +5,40 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" href="css/common.css">
+<link rel="stylesheet" href="css/table_v.css">
+<style type="text/css">
+	.content {
+		width: 40%;
+	}
+</style>
 </head>
 <body>
 	<jsp:include page="AdminHeader.jsp"/>
+	<div class="content">
 	<form method="post" action="registerAccount.do">
-	<table border="0" cellpadding="0" cellspacing="1" width="590" bgcolor="BBBBBB">
-		<td width=100 align=center bgcolor="E6ECDE" height="22">계정ID</td>
-			<td width=490 bgcolor="ffffff" style="padding-left:10">
-				<input type="text" style="width:150" name="userId"/>  
+	<table>
+		<tr>
+		<td>계정ID</td>
+			<td>
+				<input class="content_input" type="text" name="userId" required/>  
 			</td>
 		  </tr>
 		  <tr>
-			<td width=100 align=center bgcolor="E6ECDE" height="22">비밀번호</td>
-			<td width=490 bgcolor="ffffff" style="padding-left:10">
-				<input type="text" style="width:150" name="password"/>
+			<td>비밀번호</td>
+			<td>
+				<input class="content_input" type="text" name="password" required/>
 			</td>
 		  </tr>
 		  <tr>
-			<td width=100 align=center bgcolor="E6ECDE" height="22">테이블번호</td>
-			<td width=490 bgcolor="ffffff" style="padding-left:10">
-				<input type="text" style="width:240" name="tableNumber"/>
+			<td>테이블번호</td>
+			<td>
+				<input class="content_input" type="text" name="tableNumber" required/>
 			</td>
 		  </tr>  
 	  </table>
-	  
-	  <input type="submit" value="계정등록" /> &nbsp;
+	  <input class="btn" type="submit" value="계정등록" /> &nbsp;
+	  </form>
+	  </div>
 </body>
 </html>
