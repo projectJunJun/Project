@@ -46,7 +46,9 @@
          	margin-left:150px;
             margin-top:50px;      
          	height:400px;
-         	width:40%;
+         	width:600px;
+         	object-fit: contain;
+         	
          }
          #content_box{         
          margin-top:50px;
