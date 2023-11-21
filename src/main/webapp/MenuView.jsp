@@ -68,6 +68,9 @@
             menu_info = $(this).val()
             menu_info += ", "+count.value
             localStorage.setItem($(this).attr("id"), menu_info)
+            alert("주문하신 상품이 장바구니에 추가 되었습니다.")
+    		location.href = "selectMenuByCategory.do"
+
         });
     });
 </script>
