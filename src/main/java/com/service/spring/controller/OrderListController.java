@@ -65,7 +65,7 @@ public class OrderListController {
         Account account = (Account) session.getAttribute("account");
         System.out.println("account"+account);
 //        int teamId = (int) session.getAttribute("teamId");
-//        System.out.println("teamId"+teamId);
+//        System.out.println("t	eamId"+teamId);
         System.out.println(orderListService.selectOrderByTable(account));
         List<OrderList> list = orderListService.selectOrderByTable(account);
         System.out.println("list"+list);
@@ -109,7 +109,7 @@ public class OrderListController {
                 orderListService.updateOrder(order);
                 menuService.updateMenuStar(order);
             }
-            path = "HomeUser";
+            path = "redirect:selectMenuByCategory.do";
             session.setAttribute("teamId", teamId+1);
         }catch (Exception e){
             model.addAttribute("title", "결제 및 별점 에러");
@@ -158,25 +158,16 @@ public class OrderListController {
     		Account account = (Account) session.getAttribute("account");
     		String [] ids = idList.split(","); 
     		String [] counts = countList.split(",");
+    	
     		for (int i=0;i<ids.length;i++) {
-    			System.out.println(ids[i]+","+counts[i]);
-    			System.out.println(account.getUserId());
-    			System.out.println(Integer.toString(teamId));
-    			System.out.println(new Timestamp(System.currentTimeMillis()));
-    			System.out.println(Integer.parseInt(counts[i].trim()));
     			OrderList orderList = new OrderList(account.getUserId(), ids[i],  Integer.toString(teamId)
-    					,new Timestamp(System.currentTimeMillis()), Integer.parseInt(counts[i].trim()));
-    			
-    			System.out.println("==========="+orderList);	
+    					,new Timestamp(System.currentTimeMillis()), Integer.parseInt(counts[i].trim()));    			
     			int result = orderListService.updateOrderCount(orderList);
-        		System.out.println("결과1"+result);
     			if (result==0) {
-    				System.out.println("-------");
-    				int result2 = orderListService.addOrder(orderList);
-            		System.out.println("결과2"+result2);
+    				result = orderListService.addOrder(orderList);
     			}
     		}
-    		path = "HomeUser";
+    		path = "redirect:selectMenuByCategory.do";
     	}catch(Exception e) {
     		model.addAttribute("title", "주문 하기 - 에러");
             model.addAttribute("message", "문제 내용 - 주문 하기 실행 중 에러발생");
