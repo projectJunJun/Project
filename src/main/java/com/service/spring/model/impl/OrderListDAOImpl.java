@@ -20,7 +20,22 @@ public class OrderListDAOImpl implements OrderListDAO {
     public List<OrderList> selectOrderByTable(OrderList orderList) throws Exception {
         return sqlSession.selectList(NS+"selectOrderByTable");
     }
-    public List<OrderList> selectOrder(String menuId) {
-        return sqlSession.selectList(NS + "selectOrder", menuId);
+    @Override
+    public List<OrderList> selectAllOrder(OrderList orderList) {
+        return sqlSession.selectList(NS + "selectAllOrder", orderList);
+    }
+    @Override
+    public OrderList selectOrderDetail(OrderList orderList) {
+        return sqlSession.selectOne(NS+"selectOrder", orderList);
+    }
+
+    @Override
+    public List<OrderList> selectOrder(OrderList orderList){
+        return sqlSession.selectList(NS+"selectOrder", orderList);
+    }
+
+    @Override
+    public List<OrderList> selectOrderListByTable(String tableNumber) {
+        return sqlSession.selectList(NS+"selectOrderListByTable", tableNumber);
     }
 }

@@ -97,7 +97,7 @@ public class MenuController {
     		menuService.deleteMenu(menuId);
 			return "";
     	} catch (Exception e) {
-    		model.addAttribute("title","핸드폰 삭제하기 에러");
+    		model.addAttribute("title","메뉴 삭제하기 에러");
             model.addAttribute("message", "에러 내용 - 메뉴삭제하기 중 에러발생");
     		return "Error";
     	}

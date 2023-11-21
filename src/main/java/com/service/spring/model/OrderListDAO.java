@@ -7,7 +7,8 @@ import java.util.List;
 
 public interface OrderListDAO {
     List<OrderList> selectOrderByTable(OrderList orderList) throws Exception;
-    List<OrderList> selectOrder(String menuId);
-
-    List<OrderList> selectOrderByTable();
+    List<OrderList> selectAllOrder(OrderList orderList);
+    OrderList selectOrderDetail(OrderList orderList);
+    List<OrderList> selectOrder(OrderList orderList);
+    List<OrderList> selectOrderListByTable(String tableNumber);
 }

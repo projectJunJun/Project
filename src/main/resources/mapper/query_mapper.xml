@@ -138,6 +138,13 @@
 			WHERE user_id = #{userId}
 		</if>
 	</select>
+
+	<!-- selectAccount for selectOrder for table -->
+	<select id="selectAccountForTable" resultMap="accountMap">
+		SELECT user_id, password, table_number, authority
+		FROM account
+		WHERE authority = 0
+	</select>
 	
 	<!-- addOrder -->
 	<insert id="addOrder" parameterType="orderList">
@@ -155,13 +162,27 @@
 	</select>
 	
 	<!-- selectOrder -->
-	<!-- 전체 조회, menuId로 조회! 동적  -->
-	<select id="selectOrder" parameterType="String" resultMap="orderListMap">
+	<!-- 전체 조회, orderId로 조회! 동적  -->
+	<select id="selectAllOrder" parameterType="orderList" resultMap="orderListMap">
 		SELECT order_id, user_id, menu_id, team_id, order_time, count, star, is_paid
 		FROM orderlist
-		<if test="menuId != null">
-			WHERE menu_id = #{VALUE}
+		<if test="orderId != null">
+			WHERE order_id = #{orderId}
 		</if>
+	</select>
+
+	<select id="selectOrder" parameterType="orderList" resultMap = "orderListWithAccountMap">
+		SELECT o.order_id, o.user_id, o.menu_id, o.team_id, o.order_time, o.count, o.star, o.is_paid, a.table_number, m.price
+		FROM orderlist o JOIN account a ON (o.user_id = a.user_id) JOIN menu m ON (o.menu_id = m.menu_id)
+		<if test="orderId != null">
+			WHERE o.order_id = #{orderId} AND o.is_paid = 0
+		</if>
+	</select>
+
+	<select id="selectOrderListByTable" parameterType="String" resultMap = "orderListWithAccountMap">
+		SELECT o.order_id, o.user_id, o.menu_id, o.team_id, o.order_time, o.count, o.star, o.is_paid, a.table_number, m.price
+		FROM orderlist o JOIN account a ON (o.user_id = a.user_id) JOIN menu m ON (o.menu_id = m.menu_id)
+		WHERE a.table_number = #{VALUE} AND o.is_paid = 0
 	</select>
 	
 	<select id="selectOrderByDate">
