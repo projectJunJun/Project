@@ -182,10 +182,10 @@ public class OrderListController {
     					,new Timestamp(System.currentTimeMillis()), Integer.parseInt(counts[i].trim()));    			
     			int result = orderListService.updateOrderCount(orderList);
     			if (result==0) {
-    				result = orderListService.addOrder(orderList);
+                    System.out.println(orderListService.addOrder(orderList));
     			}
     		}
-    		path = "redirect:selectMenuByCategory.do";
+    		path = "Pay";
     	}catch(Exception e) {
     		model.addAttribute("title", "주문 하기 - 에러");
             model.addAttribute("message", "문제 내용 - 주문 하기 실행 중 에러발생");
