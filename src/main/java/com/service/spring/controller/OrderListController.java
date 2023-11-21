@@ -1,8 +1,9 @@
 package com.service.spring.controller;
 
 import com.service.spring.domain.Account;
-import com.service.spring.domain.Menu;
 import com.service.spring.domain.OrderList;
+import com.service.spring.model.AccountService;
+import com.service.spring.domain.Menu;
 import com.service.spring.model.MenuService;
 import com.service.spring.model.OrderListDAO;
 import com.service.spring.model.OrderListService;
@@ -29,10 +30,6 @@ import javax.servlet.http.HttpSession;
 
 @Controller
 public class OrderListController {
-
-    @Autowired
-    private OrderListDAO orderListDAO;
-
     @Autowired
     private OrderListService orderListService;
 
@@ -76,6 +73,21 @@ public class OrderListController {
         return "Star";
     }
 
+    // 전체 목록 조회
+    @GetMapping("/selectAllOrder.do")
+    public String selectAllOrder(OrderList orderList, Model model){
+      String path = "Error";
+      try{
+        List<OrderList> orderLists = orderListService.selectAllOrder(orderList);
+            model.addAttribute("orderLists", orderLists);
+            path = "AdminOrderList";
+        } catch (Exception e){
+            model.addAttribute("title", "주문 내역 조회 - 에러");
+            model.addAttribute("message", "문제 내용 - 전체 주문 목록 불러오기 중 에러발생");
+        }
+        return path;
+    }
+
     // Star.jsp -> HomeUser.jsp
     @PostMapping("/pay.do")
     public String pay(@RequestParam Map<String, String> params, HttpSession session, Model model) throws Exception {
@@ -85,7 +97,7 @@ public class OrderListController {
         ArrayList<String> menuIds = new ArrayList<>();
         ArrayList<Double> ratings = new ArrayList<>();
         try{
-            params.forEach((key, value)->{
+          params.forEach((key, value)->{
                 if(key.substring(0,6).equals("menuId")){
                     menuIds.add(value);
                 }else{
@@ -105,18 +117,37 @@ public class OrderListController {
         }
         return path;
     }
-
-//    @GetMapping("/selectOrderByTable.do")
-//    public String selectOrderByTable(Model model){
-//        String path = "Error";
-//        try{
-//            List<OrderList> orderLists =
-//        } catch (Exception e){
-//            model.addAttribute("title", "테이블별 주문 내역 조회 - 에러");
-//            model.addAttribute("message", "문제 내용 - 테이블별 주문 목록 불러오기 중 에러발생");
-//        }
-//    }
-    
+            
+    // 테이블별 조회
+    @GetMapping("/selectOrder.do")
+    public String selectOrder(Account account, Model model){
+        String path = "Error";
+        try{
+//            List<OrderList> orderList = orderListService.selectOrderListByTable();
+            path = "AdminOrderListByTable";
+        } catch (Exception e){
+            model.addAttribute("title", "테이블별 주문 내역 조회 - 에러");
+            model.addAttribute("message", "문제 내용 - 테이블별 주문 목록 불러오기 중 에러발생");
+        }
+        return path;
+    }
+    // 주문 목록 자세히 보기
+    @GetMapping("/orderListDetail.do")
+    public String doDetail(OrderList orderList, Model model){
+        try{
+            System.out.println("MOVE TO ORDER LIST DETAIL");
+            System.out.println("before:"+orderListService.selectOrderDetail(orderList));
+            OrderList orderInfo = orderListService.selectOrderDetail(orderList);
+            System.out.println("orderInfo"+orderInfo);
+            model.addAttribute("orderList", orderInfo);
+            return "AdminOrderDetail";
+        } catch (Exception e) {
+            model.addAttribute("title", "주문 내역 상세 조회 - 에러");
+            model.addAttribute("message", "문제 내용 - 주문 내역 상세 조회 중 에러발생");
+            return "Error";
+        }
+    }
+   
     
     @GetMapping("updateOrderList.do")
     public String updateOrderList(Model model, HttpSession session, String idList, String countList) {
@@ -152,5 +183,5 @@ public class OrderListController {
     	}
     	return path;
     	
+  }
 }
-    }

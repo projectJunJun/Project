@@ -28,20 +28,34 @@ public class OrderListServiceImpl implements OrderListService {
     }
 
     @Override
-    public List<OrderList> selectOrder(String menuId) {
-        return orderListDAO.selectOrder(menuId);
+    public List<OrderList> selectAllOrder(OrderList orderList) {
+        return orderListDAO.selectAllOrder(orderList);
     }
 
+    @Override
+    public OrderList selectOrderDetail(OrderList orderList){
+        return orderListDAO.selectOrderDetail(orderList);
+    }
 
-	@Override
-	public int updateOrderCount(OrderList orderList) {
-		return orderListDAO.updateOrderCount(orderList);
-	}
+    @Override
+    public List<OrderList> selectOrder(OrderList orderList){
+        return orderListDAO.selectOrder(orderList);
+    }
 
-	@Override
-	public int addOrder(OrderList orderList) {
-		System.out.println("SERVICE"+orderList);
-		return orderListDAO.addOrder(orderList);
-	}
+    @Override
+    public List<OrderList> selectOrderListByTable(String tableNumber) {
+        return orderListDAO.selectOrderListByTable(tableNumber);
+    }
+
+    @Override
+    public int updateOrderCount(OrderList orderList) {
+      return orderListDAO.updateOrderCount(orderList);
+    }
+
+    @Override
+    public int addOrder(OrderList orderList) {
+      System.out.println("SERVICE"+orderList);
+      return orderListDAO.addOrder(orderList);
+    }
 
 }

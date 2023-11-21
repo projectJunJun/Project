@@ -39,7 +39,6 @@ public class AccountController {
                 if(loginAccount.getAuthority() == 1) path = "HomeAdmin";
                 else session.setAttribute("teamId", 1);         // teamId
         		System.out.println(path+"path 반환 성공");
-
                 return path;
             } else{
                 return "Login";
@@ -149,6 +148,21 @@ public class AccountController {
  			return "Error";
  		}
  	}
+
+    @GetMapping("/selectAccountForTable.do")
+    public String doSelectAccountForTable(Model model){
+        String path = "Error";
+        try{
+            List<Account> accountList = accountService.selectAccountForTable();
+
+            model.addAttribute("accountList", accountList);
+            System.out.println(accountList);
+            path = "redirect:selectOrder.do";
+        } catch (Exception e){
+            model.addAttribute("title", "테이블별 주문 내역 - 에러");
+            model.addAttribute("message", "에러 내용 - 테이블 조회 진행 중 에러발생");
+        }
+        return path;
  	
  	@GetMapping("/updateAccount.do")
     public String getUpdateAccount (Model model) {

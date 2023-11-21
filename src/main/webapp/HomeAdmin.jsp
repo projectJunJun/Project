@@ -58,7 +58,7 @@
     </div>
 
     <div class="grid-container-child">
-        <a href="AdminOrderList.jsp">
+        <a href="selectAllOrder.do">
             <img src="images/admin.png">
             <div class="grid-content">
                 주문내역 조회

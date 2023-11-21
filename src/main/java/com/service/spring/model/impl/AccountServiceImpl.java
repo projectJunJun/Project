@@ -43,4 +43,9 @@ public class AccountServiceImpl implements AccountService {
 	public List<Account> selectAccount() {
 		return accountDAO.selectAccount();
 	}
+
+	@Override
+	public List<Account> selectAccountForTable() {
+		return accountDAO.selectAccountForTable();
+	}
 }

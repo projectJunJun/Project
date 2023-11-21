@@ -45,7 +45,7 @@
         </div>
         <div class="selectOrderByTable">
             <button id="button-selectOrderByTable">
-                <a href="selectAllOrder.do">
+                <a href="selectAccountForTable.do">
                     테이블별 조회
                 </a>
             </button>
@@ -83,6 +83,16 @@
         </tbody>
 
     </table>
+    <script>
+        const buttonAll = document.querySelector("#button-selectAllOrder")
+        buttonAll.addEventListener("click", () => {
+            location.href = 'selectAllOrder.do'
+        })
+        const buttonTable = document.querySelector("#button-selectOrderByTable")
+        buttonTable.addEventListener("click", () => {
+            location.href = 'selectAccountForTable.do'
+        })
 
+    </script>
 </body>
 </html>

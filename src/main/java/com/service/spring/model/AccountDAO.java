@@ -11,4 +11,6 @@ public interface AccountDAO {
     int deleteAccount(List<String> list);
     Account selectAccount(Account account);
     List<Account> selectAccount();
+
+    List<Account> selectAccountForTable();
 }

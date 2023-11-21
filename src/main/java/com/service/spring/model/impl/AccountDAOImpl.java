@@ -46,4 +46,7 @@ public class AccountDAOImpl implements AccountDAO {
 	public List<Account> selectAccount() {
 		return sqlSession.selectList(NS+"selectAccount",null);
 	}
+
+	@Override
+	public List<Account> selectAccountForTable() {return sqlSession.selectList(NS+"selectAccountForTable");}
 }
