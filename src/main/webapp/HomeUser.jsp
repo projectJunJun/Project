@@ -7,7 +7,7 @@
     <script src="https://code.jquery.com/ui/1.13.0/jquery-ui.min.js"></script>
     <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.0/themes/base/jquery-ui.css">
 
-  <style>
+  <style>	
     /* 수직 탭 스타일 */
     .ui-tabs-vertical {
 		width: 100%;
@@ -22,7 +22,7 @@
       width: 100%;
       padding : 25px 10px;
       border-bottom: 1px solid #ccc;
-      font-size : 32px;
+      font-size : 28px;
  	  font-weight: bold;
     }
     .ui-tabs-vertical .ui-tabs-nav li a {
@@ -47,11 +47,12 @@
     }
 
     .menu_name{
-        font-size: 25px;
+        font-size: 22px;
         font-weight:bold;
+        
     }
     .price{
-        font-size: 20px;
+        font-size: 17px;
         color: gray;
     }
     a{
@@ -91,7 +92,7 @@
         <c:forEach items="${chickenlist}" var="menu">
         <div id="menulist">
        		<a href="detail.do?menuId=${menu.menuId}">
-	    	<img src="${menu.url}" width="300px" height="250px"></a>
+	    	<img src="${menu.url}" width="200px" height="150px" ></a>
  	       	<div align="center">	    	
 	      	<div class="menu_name">${menu.name}</div>
 	      	<div class="price">${menu.price}원</div>
@@ -100,23 +101,30 @@
     </c:forEach>
     </div>
     
-    <div id="tab-3-v">
+     <div id="tab-3-v" class="flex-box">
         <c:forEach items="${sidelist}" var="menu">
-   		<a href="detail.do?menuId=${menu.menuId}">
-    	<img src="${menu.url}">
-	      		</a>
+        <div id="menulist">
+       		<a href="detail.do?menuId=${menu.menuId}">
+	    	<img src="${menu.url}" width="200px" height="150px" ></a>
+ 	       	<div align="center">	    	
 	      	<div class="menu_name">${menu.name}</div>
 	      	<div class="price">${menu.price}원</div>
-    	</c:forEach>
+	      	</div>
+      	</div>
+    </c:forEach>
     </div>
-    <div id="tab-4-v">
+    
+    <div id="tab-4-v" class="flex-box">
         <c:forEach items="${beveragelist}" var="menu">
-   		<a href="detail.do?menuId=${menu.menuId}">
-    		<img src="${menu.url}">
-		</a>
+        <div id="menulist">
+       		<a href="detail.do?menuId=${menu.menuId}">
+	    	<img src="${menu.url}" width="200px" height="150px"></a>
+ 	       	<div align="center">	    	
 	      	<div class="menu_name">${menu.name}</div>
 	      	<div class="price">${menu.price}원</div>
-   	    </c:forEach>
+	      	</div>
+      	</div>
+    </c:forEach>
     </div>
   </div>
   <button id ="basket"class="btn"><a href="BasketList.do"><img src="./images/basket.png" width="50" height="50">  장바구니</a></button>
