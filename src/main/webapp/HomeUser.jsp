@@ -1,5 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <html>
 <head>
 
@@ -108,7 +109,7 @@
     <jsp:include page="Header.jsp"/>
     <div id="tabs-vertical" class="ui-tabs-vertical ui-helper-clearfix">
         <ul>
-            <li onclick="changeTab(0)"><a href="#tab-1-v">우리가게 별점 TOP3</a></li>
+            <li onclick="changeTab(0)"><a href="#tab-1-v">우리가게 별점 TOP5</a></li>
             <li onclick="changeTab(1)"><a href="#tab-2-v">치킨</a></li>
             <li onclick="changeTab(2)"><a href="#tab-3-v">사이드</a></li>
             <li onclick="changeTab(3)"><a href="#tab-4-v">음료</a></li>

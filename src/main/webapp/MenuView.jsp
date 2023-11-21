@@ -66,6 +66,8 @@
          font-size: 24px;
          background-color: #FF7B31;
          color:white;
+         cursor: pointer;
+         
          }
          #button_set{
          align-items:center;
