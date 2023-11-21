@@ -3,44 +3,82 @@ package com.service.spring.controller;
 import com.service.spring.domain.Account;
 import com.service.spring.domain.OrderList;
 import com.service.spring.model.AccountService;
+import com.service.spring.domain.Menu;
+import com.service.spring.model.MenuService;
 import com.service.spring.model.OrderListDAO;
 import com.service.spring.model.OrderListService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+
+import java.sql.Timestamp;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
+import java.lang.reflect.Array;
+import java.text.DecimalFormat;
+import java.util.ArrayList;
+import java.util.HashMap;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import java.util.List;
+import java.util.Map;
+
+import javax.servlet.http.HttpSession;
 
 @Controller
 public class OrderListController {
     @Autowired
     private OrderListService orderListService;
 
+    @Autowired
+    private MenuService menuService;
+
+    // Pay.jsp -> PayResult.jsp
     @GetMapping("/pay.do")
     public String pay(String total, String people, Model model){
-        model.addAttribute("total", total);
+        int totals = Integer.parseInt(total);
+        int peoples = Integer.parseInt(people);
+        int rest = totals;
+        DecimalFormat formatter = new DecimalFormat("###,###");
+        ArrayList<String> moneys = new ArrayList<>();
+        for(int i = 0; i < peoples; i++){
+            if(i == peoples-1){
+                moneys.add(formatter.format(rest));
+            }else{
+                int money = totals / peoples;
+                moneys.add(formatter.format(money));
+                rest -= money;
+            }
+        }
+        model.addAttribute("total", formatter.format(totals));
         model.addAttribute("people", people);
+        model.addAttribute("moneys", moneys);
         return "PayResult";
     }
 
-    @PostMapping("/pay.do")
-    public String pay(OrderList order, HttpSession session, Model model) throws Exception {
-        int teamId = (int) session.getAttribute("teamId");
-        session.setAttribute("teamId", teamId+1);
-        List<OrderList> list = orderListService.selectOrderByTable(order);
+    // PayResult.jsp -> Star.jsp
+    @PostMapping("/star.do")
+    public String star(HttpSession session, Model model) throws Exception{
+        Account account = (Account) session.getAttribute("account");
+        System.out.println("account"+account);
+//        int teamId = (int) session.getAttribute("teamId");
+//        System.out.println("teamId"+teamId);
+        System.out.println(orderListService.selectOrderByTable(account));
+        List<OrderList> list = orderListService.selectOrderByTable(account);
+        System.out.println("list"+list);
         model.addAttribute("list", list);
         return "Star";
     }
+
     // 전체 목록 조회
     @GetMapping("/selectAllOrder.do")
     public String selectAllOrder(OrderList orderList, Model model){
-        String path = "Error";
-        try{
-            List<OrderList> orderLists = orderListService.selectAllOrder(orderList);
+      String path = "Error";
+      try{
+        List<OrderList> orderLists = orderListService.selectAllOrder(orderList);
             model.addAttribute("orderLists", orderLists);
             path = "AdminOrderList";
         } catch (Exception e){
@@ -49,6 +87,37 @@ public class OrderListController {
         }
         return path;
     }
+
+    // Star.jsp -> HomeUser.jsp
+    @PostMapping("/pay.do")
+    public String pay(@RequestParam Map<String, String> params, HttpSession session, Model model) throws Exception {
+        String path = "Error";
+        Account account = (Account) session.getAttribute("account");
+        int teamId = (int) session.getAttribute("teamId");
+        ArrayList<String> menuIds = new ArrayList<>();
+        ArrayList<Double> ratings = new ArrayList<>();
+        try{
+          params.forEach((key, value)->{
+                if(key.substring(0,6).equals("menuId")){
+                    menuIds.add(value);
+                }else{
+                    ratings.add(Double.parseDouble(value));
+                }
+            });
+            for(int i = 0; i < ratings.size(); i++){
+                OrderList order = new OrderList(account.getUserId(), menuIds.get(i), Integer.toString(teamId), ratings.get(i));
+                orderListService.updateOrder(order);
+                menuService.updateMenuStar(order);
+            }
+            path = "HomeUser";
+            session.setAttribute("teamId", teamId+1);
+        }catch (Exception e){
+            model.addAttribute("title", "결제 및 별점 에러");
+            model.addAttribute("message", "에러 내용 - 결제 및 별점 진행중 에러발생");
+        }
+        return path;
+    }
+            
     // 테이블별 조회
     @GetMapping("/selectOrder.do")
     public String selectOrder(Account account, Model model){
@@ -78,4 +147,41 @@ public class OrderListController {
             return "Error";
         }
     }
+   
+    
+    @GetMapping("updateOrderList.do")
+    public String updateOrderList(Model model, HttpSession session, String idList, String countList) {
+        String path = "Error";
+    	try {
+    		System.out.println("주문하기 진입 성공");
+    		Integer teamId = (Integer)session.getAttribute("teamId");
+    		Account account = (Account) session.getAttribute("account");
+    		String [] ids = idList.split(","); 
+    		String [] counts = countList.split(",");
+    		for (int i=0;i<ids.length;i++) {
+    			System.out.println(ids[i]+","+counts[i]);
+    			System.out.println(account.getUserId());
+    			System.out.println(Integer.toString(teamId));
+    			System.out.println(new Timestamp(System.currentTimeMillis()));
+    			System.out.println(Integer.parseInt(counts[i].trim()));
+    			OrderList orderList = new OrderList(account.getUserId(), ids[i],  Integer.toString(teamId)
+    					,new Timestamp(System.currentTimeMillis()), Integer.parseInt(counts[i].trim()));
+    			
+    			System.out.println("==========="+orderList);	
+    			int result = orderListService.updateOrderCount(orderList);
+        		System.out.println("결과1"+result);
+    			if (result==0) {
+    				System.out.println("-------");
+    				int result2 = orderListService.addOrder(orderList);
+            		System.out.println("결과2"+result2);
+    			}
+    		}
+    		path = "HomeUser";
+    	}catch(Exception e) {
+    		model.addAttribute("title", "주문 하기 - 에러");
+            model.addAttribute("message", "문제 내용 - 주문 하기 실행 중 에러발생");
+    	}
+    	return path;
+    	
+  }
 }

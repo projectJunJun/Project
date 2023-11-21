@@ -1,9 +1,13 @@
 package com.service.spring.controller;
 
+import com.service.spring.domain.Account;
 import com.service.spring.domain.Menu;
 import com.service.spring.model.MenuService;
 
 import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -12,9 +16,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-
-import com.service.spring.domain.Menu;
-import com.service.spring.model.MenuService;
 
 @Controller
 public class MenuController {
@@ -69,7 +70,7 @@ public class MenuController {
          //   model.addAttribute("message", "에러 내용 - 메뉴추가하기 중 에러발생");
     	//	return "Error";
     	}
-
+    
     @GetMapping("selectMenuByCategory.do")
     public String selectMenuByCategory(Model model) {
     	try {
@@ -88,6 +89,54 @@ public class MenuController {
 			return "Error";
     	}
     }
+
+    @GetMapping("detail.do")
+    public String selectMenu(Model model, Menu menu) {
+    	try {
+    		System.out.println("메뉴 상세페이지 진입 성공");
+    		Menu selected = menuService.selectMenu(menu);
+    		System.out.println(selected.toString());
+    		model.addAttribute("menu", selected);
+    		model.addAttribute("title", "메뉴 상세 정보");
+    		return "MenuView";
+
+    	}catch(Exception e) {
+    		model.addAttribute("title", "메뉴  상세정보 불러오기 - 에러");
+			model.addAttribute("message","문제 내용 - 메뉴 상세정보 불러오는 중 에러발생");
+			return "Error";
+    	}
+    }
+    @GetMapping("BasketList.do")
+    public String basket(Model model, HttpSession session) {
+    	try {
+    		System.out.println("장바구니 진입");
+    		Account account = (Account)session.getAttribute("account");
+    		model.addAttribute("account", account);
+    		model.addAttribute("title", "장바구니 정보");
+    		return "BasketList";
+    	}catch(Exception e) {
+    		model.addAttribute("title", "장바구니 불러오기 - 에러");
+			model.addAttribute("message","문제 내용 - 장바구니 불러오는 중 에러발생");
+			return "Error";
+    	}
+    }
+
+	@GetMapping("detail.do")
+	public String selectMenu(Model model, Menu menu) {
+		try {
+			System.out.println("메뉴 상세페이지 진입 성공");
+			Menu selected = menuService.selectMenu(menu);
+			System.out.println(selected.toString());
+			model.addAttribute("menu", selected);
+			model.addAttribute("title", "메뉴 상세 정보");
+			return "MenuView";
+
+		}catch(Exception e) {
+			model.addAttribute("title", "메뉴  상세정보 불러오기 - 에러");
+			model.addAttribute("message","문제 내용 - 메뉴 상세정보 불러오는 중 에러발생");
+			return "Error";
+		}
+	}
     
     @PostMapping("deleteMenuAjax.do")
     @ResponseBody
@@ -102,4 +151,31 @@ public class MenuController {
     		return "Error";
     	}
     }
+    
+    @GetMapping("updateMenu.do")
+    public String getUpdateMenu(Menu menu, Model model) {
+    	try {
+    		Menu selMenu = menuService.selectMenu(menu);
+    		model.addAttribute("menu",selMenu);
+    		return "updateMenu";
+    	} catch (Exception e) {
+    		model.addAttribute("title","메뉴 수정하기 에러");
+            model.addAttribute("message", "에러 내용 - 메뉴수정하기 중 에러발생");
+    		return "Error";
+    	}
+    }
+    
+    @PostMapping("updateMenu.do")
+    public String postUpdateMenu(Menu menu, Model model) {
+    	try {
+    		menuService.updateMenu(menu);
+    		return "redirect:selectMenu.do?menuId=" + menu.getMenuId();
+    		
+    	} catch (Exception e){
+    		model.addAttribute("title","메뉴 수정하기 에러");
+            model.addAttribute("message", "에러 내용 - 메뉴수정하기 중 에러발생");
+    		return "Error";
+    	}	
+    }
+
 }

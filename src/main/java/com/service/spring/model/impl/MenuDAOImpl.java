@@ -1,6 +1,7 @@
 package com.service.spring.model.impl;
 
 import com.service.spring.domain.Menu;
+import com.service.spring.domain.OrderList;
 import com.service.spring.model.MenuDAO;
 
 import java.util.List;
@@ -45,6 +46,11 @@ public class MenuDAOImpl implements MenuDAO {
 	@Override
 	public List<Menu> selectMenuByCategory(String category) {
 		return sqlSession.selectList(NS+"selectMenuByCategory", category);
+	}
+
+	@Override
+	public int updateMenuStar(OrderList orderList) {
+		return sqlSession.update(NS+"updateMenuStar", orderList);
 	}
 
 }
