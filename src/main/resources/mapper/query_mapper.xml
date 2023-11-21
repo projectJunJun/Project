@@ -168,7 +168,7 @@
 		SELECT o.order_id, o.user_id, o.menu_id, o.team_id, o.order_time, o.count, o.star, o.is_paid, a.table_number, m.price
 		FROM orderlist o JOIN account a ON (o.user_id = a.user_id) JOIN menu m ON (o.menu_id = m.menu_id)
 		<if test="orderId != null">
-			WHERE o.order_id = #{orderId} AND o.is_paid = 0
+			WHERE o.order_id = #{orderId}
 		</if>
 	</select>
 
