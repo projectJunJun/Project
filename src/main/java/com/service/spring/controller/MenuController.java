@@ -78,9 +78,12 @@ public class MenuController {
     		List<Menu>chickenlist =menuService.selectMenuByCategory("치킨");
     		List<Menu>sidelist =menuService.selectMenuByCategory("사이드");
     		List<Menu>beveragelist =menuService.selectMenuByCategory("음료");
+    		List<Menu>topList = menuService.selectMenuByRank();
+    		System.out.println(topList);
     		model.addAttribute("chickenlist", chickenlist);
 			model.addAttribute("sidelist", sidelist);
 			model.addAttribute("beveragelist", beveragelist);
+			model.addAttribute("top3list", topList);
     		return "HomeUser";
     				
     	}catch(Exception e) {
