@@ -45,62 +45,32 @@
 </style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script type="text/javascript">
-$(function(){
-const minus = document.querySelector("#minus")
-const plus = document.querySelector("#plus")
-const count = document.querySelector("#count")
-const price = document.querySelector("#price")
-minus.addEventListener("click", e => {
-    if(count.value > 1) count.value -= 1
-	let thisPrice = parseInt(price.innerText)
-    let totalPrice = count.value*thisPrice
-    document.querySelector('.doOrder').innerHTML = totalPrice+" 원 담기"
-    e.preventDefault()
-})
-plus.addEventListener("click", e => {
-	let thisPrice = parseInt(price.innerText)
-	count.value = parseInt(count.value)+1
-	totalPrice = count.value*thisPrice
-	document.querySelector('.doOrder').innerHTML = totalPrice+" 원 담기"
-    e.preventDefault()
-});
-	$('.doOrder').click(function() {
-		menu_info = $(this).val()
-		menu_info += ", "+count.value
-		localStorage.setItem($(this).attr("id"), menu_info)
-	});
-});
-</script>
-    </style>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script type="text/javascript">
-        $(function(){
-            const minus = document.querySelector("#minus")
-            const plus = document.querySelector("#plus")
-            const count = document.querySelector("#count")
-            const price = document.querySelector("#price")
-            minus.addEventListener("click", e => {
-                if(count.value > 1) count.value -= 1
-                let thisPrice = parseInt(price.innerText)
-                let totalPrice = count.value*thisPrice
-                document.querySelector('.doOrder').innerHTML = totalPrice+" 원 담기"
-                documnet.querySelector('.doOrder').value = totalprice
-                e.preventDefault()
-            })
-            plus.addEventListener("click", e => {
-                let thisPrice = parseInt(price.innerText)
-                count.value = parseInt(count.value)+1
-                totalPrice = count.value*thisPrice
-                document.querySelector('.doOrder').innerHTML = totalPrice+" 원 담기"
-                e.preventDefault()
-            });
-            $('.doOrder').click(function() {
-                menu_info = $(this).val()
-                menu_info += ", "+count.value
-                localStorage.setItem($(this).attr("id"), menu_info)
-            });
+    $(function(){
+    const minus = document.querySelector("#minus")
+    const plus = document.querySelector("#plus")
+    const count = document.querySelector("#count")
+    const price = document.querySelector("#price")
+    minus.addEventListener("click", e => {
+        if(count.value > 1) count.value -= 1
+        let thisPrice = parseInt(price.innerText)
+        let totalPrice = count.value*thisPrice
+        document.querySelector('.doOrder').innerHTML = totalPrice+" 원 담기"
+        e.preventDefault()
+    })
+    plus.addEventListener("click", e => {
+        let thisPrice = parseInt(price.innerText)
+        count.value = parseInt(count.value)+1
+        totalPrice = count.value*thisPrice
+        document.querySelector('.doOrder').innerHTML = totalPrice+" 원 담기"
+        e.preventDefault()
+    });
+        $('.doOrder').click(function() {
+            menu_info = $(this).val()
+            menu_info += ", "+count.value
+            localStorage.setItem($(this).attr("id"), menu_info)
         });
-    </script>
+    });
+</script>
 </head>
 <jsp:include page="Header.jsp"/>
 <body>

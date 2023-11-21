@@ -163,6 +163,7 @@ public class AccountController {
             model.addAttribute("message", "에러 내용 - 테이블 조회 진행 중 에러발생");
         }
         return path;
+    }
  	
  	@GetMapping("/updateAccount.do")
     public String getUpdateAccount (Model model) {
