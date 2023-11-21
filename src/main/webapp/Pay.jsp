@@ -96,7 +96,7 @@
             padding: 10px;
         }
         #pay:hover {
-            background-color: #ee8822;
+            background-color: #ff8833;
             cursor: pointer;
         }
     </style>
@@ -144,7 +144,6 @@
         })
         plus.addEventListener("click", e => {
             people.value = parseInt(people.value)+1
-            localStorage.setItem('2', 'https://i.namu.wiki/i/dx56rVBJEZlDHe01q3mMDDYEV11XvxpIHuRCQ5eDegM6tdG1jpjxfJ7L23qq9paVqfVw8dI6AtyFYcFfX4RSUYzq50v9TtZFMrMswO2a7br4F7y721zfzPg3VIj_tJcuaxSMdcPkFq8E6eg5WKLS2A.webp,후라이드,25000,3')
             e.preventDefault()
         })
 

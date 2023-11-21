@@ -24,8 +24,8 @@ text-decoration-line: none
 }
 </style>
 </head>
-<header>
-  <img src= "./images/junjunlogo.png" width="350" height="143">
-  <a href="UserLogout.jsp"><button id ="adminmode"class="btn"><img src="./images/adminmode.png" width="50" height="50">  관리자 모드</button></a>
+  <header>
+    <img src= "./images/junjunlogo.png" width="350" height="143">
+    <a href="UserLogout.jsp"><button id ="adminmode"class="btn"><img src="./images/adminmode.png" width="50" height="50">  관리자 모드</button></a>
   </header>
 </html>

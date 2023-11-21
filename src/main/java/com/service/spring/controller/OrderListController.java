@@ -109,7 +109,7 @@ public class OrderListController {
                 orderListService.updateOrder(order);
                 menuService.updateMenuStar(order);
             }
-            path = "HomeUser";
+            path = "redirect:selectMenuByCategory.do";
             session.setAttribute("teamId", teamId+1);
         }catch (Exception e){
             model.addAttribute("title", "결제 및 별점 에러");
@@ -176,7 +176,7 @@ public class OrderListController {
             		System.out.println("결과2"+result2);
     			}
     		}
-    		path = "HomeUser";
+    		path = "Pay";
     	}catch(Exception e) {
     		model.addAttribute("title", "주문 하기 - 에러");
             model.addAttribute("message", "문제 내용 - 주문 하기 실행 중 에러발생");

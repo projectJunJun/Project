@@ -75,9 +75,9 @@ public class MenuController {
     public String selectMenuByCategory(Model model) {
     	try {
     		System.out.println("메뉴 카테고리 진입 성공");
-    		List<Menu>chickenlist =menuService.selectMenuByCategory("치킨");
-    		List<Menu>sidelist =menuService.selectMenuByCategory("사이드");
-    		List<Menu>beveragelist =menuService.selectMenuByCategory("음료");
+    		List<Menu>chickenlist = menuService.selectMenuByCategory("치킨");
+    		List<Menu>sidelist = menuService.selectMenuByCategory("사이드");
+    		List<Menu>beveragelist = menuService.selectMenuByCategory("음료");
     		model.addAttribute("chickenlist", chickenlist);
 			model.addAttribute("sidelist", sidelist);
 			model.addAttribute("beveragelist", beveragelist);
