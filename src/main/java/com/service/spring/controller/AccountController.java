@@ -29,7 +29,7 @@ public class AccountController {
     public String doLogin(Account account, HttpSession session, Model model){
         try {
             Account loginAccount = accountService.login(account);
-
+            
             if(loginAccount != null){   // 찾는 회원이 있다면
                 // String path = "HomeUser";
                 // "selectMenyByCategory";
@@ -41,6 +41,7 @@ public class AccountController {
         		System.out.println(path+"path 반환 성공");
                 return path;
             } else{
+            	model.addAttribute("message","아이디 혹은 패스워드를 확인해주세요");
                 return "Login";
             }
 

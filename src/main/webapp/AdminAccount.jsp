@@ -38,19 +38,26 @@
 <script type="text/javascript">
 	$('#selectedDel').click(function() {
 		var param='';
-		$('input[type=checkbox]:checked').each(function(index, item) {
-			param=param + "&list=" + $(item).attr('data-userId');
-		});
-		// 비동기 연결
-		$.ajax({
-			type:'post',
-			url:'deleteAjax.do',
-			data:param,
+		
+		if (confirm("계정을 삭제하겠습니까?") == true){
+			$('input[type=checkbox]:checked').each(function(index, item) {
+				param=param + "&list=" + $(item).attr('data-userId');
+			});
 			
-			success:function(result){
-				location.reload();
-			}
-		});
+			// 비동기 연결
+			$.ajax({
+				type:'post',
+				url:'deleteAjax.do',
+				data:param,
+				
+				success:function(result){
+					location.reload();
+				}
+			});
+		} else {
+			return;
+		}
+		
 	})
 </script>
 </html>
