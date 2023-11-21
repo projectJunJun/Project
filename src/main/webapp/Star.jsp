@@ -20,6 +20,24 @@
             display: flex;
             flex-direction: column;
         }
+        nav {
+            overflow: hidden;
+            position: relative;
+            width: 100%;
+        }
+        p {
+            animation: bannerMove 10s linear infinite;
+            color: #aaaaaa;
+            white-space: nowrap;
+        }
+        @keyframes bannerMove {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(100%);
+            }
+        }
         h1, h2 {
             text-align: center;
             margin-bottom: 0px;
@@ -67,20 +85,22 @@
     <script>
         $(function() {
             setInterval(() => {
+                localStorage.clear()
                 location.href = 'HomeUser.jsp'
                 $.post('pay.do')
-                localStorage.clear()
             }, 60000)
         })
-        $('input').click(function () {
+        $('input[type=submit]').click(function () {
+            localStorage.clear()
             location.href = 'HomeUser.jsp'
             $.post('pay.do')
-            localStorage.clear()
         })
     </script>
 </head>
 <body>
-    <p>다음 손님을 위해 60초 후 창이 닫힙니다</p>
+    <nav>
+        <p>다음 손님을 위해 60초 후 창이 닫힙니다</p>
+    </nav>
     <h1>오늘 식사는 괜찮으셨나요?</h1>
     <h2>더 나은 서비스를 위해 메뉴 평점을 작성해주세요 :D</h2>
     <h3>오늘 주문한 메뉴 목록</h3>
@@ -110,6 +130,7 @@
                                 <input type="radio" id="rating3_${order.menuId}" name="rating_${order.menuId}" value="1.5"><label class="half" for="rating3_${order.menuId}" title="1.5"></label>
                                 <input type="radio" id="rating2_${order.menuId}" name="rating_${order.menuId}" value="1"><label for="rating2_${order.menuId}" title="1"></label>
                                 <input type="radio" id="rating1_${order.menuId}" name="rating_${order.menuId}" value="0.5"><label class="half" for="rating1_${order.menuId}" title="0.5"></label>
+                                <input type="radio" id="rating0_${order.menuId}" name="rating_${order.menuId}" value="0" checked />
                             </fieldset>
                         </td>
                     </tr>

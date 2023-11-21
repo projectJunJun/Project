@@ -201,7 +201,7 @@
 		count = count+#{count}
 		WHERE user_id = #{userId} AND team_id = #{teamId} AND menu_id = #{menuId} AND is_paid = 0
 	</update>
-	
+
 	<update id="updateOrder" parameterType="orderList">
 		UPDATE orderlist
 		<set>

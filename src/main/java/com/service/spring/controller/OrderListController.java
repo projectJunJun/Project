@@ -87,24 +87,34 @@ public class OrderListController {
 
     // Star.jsp -> HomeUser.jsp
     @PostMapping("/pay.do")
-    public String pay(@RequestParam Map<String, String> params, HttpSession session, Model model) throws Exception {
+    public String pay(@RequestParam Map<String, String> params, HttpSession session, Model model) {
+        System.out.println("Params"+params);
         String path = "Error";
         Account account = (Account) session.getAttribute("account");
         int teamId = (int) session.getAttribute("teamId");
         ArrayList<String> menuIds = new ArrayList<>();
         ArrayList<Double> ratings = new ArrayList<>();
         try{
-          params.forEach((key, value)->{
+            params.forEach((key, value)->{
                 if(key.substring(0,6).equals("menuId")){
                     menuIds.add(value);
                 }else{
                     ratings.add(Double.parseDouble(value));
                 }
             });
+            System.out.println("menuIds"+menuIds);
+            System.out.println("ratings"+ratings);
             for(int i = 0; i < ratings.size(); i++){
                 OrderList order = new OrderList(account.getUserId(), menuIds.get(i), Integer.toString(teamId), ratings.get(i));
+                if(ratings.get(i) > 0){
+                    System.out.println("updateMenuStar Mapper!!!!!!!!!!! before");
+                    menuService.updateMenuStar(order);
+                    System.out.println("updateMenuStar Mapper!!!!!!!!!!! after");
+                }
+                System.out.println("updateOrder Mapper!!!!!!!!!!! before");
                 orderListService.updateOrder(order);
-                menuService.updateMenuStar(order);
+                System.out.println("updateOrder Mapper!!!!!!!!!!! after");
+                System.out.println("====메뉴 "+menuIds.get(i)+"결제 완료 후 별점 "+ratings.get(i)+"====");
             }
             path = "redirect:selectMenuByCategory.do";
             session.setAttribute("teamId", teamId+1);

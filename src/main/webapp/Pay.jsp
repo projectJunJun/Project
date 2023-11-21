@@ -31,11 +31,13 @@
             right: 20px;
             width: 50px;
             height: 50px;
+            background-color: #FFFFFF;
             border: 0;
             font-size: 32px;
         }
         #close:hover {
             font-weight: bold;
+            cursor: pointer;
         }
 
         h1 {
@@ -121,6 +123,7 @@
     <script>
         const close = document.querySelector("#close")
         close.addEventListener("click", e => {
+            location.href = 'BasketList.jsp'
             e.preventDefault()
         })
 

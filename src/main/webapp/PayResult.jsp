@@ -25,7 +25,20 @@
             background-color: #fff;
             box-shadow: 0px 0px 50px #aaa;
         }
-
+        #close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 50px;
+            height: 50px;
+            background-color: #FFFFFF;
+            border: 0;
+            font-size: 32px;
+        }
+        #close:hover {
+            font-weight: bold;
+            cursor: pointer;
+        }
         table {
             text-align: center;
             font-size: 20px;
@@ -84,6 +97,7 @@
 </head>
 <body>
     <form action="/star.do" method="post">
+        <button id="close">X</button>
         <h1>결제 금액 안내</h1>
         <h2>총 결제 금액</h2>
         <table>
@@ -111,6 +125,11 @@
         <input type="submit" value="결제하기">
     </form>
     <script>
+        const close = document.querySelector("#close")
+        close.addEventListener("click", e => {
+            location.href = 'Pay.jsp'
+            e.preventDefault()
+        })
         const button = document.querySelector("input")
         button.addEventListener("click", () => {
             location.href = 'Star.jsp'
