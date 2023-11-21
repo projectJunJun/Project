@@ -23,7 +23,4 @@
         height: 40px;
         border: 1px solid #ff9933;
     }
-    td:first-child { /* Target the first td element in each tr */
-   		width: 200px; /* Set the width to 100px */
-    }
 </style>
