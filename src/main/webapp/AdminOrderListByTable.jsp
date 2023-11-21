@@ -11,7 +11,7 @@
         }
         .table-flex-container{
             padding-top: 20px;
-            height: auto;
+            height: 500px;
             display: flex;
             flex-wrap: wrap;
             align-content: space-around;
@@ -48,8 +48,8 @@
     <div class="table-flex-container">
         <c:forEach items="${accountList}" var="account">
             <c:if test="${account.tableNumber ne 0}">
-                <div class="table-flex-child">
-                    <a class="text-box-tableNumber" href="selectTable.do?tableNumber=${account.tableNumber}">테이블 #${account.tableNumber}</a>
+                <a class="table-flex-child" href="selectTable.do?tableNumber=${account.tableNumber}">
+                    <div class="text-box-tableNumber">테이블 #${account.tableNumber}
                     <c:forEach items="${tableList}" var="table">
                         <c:if test="${table.tableNumber eq account.tableNumber}">
                             <c:if test="${!empty table}">
@@ -60,6 +60,7 @@
                         </c:if>
                     </c:forEach>
                 </div>
+                </a>
                 <br>
             </c:if>
         </c:forEach>
