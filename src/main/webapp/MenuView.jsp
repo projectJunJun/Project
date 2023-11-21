@@ -93,5 +93,5 @@ ${menu.description}
     <input type="number" value="1" id="count" name="count" >
     <button id="plus">+</button>
 </div>
-<button type="button" class="doOrder" id="doOrder" value="${menu.url}, ${menu.name}, ${menu.price}">${menu.price} 원 담기</button>
+<button type="button" class="doOrder" id="${menu.menuId}" value="${menu.url}, ${menu.name}, ${menu.price}">${menu.price} 원 담기</button>
 </html>
