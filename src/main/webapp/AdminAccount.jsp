@@ -4,6 +4,56 @@
 <head>
     <title>Title</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	<style>
+		body {
+			font-family: Arial, sans-serif;
+			width: 50%;
+			font-size: 20px;
+		}
+        table {
+        	width: 100%;
+            text-align: center;
+            font-size: 20px;
+            border-collapse: collapse;
+        }
+        thead {
+        	height: 40px;
+            background: #ff9933;
+            color: #ffffff;
+            border-collapse: separate;
+        }
+        tbody {
+            border-top: 1px solid #ff9933;
+            border-bottom: 1px solid #ff9933;
+        }
+        tr td {
+            height: 40px;
+            border: 1px solid #ff9933;
+        }
+	    td:first-child { /* Target the first td element in each tr */
+	   		width: 200px; /* Set the width to 100px */
+	    }
+	    .btn {
+	    	float: right;
+            display: inline-block;
+            padding: 10px 20px;
+            margin: 10px 0px 10px 10px;
+            text-align: center;
+            text-decoration: none;
+            background-color: orange; /* Orange button color */
+            color: white;
+            border-radius: 10px;
+        }
+
+        .btn:hover {
+            background-color: #ff8c00; /* Darker orange color on hover */
+        }
+
+        a {
+            text-decoration: none;
+            color: #333;
+        }
+    </style>
 </head>
 <body>
     <jsp:include page="AdminHeader.jsp"/>
@@ -26,9 +76,8 @@
 		</tbody>
 	</table>
 	
-	<a href = "registerAccount.do">계정 등록하기</a>
-	<a href= "#" id="selectedDel">선택항목삭제</a>
-
+	<a class="btn" href= "#" id="selectedDel">선택항목삭제</a>
+	<a class="btn" href = "registerAccount.do">계정 등록하기</a>
 </body>
 <script type="text/javascript">
 	$('#selectedDel').click(function() {

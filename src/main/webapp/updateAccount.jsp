@@ -37,6 +37,7 @@
 			</tr>
 		</table>
 	<input type="submit" value="계정 수정" />
+	<input type="reset" value="취소" />
 	</form>
 </body>
 </html>
