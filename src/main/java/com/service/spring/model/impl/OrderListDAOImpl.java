@@ -38,8 +38,8 @@ public class OrderListDAOImpl implements OrderListDAO {
 
     @Override
     public List<OrderList> selectOrderListByTable(String tableNumber) {
-        return sqlSession.selectList(NS+"selectOrderListByTable", tableNumber);
-
+        return sqlSession.selectList(NS + "selectOrderListByTable", tableNumber);
+    }
     @Override
     public int updateOrder(OrderList orderList) {
         return sqlSession.update(NS + "updateOrder", orderList);
