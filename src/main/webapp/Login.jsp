@@ -53,29 +53,6 @@
             border-radius: 7px;
             box-shadow: 0px 0px 5px 2px black;
         }
-        #login-error-msg-holder{
-            width: 100%;
-            height: 50%;
-            display: grid;
-            justify-items: center;
-            align-items: center;
-        }
-        #login-error-msg {
-            width: 23%;
-            text-align: center;
-            margin: 0;
-            padding: 5px;
-            font-size: 12px;
-            font-weight: bold;
-            color: #ff9933;
-            border: 1px solid #ff9933;
-            background-color: #e58f8f;
-            opacity: 0;
-        }
-
-        #error-msg-second-line {
-            display: block;
-        }
 
         #login-form {
             align-self: flex-start;
@@ -113,9 +90,8 @@
 </head>
 <body>
     <main id="main-holder">
-        <h1 id="login-header">JJC LOGIN</h1>
-        <div id="login-error-msg-holder">
-            <p id="login-error-msg">WRONG ID <span id="error-msg-second-line">PASSWORD</span></p>
+        <div id="login-header">
+            <img src="images/junjunlogo.png">
         </div>
 
         <form id="login-form" name="loginField" method="post" action="login.do">
