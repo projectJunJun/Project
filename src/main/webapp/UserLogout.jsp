@@ -52,6 +52,20 @@
 </div>
 <form id="logout-form" name="loginField" method="post" action="logout.do">
 <input type="password" name="password" id="password"  required="required"  class="logout-form-field" placeholder="Password">
-<input type="submit" value="로그아웃" id="logout-form-submit">
+<input type="button" value="로그아웃" id="logout-form-submit">
 </body>
+<script>
+    $('#logout-form-submit').click(function (){
+        // 사용자에게 확인 메시지를 보여주기
+        var confirmLogout = confirm('로그아웃 하시겠습니까?');
+
+        // 사용자가 확인을 눌렀을 경우
+        if(confirmLogout){
+            // 여기에 로그아웃 처리 코드 추가
+            $('#logout-form').submit();
+        } else{
+            window.location.href = 'UserLogout.jsp';
+        }
+    });
+</script>
 </html>

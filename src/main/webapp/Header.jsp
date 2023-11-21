@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -40,7 +41,21 @@ header{
   <img src= "./images/junjunlogo.png" width="350" height="143">
  	</a>
   </div>
-  <h2>${account.tableNumber}번 테이블</h2>
+    <c:choose>
+        <c:when test="${!empty account}">
+            <h2>${account.tableNumber}번 테이블</h2>
+        </c:when>
+        <c:otherwise>
+            <script>
+                alert("연결된 계정이 없어 자동 로그아웃 되었습니다.")
+                // 로그인 페이지 이동
+                setTimeout(function (){
+                    window.location.href = '/';
+                }, 0);  // 0초,,
+            </script>
+        </c:otherwise>
+    </c:choose>
+
   <a href="UserLogout.jsp"><button id ="adminmode"class="btn"><img src="./images/adminmode.png" width="40" height="40" style=margin-right:15px ">  관리자 모드</button></a>
 </header>
 </html>

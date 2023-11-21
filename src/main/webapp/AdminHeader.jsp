@@ -41,9 +41,7 @@
         alert('로그아웃 되었습니다.'); // Alert 창 띄우기
         // 여기에 로그아웃을 처리하는 로직 추가
         // 처음 페이지로의 리다이렉션
-        setTimeout(function () {
-            window.location.href = 'logoutAdmin.do';
-        }, 0); // 3000 밀리초 = 3초
+        window.location.href = '/';
     }
 </script>
 <div class="flex-container">
@@ -69,9 +67,7 @@
                     <script>
                         alert("연결된 계정이 없어 자동 로그아웃 되었습니다.")
                         // 페이지 이동
-                        setTimeout(function () {
-                            window.location.href = '/';
-                        }, 0); // 3000 밀리초 = 3초
+                        window.location.href = '/'; // 0초,,,
                     </script>
                 </c:otherwise>
             </c:choose>
