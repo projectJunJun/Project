@@ -21,4 +21,15 @@ public class OrderListServiceImpl implements OrderListService {
 //    public List<OrderList> selectOrderByTable(OrderList orderList) throws Exception {
 //        return orderListDAO.selectOrderByTable(orderList);
 //    }
+
+	@Override
+	public int updateOrderCount(OrderList orderList) {
+		return orderListDAO.updateOrderCount(orderList);
+	}
+
+	@Override
+	public int addOrder(OrderList orderList) {
+		System.out.println("SERVICE"+orderList);
+		return orderListDAO.addOrder(orderList);
+	}
 }

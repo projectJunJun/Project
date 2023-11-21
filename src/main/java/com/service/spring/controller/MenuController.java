@@ -1,9 +1,13 @@
 package com.service.spring.controller;
 
+import com.service.spring.domain.Account;
 import com.service.spring.domain.Menu;
 import com.service.spring.model.MenuService;
 
 import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -64,7 +68,7 @@ public class MenuController {
          //   model.addAttribute("message", "에러 내용 - 메뉴추가하기 중 에러발생");
     	//	return "Error";
     	}
-
+    
     @GetMapping("selectMenuByCategory.do")
     public String selectMenuByCategory(Model model) {
     	try {
@@ -92,12 +96,26 @@ public class MenuController {
     		model.addAttribute("menu", selected);
     		model.addAttribute("title", "메뉴 상세 정보");
     		return "MenuView";
-    				
+
     	}catch(Exception e) {
     		model.addAttribute("title", "메뉴  상세정보 불러오기 - 에러");
 			model.addAttribute("message","문제 내용 - 메뉴 상세정보 불러오는 중 에러발생");
 			return "Error";
     	}
-    
     }
+    @GetMapping("BasketList.do")
+    public String basket(Model model, HttpSession session) {
+    	try {
+    		System.out.println("장바구니 진입");
+    		Account account = (Account)session.getAttribute("account");
+    		model.addAttribute("account", account);
+    		model.addAttribute("title", "장바구니 정보");
+    		return "BasketList";
+    	}catch(Exception e) {
+    		model.addAttribute("title", "장바구니 불러오기 - 에러");
+			model.addAttribute("message","문제 내용 - 장바구니 불러오는 중 에러발생");
+			return "Error";
+    	}
+    }
+    
 }

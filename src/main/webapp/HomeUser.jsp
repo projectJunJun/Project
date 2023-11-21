@@ -118,7 +118,7 @@ text-decoration: none;
    	    </c:forEach>
     </div>
   </div>
-  <button id ="basket"class="btn"><a href="BasketList.jsp"><img src="./images/basket.png" width="50" height="50">  장바구니</a></button>
+  <button id ="basket"class="btn"><a href="BasketList.do"><img src="./images/basket.png" width="50" height="50">  장바구니</a></button>
   <script>
     // 세로(수직) 탭 초기화
     $(function() {

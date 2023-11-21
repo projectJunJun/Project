@@ -6,8 +6,10 @@
 <meta charset="UTF-8">
 <link rel="stylesheet" type="text/css" href="css/basic.css"/>
 <style type="text/css">
-	.poster{width:180px; height:200px;}
-	
+	.menu_image{width:180px; height:200px;}
+a{
+text-decoration-line: none ;
+}
 </style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script type="text/javascript">
@@ -25,8 +27,8 @@ function refreshPage(){
 		
 		var data = localStorage.getItem(key).split(",");
 		html +='<tr><td><img class=menu_image src='+data[0]+'></td><td>'+data[1]+'</td>'+
-		'<td>'+data[2]+'</td><td>'+data[3]+'</td><td><button id=deleteBasket value='+data[1]+
-		'>삭제</button></td></tr>';
+		'<td>'+data[2]+'</td><td>'+data[3]+'</td><td><button id=deleteBasket value='+key+
+		'>X</button></td></tr>';
 		totalPrice += parseInt(data[2])*parseInt(data[3]);
 	}//for
 	$('#content').html(html);
@@ -40,6 +42,23 @@ function deleteStorage(){
 		refreshPage();
 	}
 }
+
+$(function() {
+	$('#doOrder').click(function(){
+		var url = "updateOrderList.do?idList="
+		var idList = []
+		var countList =[]
+		for(var key in localStorage){
+			if (key=="length")break;
+			var data=localStorage.getItem(key).split(',')
+			idList.push(key)
+			countList.push(data[3])
+		}
+		url+=idList+"&countList="+countList
+		location.href = url
+	});
+});
+
 </script>
 <title>Insert title here</title>
 </head>
@@ -49,7 +68,7 @@ function deleteStorage(){
 <article class="main">
 		<section>
 			<table width="80%"  align="center"  >
-			<caption class="caption">장바구니</caption>
+			<caption class="caption">장바구니 | 테이블 ${account.tableNumber}</caption>
 			<thead>
 				<tr><th></th><th>이름</th><th>가격</th><th>수량</th><th>X</th></tr>
 			</thead>
@@ -67,6 +86,7 @@ function deleteStorage(){
 			</td></tr>
 			</table>
 		</section>
+		<button id="doOrder">주문 하기</button>
 		</article>
 </body>
 </html>

@@ -23,4 +23,15 @@ public class OrderListDAOImpl implements OrderListDAO {
 //    public List<OrderList> selectOrderByTable(OrderList orderList) throws Exception {
 //        return sqlSession.selectList(NS+"selectOrderByTable");
 //    }
+
+	@Override
+	public int updateOrderCount(OrderList orderList) {
+		return sqlSession.update(NS+"updateOrderCount", orderList);
+	}
+
+	@Override
+	public int addOrder(OrderList orderList) {
+		System.out.println("DAO"+orderList);
+		return sqlSession.insert(NS+"addOrder", orderList);
+	}
 }

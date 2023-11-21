@@ -39,6 +39,9 @@
             font-size: 20px;
             border: 0px;
         }
+        a{
+text-decoration-line: none 
+}
 </style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script type="text/javascript">
@@ -52,7 +55,6 @@ minus.addEventListener("click", e => {
 	let thisPrice = parseInt(price.innerText)
     let totalPrice = count.value*thisPrice
     document.querySelector('.doOrder').innerHTML = totalPrice+" 원 담기"
-    documnet.querySelector('.doOrder').value = totalprice 
     e.preventDefault()
 })
 plus.addEventListener("click", e => {
@@ -90,5 +92,5 @@ ${menu.description}
             <input type="number" value="1" id="count" name="count" >
             <button id="plus">+</button>
         </div>
-<button type="button" class="doOrder" id="doOrder" value="${menu.url}, ${menu.name}, ${menu.price}">${menu.price} 원 담기</button>
+<button type="button" class="doOrder" id="${menu.menuId}" value="${menu.url}, ${menu.name}, ${menu.price}">${menu.price} 원 담기</button>
 </html>
