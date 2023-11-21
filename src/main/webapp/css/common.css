@@ -1,0 +1,51 @@
+@CHARSET "EUC-KR";
+
+<style>
+	body {
+	}
+	body {
+		font-family: Arial, sans-serif;
+		width: 50%;
+	}
+	.btn {
+    	font-size: 20px;
+    	float: right;
+        display: inline-block;
+        padding: 10px 20px;
+        margin: 10px 0px 10px 10px;
+        text-align: center;
+        text-decoration: none;
+        background-color: orange; /* Orange button color */
+        color: white;
+        border-radius: 10px;
+   }
+
+    .btn:hover {
+        background-color: #ff8c00; /* Darker orange color on hover */
+    }
+    a {
+        text-decoration: none;
+        color: #333;
+    }
+    button > a{
+        color: #ff9933;
+        text-decoration: none;
+        font-size: 25px;
+    }
+    .button-container{
+        display: flex;
+        margin-left: 20px;
+    }
+    button{
+        height: 75px;
+        width: 240px;
+        margin-left: 10px;
+        margin-right: 10px;
+        border-radius: 25px;
+        border: 3px solid #ff9933;
+        background-color: #F5EFEF;
+    }
+    .empty-container{
+        height: 20px;
+    }
+</style>

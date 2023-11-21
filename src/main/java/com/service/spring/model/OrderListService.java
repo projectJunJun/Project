@@ -1,10 +1,10 @@
 package com.service.spring.model;
 
+import java.util.List;
+
 import com.service.spring.domain.Account;
 import com.service.spring.domain.OrderList;
-import com.sun.org.apache.xpath.internal.operations.Or;
-
-import java.util.List;
+import com.service.spring.domain.Table;
 
 public interface OrderListService {
     List<OrderList> selectOrderByTable(Account account);
@@ -15,4 +15,6 @@ public interface OrderListService {
     OrderList selectOrderDetail(OrderList orderList);
     List<OrderList> selectOrder(OrderList orderList);
     List<OrderList> selectOrderListByTable(String tableNumber);
+    List<Table> viewTotalOrder();
+    List<OrderList> viewOrderDetail(String tableNumber);
 }

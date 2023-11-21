@@ -3,7 +3,11 @@
 <html>
 <head>
     <title>Title</title>
+    <link rel="stylesheet" href="css/common.css">
+	<link rel="stylesheet" href="css/table_h.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <style>
+    </style>
 </head>
 <body>
     <jsp:include page="AdminHeader.jsp"/>
@@ -26,9 +30,8 @@
 		</tbody>
 	</table>
 	
-	<a href = "registerAccount.do">계정 등록하기</a>
-	<a href= "#" id="selectedDel">선택항목삭제</a>
-
+	<a class="btn" href= "#" id="selectedDel">선택항목삭제</a>
+	<a class="btn" href = "registerAccount.do">계정 등록하기</a>
 </body>
 <script type="text/javascript">
 	$('#selectedDel').click(function() {

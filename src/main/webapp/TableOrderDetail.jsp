@@ -1,10 +1,12 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
 <html>
 <head>
-    <title>주문 목록 테이블별 보기</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <style>
+	<meta charset="UTF-8">
+	<style>
         button > a{
             color: #ff9933;
             text-decoration: none;
@@ -31,9 +33,10 @@
             flex-wrap: wrap;
         }
     </style>
+<title>주문 목록 테이블별 상세 보기</title>
 </head>
 <body>
-    <jsp:include page="AdminHeader.jsp"/>
+	<jsp:include page="AdminHeader.jsp"/>
     <div class="button-container">
         <div class="selectAllOrder">
             <button id="button-selectAllOrder">
@@ -50,30 +53,26 @@
             </button>
         </div>
     </div>
-    <div class="empty-container"></div>
-    <!-- 테이블별 flex 생성 -->
-    <div class="container">
     <table>
-    	<tr>
-    		<th>테이블번호</th>
-    		<th>총합가격</th>
-    		<th>주문 메뉴 수</th>
-    	</tr>
-    	
-	   	<c:forEach items="${accountList}" var="account">
-	    	<tr>    		
-	                <td><a href = "selectTable.do?tableNumber=${account.tableNumber}">${account.tableNumber}</a></td>			
-			<c:forEach items="${tableList}" var="table">
-				<c:if test="${table.tableNumber eq account.tableNumber}">        	
-			         	<td>${table.totalPrice}</td>
-			         	<td>${table.countMenu}</td>
-		    	</c:if>            
-	    	</c:forEach>
-	    	</tr>	        
-	  	</c:forEach>
-		         
-        
-    </table>
-    </div>
+		<thead>
+			<tr>
+				<th>테이블번호</th>
+				<th>메뉴 이름</th>
+				<th>주문수량</th>
+				<th>가격</th>
+			</tr>
+		</thead>
+	    <tbody>
+			<c:forEach items="${orderList}" var="order">
+			<tr>
+				<td>${order.account.tableNumber}</td>
+				<td>${order.menu.name}</td>
+				<td>${order.count}</td>				
+				<td>${order.menu.price}</td>
+			</tr>
+			</c:forEach>
+		</tbody>
+	</table>
+	
 </body>
 </html>

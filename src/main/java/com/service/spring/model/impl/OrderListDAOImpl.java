@@ -2,6 +2,7 @@ package com.service.spring.model.impl;
 
 import com.service.spring.domain.Account;
 import com.service.spring.domain.OrderList;
+import com.service.spring.domain.Table;
 import com.service.spring.model.OrderListDAO;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -55,5 +56,13 @@ public class OrderListDAOImpl implements OrderListDAO {
 		System.out.println("DAO"+orderList);
 		return sqlSession.insert(NS+"addOrder", orderList);
 	}
+	@Override
+	public List<Table> viewTotalOrder(){
+		return sqlSession.selectList(NS+"viewTotalOrder");
+	}
 
+	@Override
+	public List<OrderList> viewOrderDetail(String tableNumber) {
+		return sqlSession.selectList(NS+"viewOrderDetail", tableNumber);
+	}
 }

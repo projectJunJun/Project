@@ -49,6 +49,10 @@ public class MenuServiceImpl implements MenuService {
 	public int updateMenuStar(OrderList orderList) {
 		return menuDAO.updateMenuStar(orderList);
 	}
-
+	
+	@Override
+	public List<Menu> selectMenuByRank() {
+		return menuDAO.selectMenuByRank();
+	}
 
 }

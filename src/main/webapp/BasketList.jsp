@@ -91,7 +91,7 @@
 			<table>
 				<caption class="caption">장바구니 | 테이블 ${account.tableNumber}</caption>
 				<thead>
-					<tr><th></th><th>이름</th><th>가격</th><th>수량</th><th>X</th></tr>
+					<tr><th></th><th>이름</th><th>가격</th><th>수량</th><th>삭제</th></tr>
 				</thead>
 				<tbody id="content">
 				</tbody>

@@ -4,33 +4,12 @@
 <head>
     <title>주문내역 조회</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/table_h.css">
     <style>
-        button > a{
-            color: #ff9933;
-            text-decoration: none;
-            font-size: 25px;
-        }
-        .button-container{
-            display: flex;
-            margin-left: 20px;
-        }
-        button{
-            height: 75px;
-            width: 240px;
-            margin-left: 10px;
-            margin-right: 10px;
-            border-radius: 25px;
-            border: 3px solid #ff9933;
-            background-color: #F5EFEF;
-        }
-        .empty-container{
-            height: 20px;
-        }
-        table{
-            margin-left: 20px;
-            font-size: 20px;
-            text-align: center;
-        }
+    	body{
+    		width: 75%;
+    	}
     </style>
 </head>
 <body>
@@ -64,13 +43,14 @@
                 <th>개수</th>
                 <th>별점</th>
                 <th>결제 여부</th>
+                <th>상세보기</th>
             </tr>
         </thead>
         <tbody>
             <!-- forEach 사용 -->
             <c:forEach items="#{orderLists}" var="orderList">
                 <tr>
-                    <td><a href="orderListDetail.do?orderId=${orderList.orderId}">${orderList.orderId}</a></td>
+                    <td>${orderList.orderId}</td>
                     <td>${orderList.userId}</td>
                     <td>${orderList.menuId}</td>
                     <td>${orderList.teamId}</td>
@@ -78,6 +58,7 @@
                     <td>${orderList.count}</td>
                     <td>${orderList.star}</td>
                     <td>${orderList.isPaid}</td>
+                    <td><a href="orderListDetail.do?orderId=${orderList.orderId}" style="color:blue;">✓</a></td>
                 </tr>
             </c:forEach>
         </tbody>
