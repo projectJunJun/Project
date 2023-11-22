@@ -26,7 +26,7 @@
             padding : 20px 5px;
             font-size : 24px;
             font-weight: bold;
-            border-radius: 15px;
+            border-radius: 10px;
         }
         .ui-tabs-vertical .ui-tabs-nav li a {
             display: block;
