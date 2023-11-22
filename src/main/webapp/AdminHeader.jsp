@@ -37,13 +37,12 @@
 </style>
 <script>
     function logout() {
-        // 로그아웃 버튼이 클릭되었을 때 실행할 동작
         // 사용자에게 확인 메세지를 보여주기
-        var confirmLogout = confirm("로그아웃 하시겠습니까?");
+        var confirmLogout = confirm('로그아웃 하시겠습니까?');
 
-        // 사용자가 확인을 눌렀을 때
+        // 사용자가 확인을 눌렀을 경우
         if(confirmLogout){
-            window.location.href = 'logout.do';
+            window.location.href = 'logoutAdmin.do';
         }
     }
 </script>
@@ -63,7 +62,7 @@
                 <c:when test="${!empty loginAccount}">
                     <div class="flex-item-login-text2">
                             ${loginAccount.userId} 님 로그인 되었습니다.
-                            <button onclick="logout()">로그아웃</button>
+                            <button type="submit" onclick="logout()">로그아웃</button>
                     </div>
                 </c:when>
                 <c:otherwise>
@@ -75,6 +74,5 @@
                 </c:otherwise>
             </c:choose>
         </div>
-
     </div>
 </div>
