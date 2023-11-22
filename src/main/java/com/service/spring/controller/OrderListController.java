@@ -106,7 +106,7 @@ public class OrderListController {
             System.out.println("menuIds"+menuIds);
             System.out.println("ratings"+ratings);
             for(int i = 0; i < ratings.size(); i++){
-                OrderList order = new OrderList(account.getUserId(), menuIds.get(i), Integer.toString(teamId), ratings.get(i), 1);
+                OrderList order = new OrderList(account.getUserId(), menuIds.get(i), Integer.toString(teamId), ratings.get(i));
                 if(ratings.get(i) > 0){
                     menuService.updateMenuStar(order);
                     System.out.println("====메뉴 "+menuIds.get(i)+"결제 완료 후 별점 "+ratings.get(i)+"====");

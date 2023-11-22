@@ -17,12 +17,11 @@ public class OrderList {
 	public OrderList() {}
 	
 	// 결제, 별점 바꿀 때
-	public OrderList(String userId, String menuId, String teamId, double star, int isPaid) {
+	public OrderList(String userId, String menuId, String teamId, double star) {
 		this.userId = userId;
 		this.menuId = menuId;
 		this.teamId = teamId;
 		this.star = star;
-		this.isPaid = isPaid;
 	}
 	
 	// 주문할 때 db에 들어감
