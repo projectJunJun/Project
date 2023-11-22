@@ -83,31 +83,6 @@
             width: 280px;
             float: left;
         }
-        .menulist2 {
-            display: flex;
-            flex-direction: column;
-            width: 220px;
-            margin-top: 50px;
-            float: left;
-        }
-        .image2 {
-            width: 220px;
-            height: 200px;
-            margin: 10px 0;
-        }
-        .menu_name2{
-            width: 220px;
-            font-size: 24px;
-            font-weight:bold;
-            text-align: center;
-        }
-        .price2{
-            width: 220px;
-            font-size: 18px;
-            color: #888;
-            text-align: center;
-            margin-bottom: 20px;
-        }
         .icon {
             width: 40px;
             height: 40px;
@@ -141,12 +116,12 @@
         </ul>
         <div id="tab-1-v" class="flex-box">
             <c:forEach items="${top3list}" var="menu">
-                <div class="menulist2">
+                <div class="menulist">
                     <a href="detail.do?menuId=${menu.menuId}">
-                        <img src="${menu.url}" class="image2"></a>
+                        <img src="${menu.url}" class="image"></a>
                     <div>
-                        <div class="menu_name2">${menu.name}</div>
-                        <div class="price2"><fmt:formatNumber value="${menu.price}" pattern="#,###" />원</div>
+                        <div class="menu_name">${menu.name}</div>
+                        <div class="price"><fmt:formatNumber value="${menu.price}" pattern="#,###" />원</div>
                     </div>
                 </div>
             </c:forEach>

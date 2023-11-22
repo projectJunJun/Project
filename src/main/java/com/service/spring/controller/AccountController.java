@@ -35,13 +35,14 @@ public class AccountController {
                 // "selectMenyByCategory";
                 String path = "redirect:selectMenuByCategory.do";
                 session.setAttribute("account", loginAccount);
+                session.setAttribute("loginAccount", loginAccount);
                 System.out.println("login session"+loginAccount);
                 if(loginAccount.getAuthority() == 1) path = "HomeAdmin";
                 else session.setAttribute("teamId", 1);         // teamId
         		System.out.println(path+"path 반환 성공");
                 return path;
             } else{
-            	model.addAttribute("message","아이디 혹은 패스워드를 확인해주세요");
+            	model.addAttribute("message","아이디 혹은 비밀번호를 확인해주세요");
                 return "Login";
             }
 
@@ -55,13 +56,19 @@ public class AccountController {
     @PostMapping("/logout.do")
     public String doLogout(HttpSession session, String password, Model model){
         String path = "Error";
-        Account account = (Account) session.getAttribute("account");
+        Account account = (Account) session.getAttribute("loginAccount");
         System.out.println("account"+account);
         System.out.println("password"+password);
-        if(account.getPassword().equals(password) & (account != null)){
-            session.invalidate();
-            path = "Login";
-        } else{ // 비밀번호 틀림
+        if (account != null){
+            if(account.getPassword().equals(password)){
+                session.invalidate();
+                path = "Login";
+            } else{
+                model.addAttribute("message", "비밀번호를 확인해주세요!");
+                path = "UserLogout";
+            }
+        }
+        else{ // 비밀번호 틀림
             model.addAttribute("title", "로그아웃 에러");
             model.addAttribute("message", "에러 내용 - 회원 로그아웃 진행중 에러발생");
         }

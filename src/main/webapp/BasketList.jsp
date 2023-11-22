@@ -44,6 +44,8 @@
 		color: #ff9933;
 		font-size: 24px;
 		border: None;
+		cursor: pointer;
+		
 	}
 	.menu_image{
 		width:150px; height:150px;
@@ -96,7 +98,7 @@
 	}
 
 	function deleteStorage(){
-		let y = confirm($(this).val()+" 을 삭제하시겠습니까?");
+		let y = confirm($(this).closest('.close').siblings('.name').text()+" 을 삭제하시겠습니까?");
 		if(y){
 			localStorage.removeItem($(this).val());
 			refreshPage();

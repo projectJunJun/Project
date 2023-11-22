@@ -33,11 +33,12 @@
 		  <tr>
 			<td>테이블번호</td>
 			<td>
-				<input class="content_input" type="text" name="tableNumber" required/>
+				<input class="content_input" pattern="[0-9]+" type="text" name="tableNumber" required/>
 			</td>
 		  </tr>  
 	  </table>
-	  <input class="btn" type="submit" value="계정등록" /> &nbsp;
+	  <input class="btn" type="submit" value="계정등록" />
+	  <a class="btn" href="selectAllAccount.do">목록으로 돌아가기</a>
 	  </form>
 	  </div>
 </body>

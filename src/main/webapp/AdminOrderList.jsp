@@ -28,8 +28,8 @@
         <thead>
             <tr>
                 <th>주문 ID</th>
-                <th>테이블 ID</th>
-                <th>메뉴 ID</th>
+                <th>테이블 번호</th>
+                <th>메뉴명</th>
                 <th>팀 ID</th>
                 <th>주문시간</th>
                 <th>개수</th>
@@ -42,8 +42,8 @@
             <c:forEach items="#{orderLists}" var="orderList">
                 <tr>
                     <td>${orderList.orderId}</td>
-                    <td>${orderList.userId}</td>
-                    <td>${orderList.menuId}</td>
+                    <td>${orderList.account.tableNumber}</td>
+                    <td>${orderList.menu.name}</td>
                     <td>${orderList.teamId}</td>
                     <td>${orderList.orderTime}</td>
                     <td>${orderList.count}</td>

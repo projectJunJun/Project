@@ -55,6 +55,12 @@
 <input type="button" value="로그아웃" id="logout-form-submit">
 </body>
 <script>
+    $('#password').keypress(function (e){
+        if(e.which==13){
+            e.preventDefault();
+            $('#logout-form-submit').click();
+        }
+    });
     $('#logout-form-submit').click(function (){
         // 사용자에게 확인 메시지를 보여주기
         var confirmLogout = confirm('로그아웃 하시겠습니까?');
@@ -66,6 +72,10 @@
         } else{
             window.location.href = 'UserLogout.jsp';
         }
+    });
+    $(document).ready(function (){
+       let message = "${message}";
+       if(message) alert(message);
     });
 </script>
 </html>

@@ -75,7 +75,7 @@ public class OrderListController {
     public String selectAllOrder(OrderList orderList, Model model){
       String path = "Error";
       try{
-        List<OrderList> orderLists = orderListService.selectAllOrder(orderList);
+    	  List<OrderList> orderLists = orderListService.selectAllOrder(orderList);
             model.addAttribute("orderLists", orderLists);
             path = "AdminOrderList";
         } catch (Exception e){
@@ -145,13 +145,12 @@ public class OrderListController {
     
     // 테이블별 주문 메뉴 상세조회
     @GetMapping("/selectTable.do")
-    public String doSelectTable(String tableNumber, Model model, HttpSession session) {
+    public String doSelectTable(String tableNumber, Model model) {
     	String path = "Error";
     	try {
     		System.out.println(tableNumber);
     		List<OrderList> orderList = orderListService.viewOrderDetail(tableNumber);
     		System.out.println(orderList);
-            System.out.println("[selectTable]: "+session.getAttribute("account"));
         	model.addAttribute("orderList", orderList);
         	path = "TableOrderDetail";
     	} catch (Exception e) {
