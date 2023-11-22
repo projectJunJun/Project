@@ -62,6 +62,9 @@ public class MenuController {
     @PostMapping("addMenu.do")
     public String postAddMenu(Menu menu, Model model) {
     	try {
+    		menu.setTotalStar(0);
+    		menu.setCountStar(0);
+    		System.out.println(menu);
     		menuService.addMenu(menu);
     		return "redirect:selectAllMenu.do";
     	} catch (Exception e) {
