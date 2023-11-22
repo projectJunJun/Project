@@ -5,64 +5,66 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" href="css/common.css">
+<link rel="stylesheet" href="css/table_v.css">
+<style>
+	    .content {
+			width: 40%;
+		}
+    </style>
 </head>
 <body>
 	<jsp:include page="AdminHeader.jsp"/>
 	
+	<div class="content">
 	<form method="post" action="updateMenu.do">
-	  <table border="0" cellpadding="0" cellspacing="1" width="590" bgcolor="BBBBBB">
-		  <tr>
-			<td width=100 align=center bgcolor="E6ECDE" height="22">메뉴ID</td>
-			<td width=490 bgcolor="ffffff" style="padding-left:10">
-				<input type="text" style="width:150" name="menuId" readonly value="${menu.menuId}"/>
+	<table>
+	  <tr>
+		<td>메뉴ID</td>
+			<td>
+				<input class="content_input" type="text" name="menuId" readonly value="${menu.menuId}"/>  
 			</td>
 		  </tr>
 		  <tr>
-			<td width=100 align=center bgcolor="E6ECDE" height="22">메뉴명</td>
-			<td width=490 bgcolor="ffffff" style="padding-left:10">
-				<input type="text" style="width:150" name="name" value="${menu.name}"/>
+			<td>메뉴이름</td>
+			<td>
+				<input class="content_input" type="text" name="name" value="${menu.name}" required/>
 			</td>
 		  </tr>
 		  <tr>
-			<td width=100 align=center bgcolor="E6ECDE" height="22">카테고리</td>
-			<td width=490 bgcolor="ffffff" style="padding-left:10">
-				<input type="text" style="width:240" name="category" value="${menu.category}"/>
+			<td>카테고리</td>
+			<td>
+				<select class="content_input" name="category">
+					<option value="치킨">치킨</option>
+					<option value="사이드">사이드</option>
+					<option value="음료">음료</option>
+				</select>
+				<!-- <input class="content_input" type="text" name="category" required/> -->
 			</td>
 		  </tr>
 		  <tr>
-			<td width=100 align=center bgcolor="E6ECDE" height="22">가격</td>
-			<td width=490 bgcolor="ffffff" style="padding-left:10">
-				<input type="text" style="width:240" name="price" value="${menu.price}"/>
+			<td>가격</td>
+			<td>
+				<input class="content_input" pattern="[0-9]+" type="text" name="price" value="${menu.price}" required/>
 			</td>
-		  </tr>
+		  </tr>  
 		  <tr>
-			<td width=100 align=center bgcolor="E6ECDE" height="22">이미지url</td>
-			<td width=490 bgcolor="ffffff" style="padding-left:10">
-				<input type="text" style="width:240" name="url" value="${menu.url}"/>
+			<td>이미지url</td>
+			<td>
+				<input class="content_input" type="text" name="url" value="${menu.url}" required/>
 			</td>
-		  </tr>
-		  <tr>
-			<td width=100 align=center bgcolor="E6ECDE" height="22">설명</td>
-			<td width=490 bgcolor="ffffff" style="padding-left:10">
-				<input type="text" style="width:240" name="description" value="${menu.description}"/>
-			</td>
-		  </tr>
-		  	  
-	  </table>
-
-	  <br>
-	  
-	  <table width=590 border=0 cellpadding=0 cellspacing=0>
-		  <tr>
-			<td align=center>
-			<input type="submit" value="수정완료" /> &nbsp;
-			<input type="reset" value="취소" /> &nbsp;
+		  </tr>  
+		  <tr height="100px">
+			<td>상세설명</td>
+			<td>
+				<textarea class="content_input" name="description" rows="" cols="">${menu.description}</textarea>
 			</td>
 		  </tr>
 	  </table>
-	  </form>
-	  </td>
-	</tr>
-</table>  
+	  <input class="btn" type="submit" value="수정 완료" />
+	  <input class="btn" type="reset" value="취소" />
+	  <a class="btn" href="selectAllMenu.do">목록으로 돌아가기</a>
+	</form>
+  </div>
 </body>
 </html>
