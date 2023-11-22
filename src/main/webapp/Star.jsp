@@ -5,7 +5,7 @@
     <title>후기를 남겨주세요</title>
     <style>
         @import url(//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css);
-        .rate { display: inline-block;border: 0;margin-right: 15px;}
+        .rate { display: inline-block;border: 0;margin: 0;}
         .rate > input {display: none;}
         .rate > label {float: right;color: #ddd;}
         .rate > label:before {display: inline-block;font-size: 2rem;padding: .3rem .2rem;margin: 0;cursor: pointer;font-family: FontAwesome;content: "\f005 ";}
@@ -19,6 +19,7 @@
         body {
             display: flex;
             flex-direction: column;
+            align-items: center;
         }
         nav {
             overflow: hidden;
@@ -26,7 +27,7 @@
             width: 100%;
         }
         p {
-            animation: bannerMove 10s linear infinite;
+            animation: bannerMove 15s linear infinite;
             color: #aaaaaa;
             white-space: nowrap;
         }
@@ -35,7 +36,7 @@
                 transform: translateX(0);
             }
             100% {
-                transform: translateX(100%);
+                transform: translateX(90%);
             }
         }
         h1, h2 {
@@ -44,10 +45,11 @@
         }
         h3 {
             width: 190px;
+            text-align: center;
             border: 2px solid #ff9933;
             border-radius: 15px;
             padding: 12px 30px;
-            margin: 70px 0 30px 100px;
+            margin-top: 100px;
         }
         main {
             display: flex;
@@ -63,7 +65,7 @@
             width: 300px;
         }
         .right {
-            width: 230px;
+            width: 205px;
         }
         input {
             width: 500px;
@@ -84,22 +86,28 @@
     <script src='https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
     <script>
         $(function() {
+            const second = document.querySelector('#second')
+            const form = document.querySelector('form')
+            let time = 60
+            setInterval(() => {
+                time -= 1
+                second.innerText = time
+            }, 1000)
             setInterval(() => {
                 localStorage.clear()
-                location.href = 'HomeUser.jsp'
-                $.post('pay.do')
-            }, 60000)
+                form.submit()
+            }, 10000)
         })
-        $('input[type=submit]').click(function () {
-            localStorage.clear()
-            location.href = 'HomeUser.jsp'
-            $.post('pay.do')
-        })
+        $(document).on('click', 'input[type="submit"]', function() {
+            localStorage.clear();
+            $.post('pay.do');
+            location.href = 'selectMenuByCategory.do';
+        });
     </script>
 </head>
 <body>
     <nav>
-        <p>다음 손님을 위해 60초 후 창이 닫힙니다</p>
+        <p>다음 손님을 위해 <span id="second">60</span>초 후 창이 닫힙니다</p>
     </nav>
     <h1>오늘 식사는 괜찮으셨나요?</h1>
     <h2>더 나은 서비스를 위해 메뉴 평점을 작성해주세요 :D</h2>
@@ -107,12 +115,12 @@
     <main>
         <form action="/pay.do" method="post">
             <table>
-                <thead>
-                    <tr>
-                        <th class="left">메뉴</th>
-                        <th class="right">별점</th>
-                    </tr>
-                </thead>
+<%--                <thead>--%>
+<%--                    <tr>--%>
+<%--                        <th class="left">메뉴</th>--%>
+<%--                        <th class="right">별점</th>--%>
+<%--                    </tr>--%>
+<%--                </thead>--%>
                 <tbody>
                 <c:forEach items="${list}" var="order">
                     <tr>

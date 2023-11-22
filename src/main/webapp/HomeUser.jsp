@@ -1,13 +1,15 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <html>
 <head>
-
+    <meta charset="UTF-8">
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <title>준준치킨에 오신 것을 환영합니다</title>
+    <link rel="icon" href="images/logo.PNG">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://code.jquery.com/ui/1.13.0/jquery-ui.min.js"></script>
     <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.0/themes/base/jquery-ui.css">
-
     <style>
         /* 수직 탭 스타일 */
         .ui-tabs-vertical {
@@ -26,7 +28,6 @@
             padding : 20px 5px;
             font-size : 24px;
             font-weight: bold;
-            border-radius: 15px;
         }
         .ui-tabs-vertical .ui-tabs-nav li a {
             display: block;
@@ -120,7 +121,7 @@
                         <img src="${menu.url}" class="image"></a>
                     <div>
                         <div class="menu_name">${menu.name}</div>
-                        <div class="price">${menu.price}원</div>
+                        <div class="price"><fmt:formatNumber value="${menu.price}" pattern="#,###" />원</div>
                     </div>
                 </div>
             </c:forEach>
@@ -133,7 +134,7 @@
                         <img src="${menu.url}" class="image"></a>
                     <div>
                         <div class="menu_name">${menu.name}</div>
-                        <div class="price">${menu.price}원</div>
+                        <div class="price"><fmt:formatNumber value="${menu.price}" pattern="#,###" />원</div>
                     </div>
                 </div>
             </c:forEach>
@@ -146,7 +147,7 @@
                         <img src="${menu.url}" class="image"></a>
                     <div>
                         <div class="menu_name">${menu.name}</div>
-                        <div class="price">${menu.price}원</div>
+                        <div class="price"><fmt:formatNumber value="${menu.price}" pattern="#,###" />원</div>
                     </div>
                 </div>
             </c:forEach>
@@ -158,7 +159,7 @@
                         <img src="${menu.url}" class="image"></a>
                     <div>
                         <div class="menu_name">${menu.name}</div>
-                        <div class="price">${menu.price}원</div>
+                        <div class="price"><fmt:formatNumber value="${menu.price}" pattern="#,###" />원</div>
                     </div>
                 </div>
             </c:forEach>

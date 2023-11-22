@@ -92,6 +92,7 @@ public class OrderListController {
         String path = "Error";
         Account account = (Account) session.getAttribute("account");
         int teamId = (int) session.getAttribute("teamId");
+        System.out.println("현재 teamId "+teamId);
         ArrayList<String> menuIds = new ArrayList<>();
         ArrayList<Double> ratings = new ArrayList<>();
         try{
@@ -107,17 +108,16 @@ public class OrderListController {
             for(int i = 0; i < ratings.size(); i++){
                 OrderList order = new OrderList(account.getUserId(), menuIds.get(i), Integer.toString(teamId), ratings.get(i));
                 if(ratings.get(i) > 0){
-                    System.out.println("updateMenuStar Mapper!!!!!!!!!!! before");
                     menuService.updateMenuStar(order);
-                    System.out.println("updateMenuStar Mapper!!!!!!!!!!! after");
+                    System.out.println("====메뉴 "+menuIds.get(i)+"결제 완료 후 별점 "+ratings.get(i)+"====");
                 }
-                System.out.println("updateOrder Mapper!!!!!!!!!!! before");
                 orderListService.updateOrder(order);
-                System.out.println("updateOrder Mapper!!!!!!!!!!! after");
                 System.out.println("====메뉴 "+menuIds.get(i)+"결제 완료 후 별점 "+ratings.get(i)+"====");
             }
             path = "redirect:selectMenuByCategory.do";
             session.setAttribute("teamId", teamId+1);
+            int newTeamId = (int) session.getAttribute("teamId");
+            System.out.println("바뀐 teamId "+newTeamId);
         }catch (Exception e){
             model.addAttribute("title", "결제 및 별점 에러");
             model.addAttribute("message", "에러 내용 - 결제 및 별점 진행중 에러발생");
@@ -172,7 +172,7 @@ public class OrderListController {
     	
     		for (int i=0;i<ids.length;i++) {
     			OrderList orderList = new OrderList(account.getUserId(), ids[i],  Integer.toString(teamId)
-    					,new Timestamp(System.currentTimeMillis()), Integer.parseInt(counts[i].trim()));    			
+    					,new Timestamp(System.currentTimeMillis()), Integer.parseInt(counts[i].trim()));
     			int result = orderListService.updateOrderCount(orderList);
     			if (result==0) {
                     System.out.println(orderListService.addOrder(orderList));

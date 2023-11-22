@@ -212,7 +212,7 @@
 		</set>
 		WHERE user_id = #{userId} AND menu_id = #{menuId} AND team_id=#{teamId} AND is_paid = 0
 	</update>
-	
+
 	<select id = "selectMenuByRank" resultMap = "menuMap">
 	<![CDATA[
 		SELECT menu_id, name, category, price, url, description, total_star, count_star
