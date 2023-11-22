@@ -3,6 +3,10 @@
 <html>
 <head>
     <title>결제 금액 안내</title>
+    <link rel="icon" href="images/logo.PNG">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@400;500;600;700&display=swap" rel="stylesheet">
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <style>
         body {
@@ -12,6 +16,7 @@
             align-items: center;
             background-color: #ccc;
             box-sizing: border-box;
+            font-family: 'IBM Plex Sans KR', sans-serif;
         }
 
         form {
