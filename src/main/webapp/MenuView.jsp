@@ -108,16 +108,16 @@
     
     minus.addEventListener("click", e => {
         if(count.value > 1) count.value -= 1
-        let thisPrice = parseInt(price.innerText)
+        let thisPrice = parseInt(price.innerText.replace(/,/g , ''))
         let totalPrice = count.value*thisPrice
-        document.querySelector('.doOrder').innerHTML = totalPrice+" 원 담기"
+        document.querySelector('.doOrder').innerText = totalPrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')+" 원 담기"
         e.preventDefault()
     })
     plus.addEventListener("click", e => {
-        let thisPrice = parseInt(price.innerText)
+        let thisPrice = parseInt(price.innerText.replace(/,/g , ''))
         count.value = parseInt(count.value)+1
         totalPrice = count.value*thisPrice
-        document.querySelector('.doOrder').innerHTML = totalPrice+" 원 담기"
+        document.querySelector('.doOrder').innerText = totalPrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')+" 원 담기"
         e.preventDefault()
     });
         $('.doOrder').click(function() {
@@ -148,7 +148,7 @@
 </div>
 <br>
 <div id="price" align="center">
-${menu.price}원 
+<fmt:formatNumber value="${menu.price}" pattern="#,###"/>원 
 </div>
 <br>
 <div id="description">
@@ -160,7 +160,8 @@ ${menu.description}
     <input type="number" value="1" id="count" name="count" >
     <button id="plus">+</button>
 </div>
-<button type="button" class="doOrder" id="${menu.menuId}" value="${menu.url}, ${menu.name}, ${menu.price}">${menu.price} 원 담기</button>
+<button type="button" class="doOrder" id="${menu.menuId}" value="${menu.url}, ${menu.name}, ${menu.price}"><fmt:formatNumber value="${menu.price}" pattern="#,###"/>
+ 원 담기</button>
 </div>
 </div>
 <br><br>	

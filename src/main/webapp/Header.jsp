@@ -18,6 +18,7 @@
   color : #FF7B31;
   cursor: pointer;
   display: inline-flex;
+  font-weight:bold;
   align-items: center;
   margin-right: 50px;
 }
