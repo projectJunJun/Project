@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -91,6 +92,10 @@
          text-align:center;
          font-size:22px;
          }
+         #star{
+         width: 22px;
+         height:22px;
+         }
 </style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script type="text/javascript">
@@ -99,6 +104,7 @@
     const plus = document.querySelector("#plus")
     const count = document.querySelector("#count")
     const price = document.querySelector("#price")
+    
     minus.addEventListener("click", e => {
         if(count.value > 1) count.value -= 1
         let thisPrice = parseInt(price.innerText)
@@ -130,6 +136,14 @@
 <div id="content_box">
 <div id="name" align="center">
 	${menu.name}
+	<c:choose>
+	<c:when test="${menu.countStar==0}">
+	(미평가)
+	</c:when> 
+	<c:otherwise>
+	<img src="./images/star.png" id=star>${menu.totalStar/menu.countStar}
+	</c:otherwise>
+	</c:choose>
 </div>
 <br>
 <div id="price" align="center">
