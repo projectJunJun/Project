@@ -47,22 +47,28 @@
 	</div>
 </body>
 
-<script>
+<script type="text/javascript">
 	$("#selectedDel").click(function () {
 		var param = '';
-		$('input[type = checkbox]:checked').each(function (index,item) { /* 체크 박스 선택한 값들만 */
-			param=param+"&menuId="+$(item).attr('data-menuId');
-		}) 
-		/* 비동기 연결 */
-		$.ajax ({
-			type: 'post',
-			url: 'deleteMenuAjax.do',
-			data: param,
-			
-			success:function(result) {
-				location.reload();
-			}
-		});
+		
+		if (confirm("계정을 삭제하겠습니까?") == true){
+		
+			$('input[type = checkbox]:checked').each(function (index,item) { /* 체크 박스 선택한 값들만 */
+				param=param+"&menuId="+$(item).attr('data-menuId');
+			}) 
+			/* 비동기 연결 */
+			$.ajax ({
+				type: 'post',
+				url: 'deleteMenuAjax.do',
+				data: param,
+				
+				success:function(result) {
+					location.reload();
+				}
+			});
+		} else {
+			return;
+		}
 		
 	});
 </script>

@@ -33,7 +33,7 @@
 		  <tr>
 			<td>테이블번호</td>
 			<td>
-				<input class="content_input" type="text" name="tableNumber" required/>
+				<input class="content_input" pattern="[0-9]+" type="text" name="tableNumber" required/>
 			</td>
 		  </tr>  
 	  </table>
