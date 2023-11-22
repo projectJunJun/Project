@@ -92,7 +92,7 @@ public class OrderListController {
         String path = "Error";
         Account account = (Account) session.getAttribute("account");
         int teamId = (int) session.getAttribute("teamId");
-        System.out.println("현재 teamId "+teamId);
+        System.out.println("현재 teamId "+teamId+"!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
         ArrayList<String> menuIds = new ArrayList<>();
         ArrayList<Double> ratings = new ArrayList<>();
         try{
@@ -107,17 +107,18 @@ public class OrderListController {
             System.out.println("ratings"+ratings);
             for(int i = 0; i < ratings.size(); i++){
                 OrderList order = new OrderList(account.getUserId(), menuIds.get(i), Integer.toString(teamId), ratings.get(i));
+                orderListService.updateOrder(order);
+                System.out.println("====메뉴 "+menuIds.get(i)+"결제 완료 후 별점 "+ratings.get(i)+"====");
                 if(ratings.get(i) > 0){
                     menuService.updateMenuStar(order);
                     System.out.println("====메뉴 "+menuIds.get(i)+"결제 완료 후 별점 "+ratings.get(i)+"====");
                 }
-                orderListService.updateOrder(order);
-                System.out.println("====메뉴 "+menuIds.get(i)+"결제 완료 후 별점 "+ratings.get(i)+"====");
             }
             path = "redirect:selectMenuByCategory.do";
+
             session.setAttribute("teamId", teamId+1);
             int newTeamId = (int) session.getAttribute("teamId");
-            System.out.println("바뀐 teamId "+newTeamId);
+            System.out.println("바뀐 teamId "+newTeamId+"!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
         }catch (Exception e){
             model.addAttribute("title", "결제 및 별점 에러");
             model.addAttribute("message", "에러 내용 - 결제 및 별점 진행중 에러발생");
