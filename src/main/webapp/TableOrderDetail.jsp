@@ -1,3 +1,4 @@
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -45,7 +46,7 @@
 					<td>${order.account.tableNumber}</td>
 					<td>${order.menu.name}</td>
 					<td>${order.count}</td>
-					<td>${order.menu.price}</td>
+					<td><fmt:formatNumber value="${order.menu.price}" pattern="#,###"/>원</td>
 				</tr>
 			</c:forEach>
 			</tbody>

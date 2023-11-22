@@ -30,6 +30,7 @@
             margin-bottom: 10px;
             padding : 20px 5px;
             font-size : 24px;
+            font-family: 'IBM Plex Sans KR', sans-serif;
             font-weight: bold;
         }
         .ui-tabs-vertical .ui-tabs-nav li a {
@@ -63,12 +64,14 @@
         }
         .menu_name{
             width: 240px;
+            font-family: 'IBM Plex Sans KR', sans-serif;
             font-size: 24px;
             font-weight:bold;
             text-align: center;
         }
         .price{
             width: 240px;
+            font-family: 'IBM Plex Sans KR', sans-serif;
             font-size: 18px;
             color: #888;
             text-align: center;

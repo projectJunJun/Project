@@ -1,5 +1,6 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
     <title>테이블별 주문내역 보기</title>
@@ -63,7 +64,7 @@
                         <c:if test="${table.tableNumber eq account.tableNumber}">
                             <c:if test="${!empty table}">
                                 <br><br>
-                                ${table.totalPrice}원 /
+                                <fmt:formatNumber value="${table.totalPrice}" pattern="#,###"/>원 /
                                 ${table.countMenu}개 주문
                             </c:if>
                         </c:if>
