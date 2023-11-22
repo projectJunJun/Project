@@ -58,8 +58,8 @@
 	<!-- addMenu -->
 	<insert id="addMenu" parameterType="menu">
 		INSERT
-		INTO menu(menu_id, name, category, price, url, description)
-		VALUES(#{menuId}, #{name}, #{category}, #{price}, #{url}, #{description})
+		INTO menu(menu_id, name, category, price, url, description, total_star, count_star)
+		VALUES(#{menuId}, #{name}, #{category}, #{price}, #{url}, #{description}, #{totalStar}, #{countStar})
 	</insert>
 	
 	<!-- updateMenu -->
