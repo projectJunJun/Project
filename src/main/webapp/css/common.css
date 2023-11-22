@@ -2,7 +2,7 @@
 
 <style>
 	body {
-		font-family: Arial, sans-serif;
+		/* font-family: Arial, sans-serif; */
 	}
 	.content {
 		width: 50%;
@@ -10,7 +10,7 @@
 		margin-top: 25px;
 	}
 	.btn {
-		width: 150px;
+		width: 180px;
     	font-size: 20px;
     	border:none;
     	float: right;
@@ -25,10 +25,12 @@
    }
 	
 	.content_input {
+		width: 95%;
 		border: none;
-		height: 30px;
+		height: 85%;
 		font-size: 20px;
-		text-align: center;
+		/* text-align: center; */
+		resize: none;
 	}
 	
     .btn:hover {

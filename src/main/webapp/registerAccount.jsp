@@ -37,7 +37,8 @@
 			</td>
 		  </tr>  
 	  </table>
-	  <input class="btn" type="submit" value="계정등록" /> &nbsp;
+	  <input class="btn" type="submit" value="계정등록" />
+	  <a class="btn" href="selectAllAccount.do">목록으로 돌아가기</a>
 	  </form>
 	  </div>
 </body>
