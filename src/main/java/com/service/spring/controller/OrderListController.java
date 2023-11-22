@@ -75,7 +75,7 @@ public class OrderListController {
     public String selectAllOrder(OrderList orderList, Model model){
       String path = "Error";
       try{
-        List<OrderList> orderLists = orderListService.selectAllOrder(orderList);
+    	  List<OrderList> orderLists = orderListService.selectAllOrder(orderList);
             model.addAttribute("orderLists", orderLists);
             path = "AdminOrderList";
         } catch (Exception e){

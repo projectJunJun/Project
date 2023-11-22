@@ -61,15 +61,15 @@ public class MenuController {
     
     @PostMapping("addMenu.do")
     public String postAddMenu(Menu menu, Model model) {
-    	//try {
-    		System.out.println(menu.toString());
+    	try {
     		menuService.addMenu(menu);
     		return "redirect:selectAllMenu.do";
-    	//} catch (Exception e) {
-    	//	model.addAttribute("title", "메뉴추가하기 에러");
-         //   model.addAttribute("message", "에러 내용 - 메뉴추가하기 중 에러발생");
-    	//	return "Error";
+    	} catch (Exception e) {
+    		model.addAttribute("title", "메뉴추가하기 에러");
+            model.addAttribute("message", "에러 내용 - 메뉴추가하기 중 에러발생");
+    		return "Error";
     	}
+    }
     
     @GetMapping("selectMenuByCategory.do")
     public String selectMenuByCategory(Model model, HttpSession session) {
