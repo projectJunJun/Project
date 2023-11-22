@@ -8,10 +8,28 @@
 <link rel="stylesheet" href="css/common.css">
 <link rel="stylesheet" href="css/table_v.css">
 <style>
-	    .content {
-			width: 40%;
-		}
-    </style>
+    .content {
+		width: 40%;
+	}
+</style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script>
+	$(document).ready(function() {
+	  	var index = 0;
+	  	switch ("${menu.category}") {
+	  	case "치킨":
+	  		index = 0;
+	  		break;
+	  	case "사이드":
+	  		index = 1;
+	  		break;
+	  	case "음료":
+	  		index = 2;
+	  		break;
+	  	}
+    	$("select").prop("selectedIndex", index);
+	});
+</script>
 </head>
 <body>
 	<jsp:include page="AdminHeader.jsp"/>
