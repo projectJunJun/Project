@@ -121,12 +121,16 @@
         e.preventDefault()
     });
         $('.doOrder').click(function() {
-            menu_info = $(this).val()
-            menu_info += ", "+count.value
-            localStorage.setItem($(this).attr("id"), menu_info)
+			menu_info = $(this).val()
+			let currentCount = Number(count.value)
+            if(localStorage.getItem($(this).attr("id"))){
+                const [url, name, price, cnt] = localStorage.getItem($(this).attr("id")).split(',')
+                currentCount+= Number(cnt)
+            }
+		    menu_info +=", "+currentCount
+            localStorage.setItem($(this).attr("id"), menu_info) 
             alert("주문하신 상품이 장바구니에 추가 되었습니다.")
-    		location.href = "selectMenuByCategory.do"
-
+            location.href = "selectMenuByCategory.do"
         });
     });
 </script>
