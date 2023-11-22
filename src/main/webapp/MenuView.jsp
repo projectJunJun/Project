@@ -1,3 +1,4 @@
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"%>
@@ -141,8 +142,8 @@
 	(미평가)
 	</c:when> 
 	<c:otherwise>
-	<img src="./images/star.png" id=star>${menu.totalStar/menu.countStar}
-	</c:otherwise>
+	<img src="./images/star.png" id=star><fmt:formatNumber value="${menu.totalStar/menu.countStar}" pattern=".00"/>
+ 	</c:otherwise>
 	</c:choose>
 </div>
 <br>
