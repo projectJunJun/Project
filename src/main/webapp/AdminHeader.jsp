@@ -11,7 +11,7 @@
     }
     .flex-item-login{
         flex-direction: column;
-        padding-bottom: 30px;
+        padding-bottom: 40px;
     }
     .flex-item-group {
         display: flex;
@@ -38,10 +38,13 @@
 <script>
     function logout() {
         // 로그아웃 버튼이 클릭되었을 때 실행할 동작
-        alert('로그아웃 되었습니다.'); // Alert 창 띄우기
-        // 여기에 로그아웃을 처리하는 로직 추가
-        // 처음 페이지로의 리다이렉션
-        window.location.href = '/';
+        // 사용자에게 확인 메세지를 보여주기
+        var confirmLogout = confirm("로그아웃 하시겠습니까?");
+
+        // 사용자가 확인을 눌렀을 때
+        if(confirmLogout){
+            window.location.href = 'logout.do';
+        }
     }
 </script>
 <div class="flex-container">
@@ -57,9 +60,9 @@
         </div>
         <div>
             <c:choose>
-                <c:when test="${!empty account}">
+                <c:when test="${!empty loginAccount}">
                     <div class="flex-item-login-text2">
-                            ${account.userId} 님 로그인 되었습니다.
+                            ${loginAccount.userId} 님 로그인 되었습니다.
                             <button onclick="logout()">로그아웃</button>
                     </div>
                 </c:when>

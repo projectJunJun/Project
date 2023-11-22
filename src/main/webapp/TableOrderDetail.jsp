@@ -7,20 +7,22 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 	<link rel="stylesheet" href="css/common.css">
 	<link rel="stylesheet" href="css/table_h.css">
+	 <style>
 
+	 </style>
 <title>주문 목록 테이블별 상세 보기</title>
 </head>
 <body>
 	<jsp:include page="AdminHeader.jsp"/>
-	<div class="button-container">
-		<div class="selectAllOrder">
-			<a class="btn" href="selectAllOrder.do">전체 조회</a>
-		</div>
-		<div class="selectOrderByTable">
-			<a class="btn" href="selectOrder.do">테이블별 조회</a>
-		</div>
-	</div>
 	<div class="content">
+		<div class="button-container">
+			<div class="selectAllOrder">
+				<a class="btn" href="selectAllOrder.do">전체 조회</a>
+			</div>
+			<div class="selectOrderByTable">
+				<a class="btn" href="selectOrder.do">테이블별 조회</a>
+			</div>
+		</div>
 		<table>
 			<thead>
 			<tr>

@@ -35,6 +35,7 @@ public class AccountController {
                 // "selectMenyByCategory";
                 String path = "redirect:selectMenuByCategory.do";
                 session.setAttribute("account", loginAccount);
+                session.setAttribute("loginAccount", loginAccount);
                 System.out.println("login session"+loginAccount);
                 if(loginAccount.getAuthority() == 1) path = "HomeAdmin";
                 else session.setAttribute("teamId", 1);         // teamId
