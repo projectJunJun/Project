@@ -29,7 +29,10 @@
               border: 1px solid #aaaaaa;
               border-radius: 5px;
           }
-
+          #star {
+              width: 22px;
+              height: 22px;
+          }
           #minus, #plus {
               width: 70px;
               padding: 10px;
