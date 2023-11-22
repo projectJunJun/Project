@@ -1,5 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java"  pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -43,7 +44,7 @@
 				<td><a href = "selectMenu.do?menuId=${menu.menuId}">${menu.menuId}</a></td>
 				<td>${menu.name}</td>
 				<td>${menu.category}</td>
-				<td>${menu.price}</td>
+				<td><fmt:formatNumber value="${menu.price}" pattern="#,###"/>원</td>
 				<td><input type="checkbox" data-menuId="${menu.menuId}"></td>
 			</tr>
 			</c:forEach>
