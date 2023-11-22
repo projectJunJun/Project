@@ -1,6 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <html>
 <head>
 
@@ -145,7 +145,7 @@
                         <img src="${menu.url}" class="image2"></a>
                     <div>
                         <div class="menu_name2">${menu.name}</div>
-                        <div class="price2">${menu.price}원</div>
+                        <div class="price2"><fmt:formatNumber value="${menu.price}" pattern="#,###" />원</div>
                     </div>
                 </div>
             </c:forEach>
@@ -158,7 +158,7 @@
                         <img src="${menu.url}" class="image"></a>
                     <div>
                         <div class="menu_name">${menu.name}</div>
-                        <div class="price">${menu.price}원</div>
+                        <div class="price"><fmt:formatNumber value="${menu.price}" pattern="#,###" />원</div>
                     </div>
                 </div>
             </c:forEach>
@@ -171,7 +171,7 @@
                         <img src="${menu.url}" class="image"></a>
                     <div>
                         <div class="menu_name">${menu.name}</div>
-                        <div class="price">${menu.price}원</div>
+                        <div class="price"><fmt:formatNumber value="${menu.price}" pattern="#,###" />원</div>
                     </div>
                 </div>
             </c:forEach>
@@ -183,7 +183,7 @@
                         <img src="${menu.url}" class="image"></a>
                     <div>
                         <div class="menu_name">${menu.name}</div>
-                        <div class="price">${menu.price}원</div>
+                        <div class="price"><fmt:formatNumber value="${menu.price}" pattern="#,###" />원</div>
                     </div>
                 </div>
             </c:forEach>
