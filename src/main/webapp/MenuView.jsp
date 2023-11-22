@@ -7,8 +7,15 @@
   <head>
       <meta charset="UTF-8">
       <meta name='viewport' content='width=device-width, initial-scale=1'>
-      <title>메뉴 상세 페이지</title>
+      <title>준준치킨에 오신 것을 환영합니다</title>
+      <link rel="icon" href="images/logo.PNG">
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+      <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@400;500;600;700&display=swap" rel="stylesheet">
       <style>
+          body{
+              font-family: 'IBM Plex Sans KR', sans-serif;
+          }
           #flex-box {
               display: flex;
               flex-wrap: wrap;
@@ -66,6 +73,8 @@
               clear: both;
           }
           .doOrder{
+              font-family: 'IBM Plex Sans KR', sans-serif;
+              font-weight: 500;
               margin-top:20px;
               align-items:center;
               width : 300px;

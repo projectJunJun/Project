@@ -3,6 +3,11 @@
 <html>
 <head>
     <title>후기를 남겨주세요</title>
+    <link rel="icon" href="images/logo.PNG">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
     <style>
         @import url(//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css);
         .rate { display: inline-block;border: 0;margin: 0;}
@@ -20,6 +25,7 @@
             display: flex;
             flex-direction: column;
             align-items: center;
+            font-family: 'IBM Plex Sans KR', sans-serif;
         }
         nav {
             overflow: hidden;
@@ -96,7 +102,7 @@
             setInterval(() => {
                 localStorage.clear()
                 form.submit()
-            }, 10000)
+            }, 60000)
         })
         $(document).on('click', 'input[type="submit"]', function() {
             localStorage.clear();

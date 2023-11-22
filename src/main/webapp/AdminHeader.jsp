@@ -1,7 +1,16 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<meta name='viewport' content='width=device-width, initial-scale=1'>
+<title>준준치킨에 오신 것을 환영합니다</title>
+<link rel="icon" href="images/logo.PNG">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
+    *{
+        font-family: 'IBM Plex Sans KR', sans-serif;
+    }
     .flex-container{
         width: 90%;
         display: flex;
@@ -13,7 +22,7 @@
         flex-direction: column;
         padding-bottom: 40px;
     }
-    .flex-item-group {
+    .flex-item-group{
         display: flex;
         align-items: center;
         padding-bottom: 15px;

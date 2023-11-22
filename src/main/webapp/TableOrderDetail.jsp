@@ -8,9 +8,16 @@
 	<link rel="stylesheet" href="css/common.css">
 	<link rel="stylesheet" href="css/table_h.css">
 	 <style>
-
+		 body{
+			 font-family: 'IBM Plex Sans KR', sans-serif;
+		 }
 	 </style>
 <title>주문 목록 테이블별 상세 보기</title>
+	<link rel="icon" href="images/logo.PNG">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@400;500;600;700&display=swap" rel="stylesheet">
+	<meta name='viewport' content='width=device-width, initial-scale=1'>
 </head>
 <body>
 	<jsp:include page="AdminHeader.jsp"/>

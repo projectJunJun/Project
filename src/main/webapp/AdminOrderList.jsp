@@ -6,7 +6,16 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <link rel="stylesheet" href="css/common.css">
     <link rel="stylesheet" href="css/table_h.css">
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <title>준준치킨에 오신 것을 환영합니다</title>
+    <link rel="icon" href="images/logo.PNG">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
+        body{
+            font-family: 'IBM Plex Sans KR', sans-serif;
+        }
     	.content{
     		width: 75%;
     	}

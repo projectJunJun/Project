@@ -2,7 +2,11 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>결제하기</title>
+    <title>결제 진행중</title>
+    <link rel="icon" href="images/logo.PNG">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@400;500;600;700&display=swap" rel="stylesheet">
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <style>
         body {
@@ -11,6 +15,7 @@
             justify-content: center;
             align-items: center;
             background-color: #ccc;
+            font-family: 'IBM Plex Sans KR', sans-serif;
         }
 
         form {

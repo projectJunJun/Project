@@ -11,6 +11,9 @@
     <script src="https://code.jquery.com/ui/1.13.0/jquery-ui.min.js"></script>
     <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.0/themes/base/jquery-ui.css">
     <style>
+        body{
+            font-family: 'IBM Plex Sans KR', sans-serif;
+        }
         /* 수직 탭 스타일 */
         .ui-tabs-vertical {
             width: 100%;
