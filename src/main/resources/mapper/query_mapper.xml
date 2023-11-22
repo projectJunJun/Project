@@ -204,12 +204,10 @@
 
 	<update id="updateOrder" parameterType="orderList">
 		UPDATE orderlist
-		<set>
-			is_paid = 1
-			<if test="star != 0.0">
-				, star = #{star}
-			</if>
-		</set>
+		SET is_paid = 1
+		<if test="star != 0.0">
+			, star = #{star}
+		</if>
 		WHERE user_id = #{userId} AND menu_id = #{menuId} AND team_id=#{teamId} AND is_paid = 0
 	</update>
 

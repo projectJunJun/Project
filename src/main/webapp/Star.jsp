@@ -106,8 +106,6 @@
         })
         $(document).on('click', 'input[type="submit"]', function() {
             localStorage.clear();
-            $.post('pay.do');
-            location.href = 'selectMenuByCategory.do';
         });
     </script>
 </head>

@@ -156,7 +156,7 @@
               ${menu.name}
               <c:choose>
                 <c:when test="${menu.countStar==0}">
-                (미평가)
+                <img src="./images/star.png" id=star>(미평가)
                 </c:when> 
                 <c:otherwise>
                 <img src="./images/star.png" id=star><fmt:formatNumber value="${menu.totalStar/menu.countStar}" pattern=".00"/>
