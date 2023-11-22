@@ -72,6 +72,7 @@
 		background-color: #ff8833;
 		cursor: pointer;
 	}
+
 </style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script type="text/javascript">
@@ -98,7 +99,7 @@
 	}
 
 	function deleteStorage(){
-		let y = confirm($(this).closest('.close').siblings('.name').text()+" 을 삭제하시겠습니까?");
+		let y = confirm($(this).closest('.close').siblings('.name').text()+" 메뉴를 삭제하시겠습니까?");
 		if(y){
 			localStorage.removeItem($(this).val());
 			refreshPage();

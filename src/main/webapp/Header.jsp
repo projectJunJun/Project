@@ -12,10 +12,10 @@
 #adminmode {
   border-radius: 50px;
   background-color:white;
-  border : 3px solid #FF7B31;
+  border : 3px solid #ff9933;
   padding: 12px 16px;
-  font-size: 22px;
-  color : #FF7B31;
+  font-size: 24px;
+  color : #ff9933;
   cursor: pointer;
   display: inline-flex;
   font-weight:bold;
@@ -34,6 +34,33 @@ header{
 	align-items: center;
 	justify-content: space-between;
 }
+#table h1 {
+    font-size: 28px;
+    font-weight: 500;
+    letter-spacing: 0;
+    line-height: 1.5em;
+    padding-bottom: 15px;
+    position: relative;
+}
+#table h1:before {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 5px;
+    width: 55px;
+    background-color: #ff9933;
+}
+#table h1:after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 2px;
+    height: 1px;
+    width: 95%;
+    max-width: 255px;
+    background-color: #ff9933;
+}
 </style>
 </head>
 <header>
@@ -44,7 +71,7 @@ header{
   </div>
     <c:choose>
         <c:when test="${!empty account}">
-            <h2>${account.tableNumber}번 테이블</h2>
+            <div id="table"><h1>${account.tableNumber}번 테이블</h1></div>
         </c:when>
         <c:otherwise>
             <script>

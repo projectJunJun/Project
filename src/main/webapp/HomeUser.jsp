@@ -96,7 +96,7 @@
             border-radius: 30px;
             background-color : #ff9933;
             padding: 15px 30px;
-            font-size: 28px;
+            font-size: 24px;
             display: flex;
             color : #FFFFFF;
             cursor: pointer;
