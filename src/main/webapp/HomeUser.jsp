@@ -7,6 +7,7 @@
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <title>준준치킨에 오신 것을 환영합니다</title>
     <link rel="icon" href="images/logo.PNG">
+    <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://code.jquery.com/ui/1.13.0/jquery-ui.min.js"></script>
     <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.0/themes/base/jquery-ui.css">
@@ -93,10 +94,11 @@
             width: 40px;
             height: 40px;
             margin-right: 15px;
+            font-size: 40px;
+            color: #FFFFFF;
         }
-        #basket {
+        .button {
             position: fixed;
-            left: 20px;
             bottom: 20px;
             border: 0;
             border-radius: 30px;
@@ -108,6 +110,14 @@
             cursor: pointer;
             margin-top: 20px;
             font-weight: bold;
+        }
+        #basket {
+            left: 20px;
+            bottom: 100px;
+        }
+        #pay {
+            left: 20px;
+            bottom: 20px;
         }
     </style>
 </head>
@@ -171,14 +181,18 @@
             </c:forEach>
         </div>
     </div>
-    <button id = "basket" class="btn">
+    <button id="basket" class="button">
         <a href="BasketList.do">
             <img src="./images/basket.png" class="icon">
         장바구니</a>
     </button>
+    <button id="pay" class="button">
+        <a href="Pay.jsp">
+            <img src="./images/card.png" class="icon">
+            결제하기</a>
+    </button>
 <script>
     // 세로(수직) 탭 초기화
-
     $("#tabs-vertical").tabs().addClass("ui-tabs-vertical ui-helper-clearfix");
     $("#tabs-vertical li").removeClass("ui-corner-top").addClass("ui-corner-left");
 

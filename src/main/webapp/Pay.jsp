@@ -1,5 +1,6 @@
 <%@ page import="java.util.prefs.Preferences" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <html>
 <head>
     <title>결제 진행중</title>
@@ -112,18 +113,15 @@
     <form action="/pay.do" method="GET">
         <button id="close">X</button>
         <h1>결제하시겠습니까?</h1>
-        <h2>결제 금액</h2>
+        <h2><fmt:formatNumber value="${total}" pattern="#,###"/>원</h2>
         <h3>결제 인원을 선택해주세요</h3>
         <div id="selection">
             <button id="minus">-</button>
             <input type="number" value="1" id="people" name="people" >
             <button id="plus">+</button>
         </div>
-        <p>
-            나눠지지 않는 금액은 마지막 인원의 결제에 부과됩니다.
-        </p>
+        <p>나눠지지 않는 금액은 마지막 인원의 결제에 부과됩니다.</p>
         <input type="submit" value="결제 금액 확인 " id="pay">
-        <input type="hidden" name="total">
     </form>
     <script>
         const close = document.querySelector("#close")
@@ -131,16 +129,6 @@
             location.href = 'BasketList.jsp'
             e.preventDefault()
         })
-
-        // localStorage에 있는 총 금액 보여주기
-        const h2 = document.querySelector("h2")
-        let total = 0
-        for(const key in localStorage){
-            if (key === 'length') break
-            const [url, name, price, cnt] = localStorage.getItem(key).split(',')
-            total += price*cnt
-        }
-        h2.innerText = total.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')+"원"
 
         // +/- 누르면 숫자 올라가게
         const minus = document.querySelector("#minus")
@@ -154,11 +142,6 @@
             people.value = parseInt(people.value)+1
             e.preventDefault()
         })
-
-        // form 이외에 localStorage에 있는 장바구니 금액을 전송하기 위해 함께 바인딩해서 전송하기
-        const form = document.querySelector('form')
-        const hidden = document.querySelector('input[type="hidden"]')
-        hidden.value = total
     </script>
 </body>
 </html>

@@ -92,6 +92,6 @@ header{
         </c:otherwise>
     </c:choose>
 
-  <a href="UserLogout.jsp"><button id ="adminmode"class="btn"><img src="./images/adminmode.png" width="40" height="40" style=margin-right:15px ">  관리자 모드</button></a>
+  <a href="UserLogout.jsp"><button id ="adminmode" class="btn"><img src="./images/adminmode.png" width="40" height="40" style=margin-right:15px ">  관리자 모드</button></a>
 </header>
 </html>

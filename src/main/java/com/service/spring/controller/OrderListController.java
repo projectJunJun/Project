@@ -35,8 +35,8 @@ public class OrderListController {
 
     // Pay.jsp -> PayResult.jsp
     @GetMapping("/pay.do")
-    public String pay(String total, String people, Model model){
-        int totals = Integer.parseInt(total);
+    public String pay(HttpSession session, String people, Model model){
+        int totals = Integer.parseInt((String) session.getAttribute("total"));
         int peoples = Integer.parseInt(people);
         int rest = totals;
         DecimalFormat formatter = new DecimalFormat("###,###");
@@ -119,6 +119,7 @@ public class OrderListController {
             session.setAttribute("teamId", teamId+1);
             int newTeamId = (int) session.getAttribute("teamId");
             System.out.println("바뀐 teamId "+newTeamId+"!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+            session.setAttribute("total", "0");
         }catch (Exception e){
             model.addAttribute("title", "결제 및 별점 에러");
             model.addAttribute("message", "에러 내용 - 결제 및 별점 진행중 에러발생");
@@ -162,7 +163,7 @@ public class OrderListController {
     }
     
     @GetMapping("updateOrderList.do")
-    public String updateOrderList(Model model, HttpSession session, String idList, String countList) {
+    public String updateOrderList(Model model, HttpSession session, String idList, String countList, String total) {
         String path = "Error";
     	try {
     		System.out.println("주문하기 진입 성공");
@@ -170,7 +171,7 @@ public class OrderListController {
     		Account account = (Account) session.getAttribute("account");
     		String [] ids = idList.split(","); 
     		String [] counts = countList.split(",");
-    	
+    	    int calcTotal = Integer.parseInt(total);
     		for (int i=0;i<ids.length;i++) {
     			OrderList orderList = new OrderList(account.getUserId(), ids[i],  Integer.toString(teamId)
     					,new Timestamp(System.currentTimeMillis()), Integer.parseInt(counts[i].trim()));
@@ -179,7 +180,11 @@ public class OrderListController {
                     System.out.println(orderListService.addOrder(orderList));
     			}
     		}
-    		path = "Pay";
+            if(session.getAttribute("total") != null){
+                calcTotal += Integer.parseInt((String)session.getAttribute("total"));;
+            }
+            session.setAttribute("total", Integer.toString(calcTotal));
+    		path = "redirect:selectMenuByCategory.do";
     	}catch(Exception e) {
     		model.addAttribute("title", "주문 하기 - 에러");
             model.addAttribute("message", "문제 내용 - 주문 하기 실행 중 에러발생");

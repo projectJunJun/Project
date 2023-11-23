@@ -104,6 +104,7 @@
 			totalPrice += parseInt(data[2])*parseInt(data[3]);
 		}//for
 		$('#content').html(html);
+		$('#price').val(totalPrice)
 		$('#price').html("<h1>총 주문 가격 "+totalPrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')+"원"+"</h1>");
 	}
 
@@ -129,8 +130,9 @@
 					idList.push(key)
 					countList.push(data[3])
 				}
-				url+=idList+"&countList="+countList
+				url+=idList+"&countList="+countList+"&total="+$('#price').val()
 				location.href = url
+				localStorage.clear()
 			}
 		});
 	});

@@ -236,6 +236,9 @@
 		FROM orderlist o JOIN account a ON o.user_id = a.user_id
 		JOIN menu m ON o.menu_id = m.menu_id
 		WHERE o.is_paid = 0
+		<if test="userId != null">
+			WHERE user_id = #{userId}
+		</if>
 		GROUP BY a.table_number
 		ORDER BY table_number
 	</select>

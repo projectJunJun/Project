@@ -100,13 +100,9 @@
                 second.innerText = time
             }, 1000)
             setInterval(() => {
-                localStorage.clear()
                 form.submit()
             }, 60000)
         })
-        $(document).on('click', 'input[type="submit"]', function() {
-            localStorage.clear();
-        });
     </script>
 </head>
 <body>

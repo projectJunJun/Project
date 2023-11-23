@@ -127,6 +127,7 @@
                 </tr>
             </tfoot>
         </table>
+        <p>나눠지지 않는 금액은 마지막 인원의 결제에 부과됩니다.</p>
         <input type="submit" value="결제하기">
     </form>
     <script>
