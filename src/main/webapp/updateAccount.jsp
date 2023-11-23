@@ -17,7 +17,7 @@
 			font-family: 'IBM Plex Sans KR', sans-serif;
 		}
 	    .content {
-			width: 40%;
+			width: 35%;
 		}
     </style>
 </head>
@@ -44,15 +44,9 @@
 					<input class="content_input" type="text" name="password" required/>
 				</td>
 			</tr>
-			<tr>
-				<td>비밀번호 확인</td>
-				<td>
-					<input class="content_input" type="text" name="passwordCheck" required/>
-				</td>
-			</tr>
 		</table>
-	<input class="btn" type="submit" value="계정 수정" />
-	<input class="btn" type="reset" value="취소" />
+	<input class="btn" type="submit" value="수정하기" />
+	<a class="btn" href = "selectAccount.do?userId=${account.userId}">뒤로가기</a>
 	</form>
 	</div>
 </body>
