@@ -48,8 +48,8 @@
 				<td>${menu.description}</td>
 			</tr>
 		</table>
-		<a class="btn" href="updateMenu.do?menuId=${menu.menuId}">메뉴수정하기</a>
-		<a class="btn" href="selectAllMenu.do">목록으로 돌아가기</a>
+		<a class="btn" href="updateMenu.do?menuId=${menu.menuId}">수정하기</a>
+		<a class="btn" href="selectAllMenu.do">목록 보기</a>
 	</div>
 </body>
 </html>

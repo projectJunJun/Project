@@ -227,12 +227,12 @@
 	
 	<resultMap type = "table" id = "tableMap">
 		<result property="tableNumber" column="table_number"/>
-		<result property="totalPrice" column="sum(m.price)"/>
+		<result property="totalPrice" column="sum(m.price*o.count)"/>
 		<result property="countMenu" column="count(o.menu_id)"/>
 	</resultMap>
 	
 	<select id = "viewTotalOrder" resultMap = "tableMap">
-		SELECT a.table_number, sum(m.price), count(o.menu_id)
+		SELECT a.table_number, sum(m.price*o.count), count(o.menu_id)
 		FROM orderlist o JOIN account a ON o.user_id = a.user_id
 		JOIN menu m ON o.menu_id = m.menu_id
 		WHERE o.is_paid = 0

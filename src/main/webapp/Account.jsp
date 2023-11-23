@@ -18,7 +18,7 @@
 			font-family: 'IBM Plex Sans KR', sans-serif;
 		}
 		.content {
-			width: 40%;
+			width: 35%;
 		}
 	</style>
 </head>
@@ -42,8 +42,8 @@
 			</tr>
 		</tbody>
 	</table>
-	<a class="btn" href = "selectAllAccount.do">목록 돌아가기</a>
-	<a class="btn" href = "updateAccount.do?userId=${account.userId}&tableNumber=${account.tableNumber}">계정 수정하기</a>
+	<a class="btn" href = "updateAccount.do?userId=${account.userId}&tableNumber=${account.tableNumber}">수정하기</a>
+	<a class="btn" href = "selectAllAccount.do">목록 보기</a>
 </div>
 </body>
 </html>
