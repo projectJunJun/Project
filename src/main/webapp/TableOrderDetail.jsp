@@ -38,6 +38,7 @@
 				<th>메뉴 이름</th>
 				<th>주문수량</th>
 				<th>가격</th>
+				<th>총 가격</th>
 			</tr>
 			</thead>
 			<tbody>
@@ -47,6 +48,7 @@
 					<td>${order.menu.name}</td>
 					<td>${order.count}</td>
 					<td><fmt:formatNumber value="${order.menu.price}" pattern="#,###"/>원</td>
+					<td><fmt:formatNumber value="${order.count*order.menu.price}" pattern="#,###"/>원</td>
 				</tr>
 			</c:forEach>
 			</tbody>
