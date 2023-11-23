@@ -87,9 +87,8 @@
 			</td>
 		  </tr>
 	  </table>
-	  <input class="btn" type="submit" value="수정 완료" />
-	  <input class="btn" type="reset" value="취소" />
-	  <a class="btn" href="selectAllMenu.do">목록으로 돌아가기</a>
+	  <input class="btn" type="submit" value="수정하기" />
+	  <a class="btn" href="selectMenu.do?menuId=${menu.menuId}">뒤로가기</a>
 	</form>
   </div>
 </body>

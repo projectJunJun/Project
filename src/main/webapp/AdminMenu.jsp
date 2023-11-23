@@ -20,7 +20,6 @@
 		}
     	.content {
     		width: 75%;
-    		margin: 50px auto;
     	}
     </style>
 </head>
@@ -51,7 +50,7 @@
 		</tbody>
 	</table>
 	
-	<a class="btn" href="#" id="selectedDel">선택항목삭제</a>
+	<a class="btn" href="#" id="selectedDel">선택 항목 삭제</a>
 	<a class="btn" href = "addMenu.do">메뉴 추가하기</a>
 	</div>
 </body>

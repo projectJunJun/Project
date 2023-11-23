@@ -71,8 +71,8 @@
 			</td>
 		  </tr>
 	  </table>
-	  <input class="btn" type="submit" value="메뉴추가" />
-	  <a class="btn" href="selectAllMenu.do">목록으로 돌아가기</a>
+	  <input class="btn" type="submit" value="메뉴 추가하기" />
+	  <a class="btn" href="selectAllMenu.do">목록 보기</a>
 	</form>
   </div>
 </body>

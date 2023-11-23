@@ -41,7 +41,7 @@
 		</tbody>
 	</table>
 	
-	<a class="btn" href= "#" id="selectedDel">선택항목삭제</a>
+	<a class="btn" href= "#" id="selectedDel">선택 항목 삭제</a>
 	<a class="btn" href = "registerAccount.do">계정 등록하기</a>
 </div>
 </body>
